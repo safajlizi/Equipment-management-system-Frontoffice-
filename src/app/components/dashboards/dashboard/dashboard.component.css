@@ -23,6 +23,10 @@ app-side-nav{
     white-space: nowrap;
     transition: width 250ms ease-in ;
 }
+app-header{
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.5);
+
+}
 .display-area{
     position: absolute;
     left:250px;
@@ -38,4 +42,8 @@ app-side-nav{
 .app-side-nav-open{ 
      width:250px;
 
+}
+
+main{
+    margin-left:118px;
 }

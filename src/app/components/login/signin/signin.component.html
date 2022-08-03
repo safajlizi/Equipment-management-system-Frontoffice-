@@ -1,1 +1,24 @@
-<p>signin works!</p>
+<div class="login-container">
+      
+    <h1>Login</h1>
+    <form   method="post" [formGroup]="form" (ngSubmit)="ingresar()">
+        <div class="form-group">
+            <input type="text" formControlName="username" name="username" required>
+            <span></span>
+            <label for="username">Username</label>
+        </div>
+        <div class="form-group">
+            <input type="password"  formControlerName="password"name="password" required >
+            <span></span>
+            <label for="password">Password</label>
+        </div>
+        <div class="pass">
+            Forgot Password?</div>
+
+            <input type="submit"  value ="Login">
+            <div class="signup_link">
+                Not a member?<a href="#">Signup</a>
+            </div>
+    </form>
+</div>
+
