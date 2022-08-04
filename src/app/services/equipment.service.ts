@@ -20,4 +20,7 @@ export class EquipmentService {
   deleteEquipment(id: number) {
     return this.http.delete<any>('http://localhost:3000/equipment/' + id);
   }
+  filterEquipment(keyword: string) {
+    return this.http.get<any>('http://localhost:3000/equipment/' + keyword);
+  }
 }
