@@ -32,7 +32,7 @@ import { UserlistComponent } from './components/users/userlist/userlist.componen
 import { Navbar2Component } from './components/users/navbar2/navbar2.component';
 import { Dashbord1Component } from './components/dashboards/dashbord1/dashbord1.component';
 import {MatSelectModule} from '@angular/material/select';
-
+import { DatePipe } from '@angular/common';
 @NgModule({
   declarations: [
     AppComponent,
@@ -73,7 +73,7 @@ import {MatSelectModule} from '@angular/material/select';
     MatSortModule,
     MatSelectModule
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
