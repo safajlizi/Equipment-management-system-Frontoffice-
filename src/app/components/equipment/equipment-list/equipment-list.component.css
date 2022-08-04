@@ -1,20 +1,38 @@
 table {
     width: 100%;
   }
-  
+
   .mat-form-field {
     font-size: 14px;
     width: 100%;
   }
   
   td, th {
-    width: 10%;
+    width:5%;
+   border-color: rgba(250, 130, 17, 1 )
+  }
+  mat-paginator{
+    border-color: rgba(250, 130, 17, 1 )
+
   }
   td{
-    max-block-size: 50px;
-  }
+    max-block-size: 200px}
   
   .container{
-    max-width: 1300px;
+    width:100%;
     margin : 0 auto;
+    
   }
+
+
+ .title  {
+  background-color: rgba(250, 130, 17, 1 );
+ }
+  
+  .action{
+    width: 15%;
+  }
+ 
+.filter{
+  background-color:  rgba(223, 221, 219,0.1) ;
+}

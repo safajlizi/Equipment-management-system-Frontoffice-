@@ -6,6 +6,8 @@ import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
 import { AddequipmentComponent } from '../addequipment/addequipment.component';
 import {MatDialog} from '@angular/material/dialog';
+import { EquipmenthistoryComponent } from '../equipmenthistory/equipmenthistory.component';
+import { ReserveEquipmentComponent } from '../reserve-equipment/reserve-equipment.component';
 @Component({
   selector: 'app-equipment-list',
   templateUrl: './equipment-list.component.html',
@@ -24,14 +26,20 @@ export class EquipmentListComponent implements OnInit {
     manager : User 
 
    */
-  displayedColumns: string[] = ['label', 'prop_client', 'status', 'defaults','description','is_calibrated','calibrating_date','action'];
+  displayedColumns: string[] = ['label','category','prop_client', 'status', 'defaults','description','is_calibrated','calibrating_date','action'];
   dataSource!: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
   constructor(private api:EquipmentService,private dialog:MatDialog) { }
+  openDialog() {
+    const dialogRef = this.dialog.open(AddequipmentComponent,{
+      
+    });
 
+    
+    }
 
   getAllEquipment(){
     this.api.getEquipment()
@@ -77,5 +85,11 @@ export class EquipmentListComponent implements OnInit {
   ngOnInit(): void {
     this.getAllEquipment()
   }
+  reserve(){
+    const dialogRef = this.dialog.open(ReserveEquipmentComponent,{
+      
+    });
+  
 
+}
 }

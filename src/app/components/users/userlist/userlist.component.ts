@@ -6,6 +6,7 @@ import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
 import {MatDialog} from '@angular/material/dialog';
 import { AddUserComponent } from '../add-user/add-user.component';
+import { UserhistoryComponent } from '../userhistory/userhistory.component';
 @Component({
   selector: 'app-userlist',
   templateUrl: './userlist.component.html',
@@ -19,9 +20,15 @@ export class UserlistComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(private api:UserService,private dialog:MatDialog) { }
+  constructor(private api:UserService,private dialog: MatDialog) { }
 
 
+
+  openDialog() {
+    const dialogRef = this.dialog.open(UserhistoryComponent,{
+      
+    });
+  }
   getAllUsers(){
     this.api.getUsers()
    .subscribe({

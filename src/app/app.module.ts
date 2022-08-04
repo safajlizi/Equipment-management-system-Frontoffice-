@@ -32,6 +32,21 @@ import { UserlistComponent } from './components/users/userlist/userlist.componen
 import { Navbar2Component } from './components/users/navbar2/navbar2.component';
 import { Dashbord1Component } from './components/dashboards/dashbord1/dashbord1.component';
 import {MatSelectModule} from '@angular/material/select';
+import { EquipmenthistoryComponent } from './components/equipment/equipmenthistory/equipmenthistory.component';
+import { ReserveComponent } from './components/equipment/reserve/reserve.component';
+import { ReserveEquipmentComponent } from './components/equipment/reserve-equipment/reserve-equipment.component';
+import { ProfileComponent } from './components/users/profile/profile.component';
+import {MatCardModule} from '@angular/material/card';
+import { SettingListComponent } from './components/users/settings/setting-list/setting-list.component';
+import { PasswordComponent } from './components/users/settings/password/password.component';
+import { UsernameComponent } from './components/users/settings/username/username.component';
+import {MatMenuModule} from '@angular/material/menu';
+import { ListProjectsComponent } from './components/projects/list-projects/list-projects.component';
+import { CreateProjectComponent } from './components/projects/create-project/create-project.component';
+import { NavbarProjectComponent } from './components/projects/navbar-project/navbar-project.component';
+import { DatePipe } from '@angular/common';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+
 
 @NgModule({
   declarations: [
@@ -50,6 +65,16 @@ import {MatSelectModule} from '@angular/material/select';
     UserlistComponent,
     Navbar2Component,
     Dashbord1Component,
+    EquipmenthistoryComponent,
+    ReserveComponent,
+    ReserveEquipmentComponent,
+    ProfileComponent,
+    SettingListComponent,
+    PasswordComponent,
+    UsernameComponent,
+    ListProjectsComponent,
+    CreateProjectComponent,
+    NavbarProjectComponent,
     
   ],
   imports: [
@@ -71,9 +96,12 @@ import {MatSelectModule} from '@angular/material/select';
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
-    MatSelectModule
+    MatSelectModule,
+    MatCardModule,
+    MatMenuModule,
+    MatSlideToggleModule
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

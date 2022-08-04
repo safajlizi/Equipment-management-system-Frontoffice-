@@ -24,7 +24,7 @@ i{
     padding-left: 10px;
 
  }
- .nav-list-open  .nav-list-item:hover {
+  .nav-list-item:hover {
     background-color: #e78a10;
     border-radius:5%; 
 

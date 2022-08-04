@@ -25,13 +25,35 @@
     {
       "label": "sa",
       "prop_client": "false",
-      "status": false,
+      "status": true,
       "description": "sss",
       "defaults": "ss",
       "is_calibrated": false,
       "calibrating_date": null,
       "manager": null,
       "id": 10
+    },
+    {
+      "label": "xxx",
+      "prop_client": "false",
+      "status": false,
+      "description": null,
+      "defaults": null,
+      "is_calibrated": false,
+      "calibrating_date": null,
+      "manager": null,
+      "id": 11
+    },
+    {
+      "label": "ddd",
+      "prop_client": "true",
+      "status": false,
+      "description": "ddd",
+      "defaults": "dd",
+      "is_calibrated": "true",
+      "calibrating_date": "2022-08-17",
+      "manager": null,
+      "id": 12
     }
   ],
   "user": [
@@ -76,6 +98,7 @@
       "id": 6
     }
   ],
+  "project": [],
   "profile": {
     "name": "typicode"
   }

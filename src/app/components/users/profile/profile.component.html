@@ -1,0 +1,15 @@
+<div class="maindiv">
+
+  <mat-card class="pos" mat-align-card="center">
+    <mat-card-title>safa jlizi</mat-card-title>
+    <mat-card-subtitle> Project Manager</mat-card-subtitle>
+    <mat-card-content> <i class="fa-solid fa-envelope"></i> safajlizi199@gmail.com</mat-card-content>
+    <mat-card-actions align="end">
+      <button mat-button [matMenuTriggerFor]="menu"><i class="fa-solid fa-gear"></i>Settings</button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="username()">Username <i class="fa-solid fa-pen"></i></button>
+        <button mat-menu-item (click)="password()">password <i class="fa-solid fa-pen"></i></button>
+      </mat-menu>
+    </mat-card-actions>
+  </mat-card>
+</div>

@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class Dashboard2Component implements OnInit {
   tabIndex : Tabs = Tabs.Equipment;
-
+  role="admin"
   ngOnInit(){
     this.setTab(Tabs.Users);
   }
@@ -20,5 +20,6 @@ export class Dashboard2Component implements OnInit {
 
 enum Tabs{
   Equipment = 0,
-  Users = 1
+  Users = 1,
+  Projects
 }

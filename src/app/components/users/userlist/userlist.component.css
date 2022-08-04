@@ -19,5 +19,6 @@ table {
   
   .container{
     max-width: 1300px;
+    width:70%;
     margin : 0 auto;
   }
