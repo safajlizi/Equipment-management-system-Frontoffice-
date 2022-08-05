@@ -1,24 +1,32 @@
 <div class="login-container">
-      
-    <h1>Login</h1>
-    <form   method="post" [formGroup]="form" (ngSubmit)="ingresar()">
-        <div class="form-group">
-            <input type="text" formControlName="username" name="username" required>
-            <span></span>
-            <label for="username">Username</label>
-        </div>
-        <div class="form-group">
-            <input type="password"  formControlerName="password"name="password" required >
-            <span></span>
-            <label for="password">Password</label>
-        </div>
-        <div class="pass">
-            Forgot Password?</div>
+  <div *ngIf="isLoginFailed">
+    <h1 style="color: red">Wrong credentials.</h1>
+  </div>
+  <h1>Login</h1>
+  <form method="post" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <input
+        type="text"
+        formControlName="identifier"
+        name="identifier"
+        required
+      />
+      <span></span>
+      <label for="identifier">Username or email</label>
+    </div>
+    <div class="form-group">
+      <input
+        type="password"
+        formControlName="password"
+        name="password"
+        required
+      />
+      <span></span>
+      <label for="password">Password</label>
+    </div>
+    <div class="pass">Forgot Password?</div>
 
-            <input type="submit"  value ="Login">
-            <div class="signup_link">
-                Not a member?<a href="#">Signup</a>
-            </div>
-    </form>
+    <input type="submit" value="Login" />
+    <div class="signup_link">Not a member?<a href="#">Signup</a></div>
+  </form>
 </div>
-
