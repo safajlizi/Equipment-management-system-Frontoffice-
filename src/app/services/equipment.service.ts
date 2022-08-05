@@ -1,23 +1,20 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http'
+import { HttpClient } from '@angular/common/http';
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class EquipmentService {
-
-  constructor(private http: HttpClient) { }
-  postEquipment(data:any){
-    return this.http.post<any>("http://localhost:3000/equipment/",data);
+  constructor(private http: HttpClient) {}
+  postEquipment(data: any) {
+    return this.http.post<any>('http://localhost:3000/equipment/', data);
   }
-  getEquipment(){
-    return this.http.get<any>("http://localhost:3000/equipment/")
+  getEquipment() {
+    return this.http.get<any>('http://localhost:3000/equipment/');
   }
-  putEquipment(data:any,id:number){
-    return this.http.put<any>("http://localhost:3000/equipment/"+id,data)
-
+  putEquipment(data: any, id: string) {
+    return this.http.put<any>('http://localhost:3000/equipment/' + id, data);
   }
-  deleteEquipment(id:number){
-    return this.http.delete<any>("http://localhost:3000/equipment/"+id)
-
+  deleteEquipment(id: string) {
+    return this.http.delete<any>('http://localhost:3000/equipment/' + id);
   }
 }

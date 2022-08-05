@@ -1,22 +1,21 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http'
+import { HttpClient } from '@angular/common/http';
+const API_URL = 'http://localhost:3000/users/';
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class UserService {
-  constructor(private http: HttpClient) { }
-  postUser(data:any){
-    return this.http.post<any>("http://localhost:3000/user/",data);
+  constructor(private http: HttpClient) {}
+  postUser(data: any) {
+    return this.http.post<any>(API_URL, data);
   }
-  getUsers(){
-    return this.http.get<any>("http://localhost:3000/user/")
+  getUsers() {
+    return this.http.get<any>(API_URL);
   }
-  putUser(data:any,id:number){
-    return this.http.put<any>("http://localhost:3000/user/"+id,data)
-
+  putUser(data: any, id: string) {
+    return this.http.put<any>(API_URL + id, data);
   }
-  deleteUser(id:number){
-    return this.http.delete<any>("http://localhost:3000/user/"+id)
-
+  deleteUser(id: string) {
+    return this.http.delete<any>(API_URL + id);
   }
 }
