@@ -1,0 +1,31 @@
+<div class="maindiv">
+  <mat-card class="pos" mat-align-card="center">
+    <mat-card-title>{{ user.username }}</mat-card-title>
+    <mat-card-subtitle> {{ user.role }}</mat-card-subtitle>
+    <mat-card-content>
+      <i class="fa-solid fa-envelope"></i>
+      {{ user.email }}</mat-card-content
+    >
+    <mat-card-actions align="end">
+      <button mat-button [matMenuTriggerFor]="menu">
+        <i class="fa-solid fa-gear"></i>Settings
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="usernameTrig()">
+          Username <i class="fa-solid fa-pen"></i>
+        </button>
+        <button mat-menu-item (click)="passwordTrig()">
+          Password <i class="fa-solid fa-pen"></i>
+        </button>
+      </mat-menu>
+    </mat-card-actions>
+  </mat-card>
+  <mat-card class="pos">
+    <mat-card-title>Inventory of current equipment.</mat-card-title>
+    <mat-card-content>
+      <div *ngFor="let equip of equipments">
+        <mat-card-content>{{ equip.label }} {{ equip.id }}</mat-card-content>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

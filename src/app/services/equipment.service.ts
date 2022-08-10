@@ -11,16 +11,18 @@ export class EquipmentService {
   getEquipment() {
     return this.http.get<any>('http://localhost:3000/equipment/');
   }
-  putEquipment(data: any, id: number) {
+  putEquipment(data: any, id: string) {
     return this.http.put<any>('http://localhost:3000/equipment/' + id, data);
   }
-  patchEquipment(data: any, id: number) {
+  patchEquipment(data: any, id: string) {
     return this.http.patch<any>('http://localhost:3000/equipment/' + id, data);
   }
-  deleteEquipment(id: number) {
+  deleteEquipment(id: string) {
     return this.http.delete<any>('http://localhost:3000/equipment/' + id);
   }
   filterEquipment(keyword: string) {
-    return this.http.get<any>('http://localhost:3000/equipment/' + keyword);
+    return this.http.get<any>(
+      'http://localhost:3000/equipment/filter/' + keyword
+    );
   }
 }

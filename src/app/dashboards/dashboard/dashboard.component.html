@@ -1,0 +1,14 @@
+<div class="container-fluid g-0">
+  <app-header (sideNavToggled)="sideNavStatus = $event"></app-header>
+  <main>
+    <app-side-nav
+      [sideNavStatus]="sideNavStatus"
+      [ngClass]="{ 'app-side-nav-open': sideNavStatus }"
+      *ngIf="role == 'USER'"
+    >
+    </app-side-nav>
+    <div>
+      <app-profile></app-profile>
+    </div>
+  </main>
+</div>

@@ -23,10 +23,15 @@ export class ProjectService {
   getProjectMembers(id: string) {
     return this.http.get<any>('http://localhost:3000/project/members/' + id);
   }
-  addProjectMember(id: string, userId: string) {
-    return this.http.post<any>('http://localhost:3000/project/manager/' + id, {
-      memberId: userId,
-    });
+  addProjectMember(id: string, userId: string | string[]) {
+    return this.http.post<any>(
+      'http://localhost:3000/project/members/' + id,
+      typeof userId == typeof ''
+        ? {
+            memberId: userId,
+          }
+        : { memberIds: userId }
+    );
   }
   getProjectEquipment(id: string) {
     return this.http.get<any>('http://localhost:3000/equipment/project/' + id);

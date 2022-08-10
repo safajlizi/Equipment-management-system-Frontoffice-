@@ -1,0 +1,25 @@
+<h2>Add Project</h2>
+<form class="example-form" [formGroup]="equipmentForm">
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Name</mat-label>
+    <textarea matInput formControlName="name"></textarea>
+  </mat-form-field>
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Manager's Email</mat-label>
+    <textarea matInput formControlName="manager"></textarea>
+  </mat-form-field>
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Members</mat-label>
+    <textarea
+      formControlName="members"
+      matInput
+      placeholder="Members"
+    ></textarea>
+  </mat-form-field>
+</form>
+<div mat-dialog-actions [align]="'end'">
+  <button mat-raised-button mat-dialog-close>close</button>
+  <button mat-raised-button color="primary" (click)="addProject()">
+    {{ actionBtn }}
+  </button>
+</div>
