@@ -1,11 +1,14 @@
 <div class="container-fluid g-0">
     <app-header (sideNavToggled)="sideNavStatus = $event;"></app-header>
     <main>
-        <app-side-nav [sideNavStatus]="sideNavStatus" [ngClass]="{'app-side-nav-open':sideNavStatus}" *ngIf="false">
+        <app-side-nav [sideNavStatus]="sideNavStatus" [ngClass]="{'app-side-nav-open':sideNavStatus}" *ngIf="true">
         </app-side-nav>
-        <div>
+        <div  *ngIf="false">
               <app-dashboard2></app-dashboard2>
               
+        </div>
+        <div class="pos" *ngIf="true">
+            <router-outlet></router-outlet>
         </div>
     </main>
 </div>

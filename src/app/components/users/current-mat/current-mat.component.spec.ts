@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ReserveComponent } from './reserve.component';
+import { CurrentMatComponent } from './current-mat.component';
 
-describe('ReserveComponent', () => {
-  let component: ReserveComponent;
-  let fixture: ComponentFixture<ReserveComponent>;
+describe('CurrentMatComponent', () => {
+  let component: CurrentMatComponent;
+  let fixture: ComponentFixture<CurrentMatComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ReserveComponent ]
+      declarations: [ CurrentMatComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ReserveComponent);
+    fixture = TestBed.createComponent(CurrentMatComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

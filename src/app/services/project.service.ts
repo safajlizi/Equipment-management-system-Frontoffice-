@@ -13,7 +13,7 @@ export class ProjectService {
     return this.http.get<any>("http://localhost:3000/project/")
   }
   putProject(data:any,id:number){
-    return this.http.put<any>("http://localhost:3000/projectt/"+id,data)
+    return this.http.put<any>("http://localhost:3000/project/"+id,data)
 
   }
   deleteProject(id:number){

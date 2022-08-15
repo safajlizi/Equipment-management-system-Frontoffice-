@@ -6,7 +6,6 @@ import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
 import { AddequipmentComponent } from '../addequipment/addequipment.component';
 import {MatDialog} from '@angular/material/dialog';
-import { EquipmenthistoryComponent } from '../equipmenthistory/equipmenthistory.component';
 import { ReserveEquipmentComponent } from '../reserve-equipment/reserve-equipment.component';
 @Component({
   selector: 'app-equipment-list',
@@ -15,18 +14,21 @@ import { ReserveEquipmentComponent } from '../reserve-equipment/reserve-equipmen
 })
 export class EquipmentListComponent implements OnInit {
   /**
-   *  id : number
-    label : string
-    prop_client : boolean 
-    status : boolean
-    defaults : string
-    description : string
-    is_calibrated:boolean
-    date_calib : Date
-    manager : User 
-
+   *  "label": "hhhhh",
+      "prop_client": true,
+      "availability": false,
+      "status": "compliant state",
+      "description": "ffff",
+      "descriptionStatus": null,
+      "is_calibrated": "2022-08-15T23:00:00.000Z",
+      "calibrating_date": null,
+      "manager": null,
+      "category": "usb",
+      "other": null,
+      "createdby": "admin",
+      "id": 14
    */
-  displayedColumns: string[] = ['label','category','prop_client', 'status', 'defaults','description','is_calibrated','calibrating_date','action'];
+  displayedColumns: string[] = ['label','category','prop_client','availability' ,'status','description','is_calibrated','calibrating_date','createdby','action'];
   dataSource!: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -55,7 +57,10 @@ export class EquipmentListComponent implements OnInit {
    })
   }
   editEquipment(row :any){
-    this.dialog.open(AddequipmentComponent,{
+    if(row.other){
+      row.set
+    }
+        this.dialog.open(AddequipmentComponent,{
       width:'30%',
       data:row  
     }).afterClosed().subscribe(val=>{
@@ -85,6 +90,7 @@ export class EquipmentListComponent implements OnInit {
   ngOnInit(): void {
     this.getAllEquipment()
   }
+
   reserve(){
     const dialogRef = this.dialog.open(ReserveEquipmentComponent,{
       

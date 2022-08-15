@@ -73,5 +73,8 @@ export class UserlistComponent implements OnInit {
   ngOnInit(): void {
     this.getAllUsers()
   }
-
+  create(){
+    const dialogRef = this.dialog.open(AddUserComponent,{
+      
+    });}
 }

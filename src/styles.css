@@ -3,7 +3,6 @@ body{
     padding:0;
     text-decoration: none;
     list-style:none;
-    overflow: hidden;
 }
 html, body { height: 100%; }
 body { margin: 0;font-family: 'Mulish', sans-serif;

@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { Navbar2Component } from './navbar2.component';
+import { HistoryComponent } from './history.component';
 
-describe('Navbar2Component', () => {
-  let component: Navbar2Component;
-  let fixture: ComponentFixture<Navbar2Component>;
+describe('HistoryComponent', () => {
+  let component: HistoryComponent;
+  let fixture: ComponentFixture<HistoryComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ Navbar2Component ]
+      declarations: [ HistoryComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(Navbar2Component);
+    fixture = TestBed.createComponent(HistoryComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -9,6 +9,8 @@ table {
   
   td, th {
     width:25%;
+    border-color: rgba(250, 130, 17, 1 )
+
   }
   .action{
     width: 15%;
@@ -22,3 +24,7 @@ table {
     width:70%;
     margin : 0 auto;
   }
+  .title  {
+    background-color: rgba(250, 130, 17, 1 );
+   }
+    

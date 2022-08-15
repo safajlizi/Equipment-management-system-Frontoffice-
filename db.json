@@ -1,64 +1,135 @@
 {
   "equipment": [
     {
-      "label": "fddd",
-      "prop_client": "true",
-      "status": false,
-      "description": "dddd",
-      "defaults": "ddd",
-      "is_calibrated": "true",
-      "calibrating_date": "2022-08-25T23:00:00.000Z",
-      "manager": null,
+      "label": "RB",
+      "prop_client": true,
+      "availability": "compliant state",
+      "status": "compliant state",
+      "description": "Some description",
+      "descriptionStatus": null,
+      "is_calibrated": true,
+      "calibrating_date": "2022-08-17",
+      "category": "usb",
+      "other": null,
+      "createdby": "admin",
+      "id": 1
+    },
+    {
+      "label": "UBdserr",
+      "prop_client": true,
+      "availability": false,
+      "status": "compliant state",
+      "description": "ffff",
+      "descriptionStatus": null,
+      "is_calibrated": false,
+      "calibrating_date": null,
+      "category": "usb",
+      "other": null,
+      "createdby": "admin",
+      "id": 2
+    },
+    {
+      "label": "ghhg",
+      "prop_client": true,
+      "availability": false,
+      "status": "uncompliant state",
+      "description": "bbb",
+      "descriptionStatus": null,
+      "is_calibrated": false,
+      "calibrating_date": null,
+      "category": "other",
+      "other": null,
+      "createdby": "admin",
+      "id": 3
+    },
+    {
+      "label": "rrrr",
+      "prop_client": true,
+      "availability": false,
+      "status": "compliant state",
+      "description": null,
+      "descriptionStatus": null,
+      "is_calibrated": true,
+      "calibrating_date": null,
+      "category": "card",
+      "other": null,
+      "createdby": "admin",
+      "id": 4
+    },
+    {
+      "label": "rrr",
+      "prop_client": false,
+      "availability": false,
+      "status": "compliant state",
+      "description": null,
+      "descriptionStatus": null,
+      "is_calibrated": false,
+      "calibrating_date": null,
+      "category": "rrrrr",
+      "other": "rrrrr",
+      "createdby": "admin",
+      "id": 5
+    },
+    {
+      "label": "yyyyyyy",
+      "prop_client": true,
+      "availability": false,
+      "status": "compliant state",
+      "description": null,
+      "descriptionStatus": null,
+      "is_calibrated": false,
+      "calibrating_date": null,
+      "category": "other",
+      "other": null,
+      "createdby": "admin",
+      "id": 6
+    },
+    {
+      "label": "yyyy",
+      "prop_client": true,
+      "availability": false,
+      "status": "compliant state",
+      "description": null,
+      "descriptionStatus": null,
+      "is_calibrated": false,
+      "calibrating_date": null,
+      "category": "usb",
+      "other": null,
+      "createdby": "admin",
+      "id": 7
+    },
+    {
+      "label": "eeeeee",
+      "prop_client": false,
+      "availability": false,
+      "status": "compliant state",
+      "description": null,
+      "descriptionStatus": null,
+      "is_calibrated": false,
+      "calibrating_date": null,
+      "category": "other",
+      "other": "eeee",
+      "createdby": "admin",
       "id": 8
     },
     {
-      "label": "equi3",
-      "prop_client": "false",
-      "status": false,
-      "description": "ffff",
-      "defaults": "some defaults",
-      "is_calibrated": "true",
-      "calibrating_date": "2022-08-22T23:00:00.000Z",
-      "manager": null,
+      "label": "safa",
+      "prop_client": true,
+      "availability": false,
+      "status": "uncompliant state",
+      "description": "rtrtttt",
+      "descriptionStatus": "ertrttrrztrttt",
+      "is_calibrated": false,
+      "calibrating_date": null,
+      "category": "other",
+      "other": "ssdedd",
+      "createdby": "admin",
       "id": 9
-    },
-    {
-      "label": "sa",
-      "prop_client": "false",
-      "status": true,
-      "description": "sss",
-      "defaults": "ss",
-      "is_calibrated": false,
-      "calibrating_date": null,
-      "manager": null,
-      "id": 10
-    },
-    {
-      "label": "xxx",
-      "prop_client": "false",
-      "status": false,
-      "description": null,
-      "defaults": null,
-      "is_calibrated": false,
-      "calibrating_date": null,
-      "manager": null,
-      "id": 11
-    },
-    {
-      "label": "ddd",
-      "prop_client": "true",
-      "status": false,
-      "description": "ddd",
-      "defaults": "dd",
-      "is_calibrated": "true",
-      "calibrating_date": "2022-08-17",
-      "manager": null,
-      "id": 12
     }
   ],
   "user": [
     {
-      "email": "safajlizi@gmail.c",
+      "email": "safajlizi@gmail.css",
       "username": "safa",
       "password": "safaderrrrd",
       "role": null,
@@ -69,7 +140,7 @@
       "email": "safa@gmail.com",
       "username": "ahmed",
       "password": "safadee",
-      "role": null,
+      "role": "engineer",
       "equipment": null,
       "id": 2
     },
@@ -83,9 +154,9 @@
     },
     {
       "email": "sssss@gmail.com",
-      "username": "zz",
+      "username": "zzggg",
       "password": "zzz",
-      "role": "engineer",
+      "role": null,
       "equipment": null,
       "id": 5
     },
@@ -96,9 +167,35 @@
       "role": "engineer",
       "equipment": null,
       "id": 6
+    },
+    {
+      "email": "fff@gmail.com",
+      "username": "fff",
+      "password": "fff",
+      "role": "admin",
+      "equipment": null,
+      "id": 7
     }
   ],
-  "project": [],
+  "project": [
+    {
+      "projectname": "szedzerez",
+      "department": "electronics",
+      "name": "eee",
+      "email": "zezeezzeaze",
+      "members": null,
+      "id": 1
+    },
+    {
+      "projectname": "vvvv8",
+      "department": "electronics",
+      "name": "vvv",
+      "email": "vvvv",
+      "members": null,
+      "id": 2
+    }
+  ],
+  "history": [],
   "profile": {
     "name": "typicode"
   }

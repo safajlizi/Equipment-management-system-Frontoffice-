@@ -17,23 +17,29 @@ export class AddequipmentComponent implements OnInit {
   ngOnInit(): void {
     this.equipmentForm=this.formBuilder.group({
       label:['', Validators.required],
-
-      prop_client:['', Validators.required],
-      status:[false],
+      prop_client:[false],
+      availability:[false],
+      status:['Compliant state', Validators.required],
       description:[null],
-      defaults:[null],
+      descriptionStatus:[null],
       is_calibrated:[false],
       calibrating_date:[null, Validators.prototype],
-      manager:[null],
-      category:[null, Validators.required]
+      category:[null, Validators.required],
+      other:[null],
+      createdby:['admin']
+
+
       
     })
     if(this.editData){
       this.actionBtn="Update"
       this.equipmentForm.controls['label'].setValue(this.editData.label);
-      this.equipmentForm.controls['defaults'].setValue(this.editData.defaults);
       this.equipmentForm.controls['prop_client'].setValue(this.editData.prop_client);
       this.equipmentForm.controls['status'].setValue(this.editData.status);
+      this.equipmentForm.controls['availability'].setValue(this.editData.status);
+      this.equipmentForm.controls['descriptionStatus'].setValue(this.editData.descriptionStatus);
+      this.equipmentForm.controls['other'].setValue(this.editData.other);
+
       this.equipmentForm.controls['description'].setValue(this.editData.description);
       this.equipmentForm.controls['is_calibrated'].setValue(this.editData. is_calibrated);
       this.equipmentForm.controls['calibrating_date'].setValue(this.editData.calibrating_date);
@@ -45,6 +51,7 @@ export class AddequipmentComponent implements OnInit {
   }
   
   updateEquipment(){
+  
     this.api.putEquipment(this.equipmentForm.value,this.editData.id)
     .subscribe({
       next:(res)=>{
@@ -62,7 +69,7 @@ export class AddequipmentComponent implements OnInit {
     if(!this.editData){
       if(this.equipmentForm.valid){
         this.equipmentForm.controls['calibrating_date'].setValue(this.datepipe.transform(this.equipmentForm.value.calibrating_date, 'yyyy-MM-dd') )
-          this.equipmentForm.value.calibrating_date
+       
       this.api.postEquipment(this.equipmentForm.value)
       .subscribe({
         next:(res)=>{
