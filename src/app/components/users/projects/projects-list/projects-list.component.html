@@ -1,1 +1,21 @@
-<p>projects-list works!</p>
+ 
+<div class="maindiv" *ngFor="let row of projects" style="margin: 25px;">
+
+    <mat-card class="pos" mat-align-card="center" (click)=" ingresar()">
+      <mat-card-title>{{row.projectname}}</mat-card-title>
+      <mat-card-subtitle> Project Manager : {{row.name}} </mat-card-subtitle>
+      <mat-card-actions >
+        <table >
+    <tr>
+      <td >
+       
+       <mat-card-subtitle style="margin-right:5px"><i class="fa-regular fa-user"></i> 0 members</mat-card-subtitle>
+       <td  >
+        <mat-card-subtitle><i class="fa-solid fa-layer-group"></i> 0 equipment</mat-card-subtitle>
+       </td>
+      
+    </tr>
+    </table>
+  </mat-card-actions>
+    </mat-card>
+  </div>

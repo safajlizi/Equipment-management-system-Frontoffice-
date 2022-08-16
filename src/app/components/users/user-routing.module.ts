@@ -7,6 +7,8 @@ import { ProfileComponent } from './profile/profile.component';
 import { HistoryComponent } from './history/history.component';
 import { EquipmentListComponent } from '../equipment/equipment-list/equipment-list.component';
 import { ProjectsListComponent } from './projects/projects-list/projects-list.component';
+import { ProjectComponent } from './projects/project/project.component';
+const projectModule = () => import('./projects/project.module').then(x => x.ProjectModule);
 
 const routes: Routes = [
   {
@@ -15,7 +17,7 @@ const routes: Routes = [
           { path: '', component: EquipmentListComponent },
           { path: 'profile', component: ProfileComponent},
           { path: 'projects', component: ProjectsListComponent},
-
+          { path: 'project', loadChildren:projectModule},
           { path: 'history', component: HistoryComponent }
       ]
   }

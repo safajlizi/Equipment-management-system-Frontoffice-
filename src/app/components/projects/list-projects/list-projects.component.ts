@@ -43,7 +43,7 @@ export class ListProjectsComponent implements OnInit {
       if(val==='update'){this.getAllProjects()}
     })
   }
-  deleteProject(id:number){
+  deleteProject(id:string){
     this.api.deleteProject(id).subscribe({
       next:(res)=>{
         alert("Project deleted successfuly")

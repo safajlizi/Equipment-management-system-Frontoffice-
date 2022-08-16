@@ -1,9 +1,8 @@
 .pos{
-    max-width:1300px;
-    width:70%;
-    margin-left : 360px;
-    margin-right: 120px;
-    margin-top:30px
+    max-width:2300px;
+    width:100%;
+    margin : 10px;
+ 
 }
 .maindiv{
   display: flex;

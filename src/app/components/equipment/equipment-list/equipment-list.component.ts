@@ -6,7 +6,7 @@ import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
 import { AddequipmentComponent } from '../addequipment/addequipment.component';
 import {MatDialog} from '@angular/material/dialog';
-import { ReserveEquipmentComponent } from '../reserve-equipment/reserve-equipment.component';
+import { ReserveComponent } from '../reserve/reserve.component';
 @Component({
   selector: 'app-equipment-list',
   templateUrl: './equipment-list.component.html',
@@ -92,7 +92,7 @@ export class EquipmentListComponent implements OnInit {
   }
 
   reserve(){
-    const dialogRef = this.dialog.open(ReserveEquipmentComponent,{
+    const dialogRef = this.dialog.open(ReserveComponent,{
       
     });
   

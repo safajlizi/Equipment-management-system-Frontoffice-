@@ -35,8 +35,8 @@ import { UserlistComponent } from './userlist/userlist.component';
 import { EquipmentListComponent } from '../equipment/equipment-list/equipment-list.component';
 import { ProjectComponent } from './projects/project/project.component';
 import { ProjectsListComponent } from './projects/projects-list/projects-list.component';
-
-
+import { ReserveComponent } from '../equipment/reserve/reserve.component';
+import { DatePipe } from '@angular/common';
 @NgModule({
   declarations: [
     ProfileComponent,
@@ -54,7 +54,8 @@ import { ProjectsListComponent } from './projects/projects-list/projects-list.co
     UserlistComponent,
     EquipmentListComponent,
     ProjectComponent,
-    ProjectsListComponent
+    ProjectsListComponent,
+    ReserveComponent 
   ],
   imports: [
     CommonModule,
@@ -78,6 +79,7 @@ import { ProjectsListComponent } from './projects/projects-list/projects-list.co
     MatCardModule,
     MatMenuModule,
     MatSlideToggleModule,
-  ]
+  ],
+  providers: [DatePipe]
 })
 export class UserModule { }

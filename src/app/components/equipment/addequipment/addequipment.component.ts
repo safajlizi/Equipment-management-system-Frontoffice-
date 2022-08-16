@@ -26,7 +26,7 @@ export class AddequipmentComponent implements OnInit {
       calibrating_date:[null, Validators.prototype],
       category:[null, Validators.required],
       other:[null],
-      createdby:['admin']
+      manager:['admin']
 
 
       
@@ -52,7 +52,7 @@ export class AddequipmentComponent implements OnInit {
   
   updateEquipment(){
   
-    this.api.putEquipment(this.equipmentForm.value,this.editData.id)
+    this.api.patchEquipment(this.equipmentForm.value,this.editData.id)
     .subscribe({
       next:(res)=>{
         alert("Equipment updated successfuly")
