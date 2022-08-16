@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ProjectService } from 'src/app/services/project.service';
@@ -10,7 +10,7 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./project-member-add.component.css'],
 })
 export class ProjectMemberAddComponent implements OnInit {
-  projectId!: string;
+  @Input() projectId!: string;
   userSearchForm!: FormGroup;
   shownUsers: any;
   selectedUsers: string[] = [];

@@ -1,0 +1,26 @@
+<div *ngIf="equipment.length > 0; else Message">
+  <div class="maindiv" *ngFor="let equip of equipment">
+    <mat-card class="pos" mat-align-card="center">
+      <mat-card-title>{{ equip.equipname }}</mat-card-title>
+      <mat-card-subtitle> {{ equip.role }}</mat-card-subtitle>
+      <mat-card-content>
+        <i class="fa-solid fa-envelope"></i>
+        {{ equip.email }}</mat-card-content
+      >
+      <mat-card-actions align="end">
+        <button mat-button [matMenuTriggerFor]="menu">
+          <i class="fa-solid fa-gear"></i>Options
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item (click)="remove(equip.id)">
+            Remove <i class="fa-solid fa-trash"></i>
+          </button>
+          <button mat-menu-item (click)="assign(equip.id)">
+            Assign <i class="fa-solid fa-pen"></i>
+          </button>
+        </mat-menu>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>
+<ng-template #Message><h1>No equipment to show.</h1></ng-template>

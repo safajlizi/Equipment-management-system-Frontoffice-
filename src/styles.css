@@ -1,15 +1,18 @@
-body{
-    margin:0;
-    padding:0;
-    text-decoration: none;
-    list-style:none;
-    overflow: hidden;
+body {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  list-style: none;
 }
-html, body { height: 100%; }
-body { margin: 0;font-family: 'Mulish', sans-serif;
-    font-family: 'Poppins', sans-serif;
-     }
-@media screen and (min-width: 1500px)
-{
-/* code here */
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: "Mulish", sans-serif;
+  font-family: "Poppins", sans-serif;
+}
+@media screen and (min-width: 1500px) {
+  /* code here */
 }

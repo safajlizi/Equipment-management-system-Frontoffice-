@@ -1,37 +1,51 @@
-
 <h2>Add User</h2>
 <form class="example-form" [formGroup]="userForm">
   <mat-form-field class="example-full-width" appearance="fill">
     <mat-label>Email</mat-label>
-    <textarea matInput formControlName="email"></textarea>
+    <input matInput formControlName="email" />
   </mat-form-field>
 
   <mat-form-field class="example-full-width" appearance="outline">
     <mat-label>Username</mat-label>
-    <textarea formControlName="username" matInput placeholder="username"></textarea>
+    <input formControlName="username" matInput placeholder="Username" />
   </mat-form-field>
-
+  <mat-form-field class="example-full-width" appearance="outline">
+    <mat-label>Firstname</mat-label>
+    <input formControlName="firstname" matInput placeholder="Firstname" />
+  </mat-form-field>
+  <mat-form-field class="example-full-width" appearance="outline">
+    <mat-label>Lastname</mat-label>
+    <input formControlName="lastname" matInput placeholder="Lastname" />
+  </mat-form-field>
 
   <mat-form-field appearance="outline">
     <mat-label>Enter your password</mat-label>
-    <input matInput formControlName="password" [type]="hide ? 'password' : 'text'">
-    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+    <input
+      matInput
+      formControlName="password"
+      [type]="hide ? 'password' : 'text'"
+    />
+    <button
+      mat-icon-button
+      matSuffix
+      (click)="hide = !hide"
+      [attr.aria-label]="'Hide password'"
+      [attr.aria-pressed]="hide"
+    >
+      <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
     </button>
   </mat-form-field>
-  <mat-form-field style="margin-left:50px " appearance="outline">
+  <mat-form-field style="margin-left: 50px" appearance="outline">
     <mat-label>Role</mat-label>
     <mat-select formControlName="role" placeholder="role">
-       <mat-option value="admin">Admin</mat-option>
-       <mat-option value="engineer">Engineer</mat-option>
-
+      <mat-option value="USER">User</mat-option>
+      <mat-option value="ADMIN">Admin</mat-option>
     </mat-select>
   </mat-form-field>
-
-  
 </form>
 <div mat-dialog-actions [align]="'end'">
   <button mat-raised-button mat-dialog-close>close</button>
-  <button mat-raised-button color="primary" (click)="addUser()">{{actionBtn}}</button>
-
+  <button mat-raised-button color="primary" (click)="addUser()">
+    {{ actionBtn }}
+  </button>
 </div>

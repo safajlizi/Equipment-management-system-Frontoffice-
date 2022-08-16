@@ -4,26 +4,34 @@
     <app-side-nav
       [sideNavStatus]="sideNavStatus"
       [ngClass]="{ 'app-side-nav-open': sideNavStatus }"
-      *ngIf="role == 'USER'"
     >
     </app-side-nav>
     <mat-card class="pos">
       <mat-tab-group mat-align-tabs="center" [selectedIndex]="tabIndex">
-        <mat-tab label="Managed:"
-          ><h1>Managed:</h1>
+        <mat-tab label="Managed:">
           <div *ngFor="let project of managedProjects">
             <h1>{{ project.name }}</h1>
-            <a mat-raised-button routerLink="/projects/{{ project.id }}"
-              >Add Members.</a
-            ><a mat-raised-button routerLink="/projects/">See other members.</a>
+            <a mat-raised-button routerLink="/projects/members/{{ project.id }}"
+              >Manage members.</a
+            ><a
+              mat-raised-button
+              routerLink="/projects/equipment/{{ project.id }}"
+              >Manage equipment.</a
+            >
           </div></mat-tab
         >
-        <mat-tab label="Member: "
-          ><h1>Member:</h1>
-          <div *ngFor="let project of memberProjects">
-            <h1>{{ project.name }}</h1>
-            <a mat-raised-button routerLink="/projects/">See other members.</a>
-          </div></mat-tab
+        <mat-tab label="Member: ">
+          <div *ngIf="memberProjects.length == 0; else display">
+            <p style="margin: 15px">No projects to show.</p>
+          </div>
+          <ng-template #display
+            ><div *ngFor="let project of memberProjects">
+              <h1>{{ project.name }}</h1>
+              <a mat-raised-button routerLink="/projects/"
+                >See other members.</a
+              >
+            </div></ng-template
+          ></mat-tab
         ></mat-tab-group
       >
     </mat-card>

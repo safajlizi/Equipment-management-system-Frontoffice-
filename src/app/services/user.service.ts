@@ -40,7 +40,9 @@ export class UserService {
     });
   }
   deleteUser(id: string) {
-    return this.http.delete<any>('http://localhost:3000/users/' + id);
+    return this.http.delete<any>('http://localhost:3000/users/' + id, {
+      headers: this.headers(),
+    });
   }
   getPublicContent(): Observable<any> {
     return this.http.get(API_URL + 'all', { responseType: 'text' });
@@ -78,6 +80,6 @@ export class UserService {
     return this.http.get(API_URL + 'projects/member/' + id);
   }
   filter(keyword: string): Observable<any> {
-    return this.http.post(API_URL + 'filter', { keyword: keyword });
+    return this.http.get(API_URL + 'filter/' + keyword);
   }
 }

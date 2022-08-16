@@ -6,15 +6,7 @@
   </mat-form-field>
   <mat-form-field class="example-full-width" appearance="fill">
     <mat-label>Manager's Email</mat-label>
-    <textarea matInput formControlName="manager"></textarea>
-  </mat-form-field>
-  <mat-form-field class="example-full-width" appearance="fill">
-    <mat-label>Members</mat-label>
-    <textarea
-      formControlName="members"
-      matInput
-      placeholder="Members"
-    ></textarea>
+    <input matInput formControlName="manager" type="email" />
   </mat-form-field>
 </form>
 <div mat-dialog-actions [align]="'end'">

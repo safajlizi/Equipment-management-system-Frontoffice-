@@ -1,0 +1,14 @@
+<div class="container-fluid g-0">
+  <app-header></app-header>
+  <main class="pos">
+    <app-side-nav
+      [sideNavStatus]="true"
+      [ngClass]="{ 'app-side-nav-open': true }"
+    >
+    </app-side-nav>
+
+    <app-project-equipment-list
+      [projectId]="projectId"
+    ></app-project-equipment-list>
+  </main>
+</div>

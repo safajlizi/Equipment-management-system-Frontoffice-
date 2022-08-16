@@ -12,7 +12,6 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
-import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSortModule } from '@angular/material/sort';
@@ -26,8 +25,13 @@ import { CreateProjectComponent } from './create-project/create-project.componen
 import { NavbarProjectComponent } from './navbar-project/navbar-project.component';
 import { ProjectMemberAddComponent } from './project-member-add/project-member-add.component';
 import { UserProjectsComponent } from './user-projects/user-projects.component';
-import { AppModule } from '../app.module';
 import { HeaderAndNavigationModule } from '../header-and-navigation/header-and-navigation.module';
+import { ProjectMemberListComponent } from './project-member-list/project-member-list.component';
+import { ProjectMemberRootComponent } from './project-member-root/project-member-root.component';
+import { ProjectEquipmentAssignComponent } from './project-equipment-assign/project-equipment-assign.component';
+import { ProjectEquipmentListComponent } from './project-equipment-list/project-equipment-list.component';
+import { ProjectEquipmentRootComponent } from './project-equipment-root/project-equipment-root.component';
+import { ProjectEquipmentAddComponent } from './project-equipment-add/project-equipment-add.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +40,12 @@ import { HeaderAndNavigationModule } from '../header-and-navigation/header-and-n
     NavbarProjectComponent,
     ProjectMemberAddComponent,
     UserProjectsComponent,
+    ProjectMemberRootComponent,
+    ProjectMemberListComponent,
+    ProjectEquipmentAssignComponent,
+    ProjectEquipmentListComponent,
+    ProjectEquipmentRootComponent,
+    ProjectEquipmentAddComponent,
   ],
   imports: [
     CommonModule,
@@ -68,6 +78,9 @@ import { HeaderAndNavigationModule } from '../header-and-navigation/header-and-n
     NavbarProjectComponent,
     ProjectMemberAddComponent,
     UserProjectsComponent,
+    ProjectEquipmentRootComponent,
+    ProjectMemberRootComponent,
+    ProjectEquipmentAddComponent,
   ],
 })
 export class ProjectsModule {}

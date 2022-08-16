@@ -14,6 +14,7 @@ import { ManagerCardComponent } from '../manager-card/manager-card.component';
 export class ListProjectsComponent implements OnInit {
   displayedColumns: string[] = ['name', 'description', 'manager', 'equipment'];
   dataSource!: MatTableDataSource<any>;
+  initialData: any;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   constructor(
@@ -24,6 +25,7 @@ export class ListProjectsComponent implements OnInit {
   getAllProjects() {
     this.projectService.getProjects().subscribe({
       next: (res) => {
+        this.initialData = res;
         this.dataSource = new MatTableDataSource(res);
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
@@ -56,5 +58,14 @@ export class ListProjectsComponent implements OnInit {
       },
     });
   }
-  applyFilter(event: Event) {}
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    if (filterValue) {
+      this.projectService.filter(filterValue).subscribe((res) => {
+        this.dataSource.data = res;
+      });
+    } else {
+      this.dataSource.data = this.initialData;
+    }
+  }
 }

@@ -1,0 +1,17 @@
+<main *ngFor="let member of members">
+  <mat-card class="pos" mat-align-card="center">
+    <mat-card-title
+      >{{ member.firstname }} {{ member.lastname }}</mat-card-title
+    >
+    <mat-card-subtitle> {{ member.role }}</mat-card-subtitle>
+    <mat-card-content>
+      <i class="fa-solid fa-envelope"></i>
+      {{ member.email }}</mat-card-content
+    >
+    <mat-card-actions align="end">
+      <button mat-raised-button (click)="removeMember()">
+        Remove <i class="fa-solid fa-trash"></i>
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</main>

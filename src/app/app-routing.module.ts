@@ -1,14 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './auth.guard';
-import { AuthModule } from './auth/auth.module';
 import { SigninComponent } from './auth/login/signin.component';
 import { DashboardComponent } from './dashboards/dashboard/dashboard.component';
 import { Dashboard2Component } from './dashboards/dashboard2/dashboard2.component';
-import { ListProjectsComponent } from './projects/list-projects/list-projects.component';
-import { ProjectMemberAddComponent } from './projects/project-member-add/project-member-add.component';
-
-import { ProjectsModule } from './projects/projects.module';
+import { ProjectEquipmentRootComponent } from './projects/project-equipment-root/project-equipment-root.component';
+import { ProjectMemberRootComponent } from './projects/project-member-root/project-member-root.component';
 import { UserProjectsComponent } from './projects/user-projects/user-projects.component';
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -25,8 +22,13 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   {
-    path: 'projects/:id',
-    component: ProjectMemberAddComponent,
+    path: 'projects/members/:id',
+    component: ProjectMemberRootComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'projects/equipment/:id',
+    component: ProjectEquipmentRootComponent,
     canActivate: [AuthGuard],
   },
 ];

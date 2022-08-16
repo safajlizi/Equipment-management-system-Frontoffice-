@@ -79,7 +79,7 @@ export class EquipmentListComponent implements OnInit {
         this.getAllEquipment();
       },
       error: () => {
-        alert('error while deletinf quipment');
+        alert('error while deleting equipment');
       },
     });
   }

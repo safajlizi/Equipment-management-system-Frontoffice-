@@ -1,0 +1,25 @@
+<div class="container-fluid g-0">
+  <app-header></app-header>
+  <main class="pos">
+    <app-side-nav
+      [sideNavStatus]="true"
+      [ngClass]="{ 'app-side-nav-open': true }"
+    >
+    </app-side-nav>
+    <button
+      mat-raised-button
+      style="color: rgba(12, 12, 63); margin-top: 30px; margin-bottom: 30px"
+      (click)="switch()"
+    >
+      <mat-icon>add</mat-icon> Add members.
+    </button>
+    <div *ngIf="listOrAdd; else Add">
+      <app-project-member-list
+        [projectId]="projectId"
+      ></app-project-member-list>
+    </div>
+    <ng-template #Add
+      ><app-project-member-add [projectId]="projectId"></app-project-member-add
+    ></ng-template>
+  </main>
+</div>
