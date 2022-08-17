@@ -16,20 +16,24 @@ export class AddUserComponent implements OnInit {
     private dialogRef:MatDialogRef<AddUserComponent>) { }
   ngOnInit(): void {
     this.userForm=this.formBuilder.group({
-      email:['', [Validators.required,Validators.email]],
+      email: ['', [Validators.required, Validators.email]],
+      lastname: ['', Validators.required],
+      firstname: ['', Validators.required],
+      username: ['', Validators.required],
+      password: ['', Validators.required],
+      role: [null, Validators.required]
 
-      username:['', Validators.required],
-      password:['',Validators.required],
-      role:[null],
-      equipment:[null]
       
     })
     if(this.edittData){
       this.actionBtn="Update"
       this.userForm.controls['email'].setValue(this.edittData.email);
-      this.userForm.controls['password'].setValue(this.edittData.password);
+      this.userForm.controls['lastname'].setValue(this.edittData.lastname);
+      this.userForm.controls['firstname'].setValue(this.edittData.firstname);
       this.userForm.controls['username'].setValue(this.edittData.username);
-    
+      this.userForm.controls['password'].setValue(this.edittData.password);
+      this.userForm.controls['role'].setValue(this.edittData.role);
+
 
     }
 

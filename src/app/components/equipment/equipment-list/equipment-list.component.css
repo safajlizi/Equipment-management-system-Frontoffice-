@@ -2,7 +2,8 @@
 
 
 table {
-    width: 100%;
+  max-width: 1600px;
+    width:100%;
 }
   
 
@@ -16,9 +17,12 @@ table {
     width:10%;
    border-color: rgba(250, 130, 17, 1 )
   }
+  th{
+    font-size: 14px;
+  }
   mat-paginator{
-    border-color: rgba(250, 130, 17, 1 )
-
+    border-color: rgba(250, 130, 17, 1 );
+    max-width: 1600px;
   }
   .tab td{
     max-block-size: 200px}

@@ -7,13 +7,22 @@
       <mat-card-actions >
         <table >
     <tr>
-      <td >
+      <td style="width:10%;">
        
        <mat-card-subtitle style="margin-right:5px"><i class="fa-regular fa-user"></i> 0 members</mat-card-subtitle>
-       <td  >
+       <td style="width:80%;" >
         <mat-card-subtitle><i class="fa-solid fa-layer-group"></i> 0 equipment</mat-card-subtitle>
        </td>
-      
+       <td >
+        <button mat-raised-button color="'primary'" type="submit" style=" background-color: rgba(12, 12, 63);color:white" routerLink="./members/{{ row.id }}" >
+             Manage members 
+          </button>
+       </td>
+       <td >
+        <button mat-raised-button color="'primary'" type="submit"  style=" background-color: rgba(12, 12, 63);color:white" routerLink="./equipment/{{ row.id }}" >
+             Manage equipment 
+          </button>
+       </td>
     </tr>
     </table>
   </mat-card-actions>

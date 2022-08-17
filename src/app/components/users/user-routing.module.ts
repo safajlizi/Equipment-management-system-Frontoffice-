@@ -6,9 +6,8 @@ import { UserlistComponent } from './userlist/userlist.component';
 import { ProfileComponent } from './profile/profile.component';
 import { HistoryComponent } from './history/history.component';
 import { EquipmentListComponent } from '../equipment/equipment-list/equipment-list.component';
-import { ProjectsListComponent } from './projects/projects-list/projects-list.component';
-import { ProjectComponent } from './projects/project/project.component';
-const projectModule = () => import('./projects/project.module').then(x => x.ProjectModule);
+import { Dashboard3Component } from '../projects/dashboard3/dashboard3.component';
+import { ProjecMemberComponent } from '../projects/projec-member/projec-member.component';
 
 const routes: Routes = [
   {
@@ -16,8 +15,9 @@ const routes: Routes = [
       children: [
           { path: '', component: EquipmentListComponent },
           { path: 'profile', component: ProfileComponent},
-          { path: 'projects', component: ProjectsListComponent},
-          { path: 'project', loadChildren:projectModule},
+        { path: 'projects', component: Dashboard3Component},
+        
+        { path: 'projects/members/:id', component:ProjecMemberComponent},
           { path: 'history', component: HistoryComponent }
       ]
   }

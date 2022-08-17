@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit ,Input} from '@angular/core';
 import { ProjectService } from 'src/app/services/project.service';
 import {AfterViewInit, ViewChild} from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
@@ -9,15 +9,14 @@ import { DataSource } from '@angular/cdk/collections';
 import { Project } from 'src/app/models/project';
 import { Router } from '@angular/router';
 
-@Component({
-  selector: 'app-projects-list',
-  templateUrl: './projects-list.component.html',
-  styleUrls: ['./projects-list.component.css']
-})
-export class ProjectsListComponent implements OnInit {
 
-  displayedColumns: string[] = ['projectname','department','name', 'email','action' ];
-  dataSource!: DataSource<any>;
+@Component({
+  selector: 'app-project-member-list',
+  templateUrl: './project-member-list.component.html',
+  styleUrls: ['./project-member-list.component.css']
+})
+export class ProjectMemberListComponent implements OnInit {
+
   projects : Project []=[]
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -47,3 +46,4 @@ export class ProjectsListComponent implements OnInit {
       }
 
 }
+

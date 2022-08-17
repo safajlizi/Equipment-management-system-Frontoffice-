@@ -125,9 +125,24 @@
       "other": "ssdedd",
       "createdby": "admin",
       "id": 9
+    },
+    {
+      "label": "dddd",
+      "prop_client": true,
+      "availability": false,
+      "status": "compliant state",
+      "description": "dd",
+      "descriptionStatus": null,
+      "is_calibrated": false,
+      "calibrating_date": null,
+      "category": "other",
+      "other": "fefe",
+      "createdby": "admin",
+      "manager": "admin",
+      "id": 10
     }
   ],
-  "user": [
+  "users": [
     {
       "email": "safajlizi@gmail.css",
       "username": "safa",
@@ -175,6 +190,14 @@
       "role": "admin",
       "equipment": null,
       "id": 7
+    },
+    {
+      "email": "ssss@gmail.com",
+      "username": "sssss",
+      "password": "ssss",
+      "role": "USER",
+      "equipment": null,
+      "id": 8
     }
   ],
   "project": [
@@ -193,6 +216,14 @@
       "email": "vvvv",
       "members": null,
       "id": 2
+    },
+    {
+      "projectname": "sasss",
+      "department": "electronics",
+      "name": "ssss",
+      "email": "sssss",
+      "members": null,
+      "id": 3
     }
   ],
   "history": [],

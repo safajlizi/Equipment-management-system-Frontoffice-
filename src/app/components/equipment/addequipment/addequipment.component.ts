@@ -26,10 +26,9 @@ export class AddequipmentComponent implements OnInit {
       calibrating_date:[null, Validators.prototype],
       category:[null, Validators.required],
       other:[null],
-      manager:['admin']
-
-
+      manager:[null]
       
+     
     })
     if(this.editData){
       this.actionBtn="Update"

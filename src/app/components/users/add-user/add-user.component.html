@@ -12,6 +12,16 @@
   </mat-form-field>
 
 
+<mat-form-field class="example-full-width" appearance="outline">
+  <mat-label>Firstname</mat-label>
+  <input formControlName="firstname" matInput placeholder="Firstname" />
+</mat-form-field>
+<mat-form-field class="example-full-width" appearance="outline">
+  <mat-label>Lastname</mat-label>
+  <input formControlName="lastname" matInput placeholder="Lastname" />
+</mat-form-field>
+
+
   <mat-form-field appearance="outline">
     <mat-label>Enter your password</mat-label>
     <input matInput formControlName="password" [type]="hide ? 'password' : 'text'">

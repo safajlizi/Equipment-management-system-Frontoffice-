@@ -14,7 +14,7 @@ import { UserhistoryComponent } from '../userhistory/userhistory.component';
 })
 export class UserlistComponent implements OnInit {
 
-  displayedColumns: string[] = ['username','email','role','action'];
+  displayedColumns: string[] = ['username','firstname','lastname','email','role','action'];
   dataSource!: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -29,19 +29,19 @@ export class UserlistComponent implements OnInit {
       
     });
   }
-  getAllUsers(){
-    this.api.getUsers()
-   .subscribe({
-    next:(res)=>{
-          this.dataSource=new MatTableDataSource(res)
-          this.dataSource.paginator=this.paginator
-          this.dataSource.sort=this.sort 
-    },
-    error:(err)=>{
-       alert("error get")
-    }
-   })
+  getAllUsers() {
+    this.api.getUsers().subscribe({
+      next: (res) => {
+        this.dataSource = new MatTableDataSource(res);
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
+      },
+      error: (err) => {
+        alert('error get user');
+      },
+    });
   }
+
   editUser(row :any){
     this.dialog.open(AddUserComponent,{
       width:'30%',
@@ -50,7 +50,7 @@ export class UserlistComponent implements OnInit {
       if(val==='update'){this.getAllUsers()}
     })
   }
-  deleteUser(id:number){
+  deleteUser(id:string){
     this.api.deleteUser(id).subscribe({
       next:(res)=>{
         alert("user deleted successfuly")

@@ -1,28 +1,48 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { Observable } from 'rxjs';
+import { TokenStorageService } from './token-storage.service';
 
-const API_URL = 'http://localhost:3000/';
+const API_URL = 'http://localhost:3000/users/';
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    private tokenStorage: TokenStorageService
+  ) {}
+  headers(): HttpHeaders {
+    return new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${this.tokenStorage.getToken()}`,
+    });
+  }
   postUser(data: any) {
-    return this.http.post<any>('http://localhost:3000/users/', data);
+    return this.http.post<any>('http://localhost:3000/users/', data, {
+      headers: this.headers(),
+    });
   }
   getUsers() {
-    return this.http.get<any>('http://localhost:3000/users/');
+    return this.http.get<any>('http://localhost:3000/users/', {
+      headers: this.headers(),
+    });
   }
-  putUser(data: any, id: number) {
-    return this.http.put<any>('http://localhost:3000/users/' + id, data);
+  putUser(data: any, id: string) {
+    return this.http.put<any>('http://localhost:3000/users/' + id, data, {
+      headers: this.headers(),
+    });
   }
-  patchUser(data: any, id: number) {
-    return this.http.patch<any>('http://localhost:3000/users/' + id, data);
+  patchUser(data: any, id: string) {
+    return this.http.patch<any>('http://localhost:3000/users/' + id, data, {
+      headers: this.headers(),
+    });
   }
-  deleteUser(id: number) {
-    return this.http.delete<any>('http://localhost:3000/users/' + id);
+  deleteUser(id: string) {
+    return this.http.delete<any>('http://localhost:3000/users/' + id, {
+      headers: this.headers(),
+    });
   }
   getPublicContent(): Observable<any> {
     return this.http.get(API_URL + 'all', { responseType: 'text' });
@@ -36,5 +56,30 @@ export class UserService {
   getAdminBoard(): Observable<any> {
     return this.http.get(API_URL + 'admin', { responseType: 'text' });
   }
+  resetPassword(id: string, data: any): Observable<any> {
+    return this.http.patch(API_URL + 'password/' + id, data, {
+      headers: this.headers(),
+    });
+  }
+  changeUsername(id: string, username: string): Observable<any> {
+    return this.http.patch(
+      API_URL + 'username/' + id,
+      { username: username },
+      {
+        headers: this.headers(),
+      }
+    );
+  }
+  getEquipsOfUser(id: string): Observable<any> {
+    return this.http.get(API_URL + 'equipments/' + id);
+  }
+  getManagedProjects(id: string): Observable<any> {
+    return this.http.get(API_URL + 'projects/managed/' + id);
+  }
+  getMemberProjects(id: string): Observable<any> {
+    return this.http.get(API_URL + 'projects/member/' + id);
+  }
+  filter(keyword: string): Observable<any> {
+    return this.http.get(API_URL + 'filter/' + keyword);
+  }
 }
-

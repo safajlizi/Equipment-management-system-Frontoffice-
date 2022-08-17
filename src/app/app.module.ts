@@ -32,6 +32,7 @@ import {MatMenuModule} from '@angular/material/menu';
 import { NavbarProjectComponent } from './components/projects/navbar-project/navbar-project.component';
 import { DatePipe } from '@angular/common';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import { ManagerCardComponent } from './components/projects/manager-card/manager-card.component';
 
 
 @NgModule({
@@ -45,6 +46,7 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
     UsernameComponent,
 
     NavbarProjectComponent,
+     ManagerCardComponent,
     
   ],
   imports: [

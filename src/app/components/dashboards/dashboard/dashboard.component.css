@@ -9,7 +9,8 @@ main{
     width:100%;
     top:4rem;
     z-index:1; 
-    margin-top: 2px;
+    margin-top: 4px;
+    
 }
 app-side-nav{
     position: fixed;
@@ -45,6 +46,6 @@ app-header{
 }
 
 .pos{
-    margin-left:255px;
-    margin-top:20px;
+    margin-left:250px;
+    margin-top:25px;
 }

@@ -7,34 +7,26 @@ import {MatTableDataSource} from '@angular/material/table';
 import { AddequipmentComponent } from '../addequipment/addequipment.component';
 import {MatDialog} from '@angular/material/dialog';
 import { ReserveComponent } from '../reserve/reserve.component';
+import { Router } from '@angular/router';
+import { TokenStorageService } from 'src/app/services/token-storage.service';
 @Component({
   selector: 'app-equipment-list',
   templateUrl: './equipment-list.component.html',
   styleUrls: ['./equipment-list.component.css']
 })
 export class EquipmentListComponent implements OnInit {
-  /**
-   *  "label": "hhhhh",
-      "prop_client": true,
-      "availability": false,
-      "status": "compliant state",
-      "description": "ffff",
-      "descriptionStatus": null,
-      "is_calibrated": "2022-08-15T23:00:00.000Z",
-      "calibrating_date": null,
-      "manager": null,
-      "category": "usb",
-      "other": null,
-      "createdby": "admin",
-      "id": 14
-   */
-  displayedColumns: string[] = ['label','category','prop_client','availability' ,'status','description','is_calibrated','calibrating_date','createdby','action'];
+ 
+  displayedColumns: string[] = ['id','label','category','prop_client','availability' ,'status','manager','is_calibrated','calibrating_date','action'];
   dataSource!: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
+  role!: string;
 
-  constructor(private api:EquipmentService,private dialog:MatDialog) { }
+
+
+  constructor(private api:EquipmentService,private dialog:MatDialog, private tokenStorage: TokenStorageService,
+    private router: Router) { }
   openDialog() {
     const dialogRef = this.dialog.open(AddequipmentComponent,{
       
@@ -89,6 +81,13 @@ export class EquipmentListComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllEquipment()
+    if (this.tokenStorage.getToken()) {
+      console.log('afaa')
+      this.role = this.tokenStorage.getUser().role;
+      console.log(this.tokenStorage.getUser())
+    } else {
+      this.router.navigateByUrl('/login');
+    }
   }
 
   reserve(){

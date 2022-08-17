@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { Navbar3Component } from './navbar3.component';
+import { ProjectMemberListComponent } from './project-member-list.component';
 
-describe('Navbar3Component', () => {
-  let component: Navbar3Component;
-  let fixture: ComponentFixture<Navbar3Component>;
+describe('ProjectMemberListComponent', () => {
+  let component: ProjectMemberListComponent;
+  let fixture: ComponentFixture<ProjectMemberListComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ Navbar3Component ]
+      declarations: [ ProjectMemberListComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(Navbar3Component);
+    fixture = TestBed.createComponent(ProjectMemberListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

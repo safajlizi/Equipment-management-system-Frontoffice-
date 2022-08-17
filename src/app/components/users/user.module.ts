@@ -33,12 +33,15 @@ import { AddUserComponent } from './add-user/add-user.component';
 import { UpdateUserComponent } from './update-user/update-user.component';
 import { UserlistComponent } from './userlist/userlist.component';
 import { EquipmentListComponent } from '../equipment/equipment-list/equipment-list.component';
-import { ProjectComponent } from './projects/project/project.component';
-import { ProjectsListComponent } from './projects/projects-list/projects-list.component';
 import { ReserveComponent } from '../equipment/reserve/reserve.component';
+import { Dashboard3Component } from '../projects/dashboard3/dashboard3.component'
+
 import { DatePipe } from '@angular/common';
+import { ProjectMemberAddComponent } from '../projects/project-member-add/project-member-add.component';
+import { ProjectMemberListComponent } from '../projects/project-member-list/project-member-list.component';
 @NgModule({
   declarations: [
+    Dashboard3Component,
     ProfileComponent,
     HistoryComponent,
     CurrentMatComponent,
@@ -53,9 +56,10 @@ import { DatePipe } from '@angular/common';
     UpdateUserComponent ,
     UserlistComponent,
     EquipmentListComponent,
-    ProjectComponent,
-    ProjectsListComponent,
-    ReserveComponent 
+   
+    ReserveComponent,
+    ProjectMemberAddComponent,
+    ProjectMemberListComponent 
   ],
   imports: [
     CommonModule,
@@ -79,6 +83,7 @@ import { DatePipe } from '@angular/common';
     MatCardModule,
     MatMenuModule,
     MatSlideToggleModule,
+
   ],
   providers: [DatePipe]
 })

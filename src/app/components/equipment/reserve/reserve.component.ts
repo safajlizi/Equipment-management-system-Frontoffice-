@@ -25,7 +25,7 @@ export class ReserveComponent implements OnInit {
             console.log(this.projects)
       },
       error:(err)=>{
-         alert("error get projects")
+         alert("error get projectss ")
       }
      })
     }

@@ -1,51 +1,17 @@
-<div class="pos">
-  <form class="example-form" [formGroup]="projectForm">
-    <mat-form-field class="example-full-width" appearance="outline">
-      <mat-label>Project name</mat-label>
-      <textarea matInput formControlName="projectname"></textarea>
-    </mat-form-field>
-
-
-  
-
-    
-          <mat-form-field  class="example-full-width" appearance="outline">
-            <mat-label>Department Name</mat-label>
-            <mat-select formControlName="department" placeholder="department">
-              <mat-option value="development" selected>development</mat-option>
-              <mat-option value="electronics">electronics</mat-option>
-              <mat-option value="embedded software">embedded software</mat-option>
-            </mat-select>
-          </mat-form-field>
-          <mat-label>Project manager info</mat-label>
-
-    <table  cellspacing="2">
-      <tr>
-        <td>
-          <mat-form-field Style="width:200px" appearance="outline">
-            <mat-label>Full name</mat-label>
-            <textarea matInput formControlName="name"></textarea>
-          </mat-form-field>
-        
-        </td>
-        <td>
-          
-          <mat-form-field  Style="width:290px" appearance="outline">
-            <mat-label>Email</mat-label>
-            <textarea matInput formControlName="email"></textarea>
-          </mat-form-field>
-        
-        </td>
-      </tr>
-    </table>
-
-    
-   
-
-  </form>
-  <div mat-dialog-actions [align]="'end'">
-    <button mat-raised-button mat-dialog-close>cancel</button>
-    <button mat-raised-button color="primary" (click)="addProject()">{{actionBtn}}</button>
-
-  </div>
+<h2>Add Project</h2>
+<form class="example-form" [formGroup]="projectForm">
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Name</mat-label>
+    <textarea matInput formControlName="name"></textarea>
+  </mat-form-field>
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Manager's Email</mat-label>
+    <input matInput formControlName="manager" type="email" />
+  </mat-form-field>
+</form>
+<div mat-dialog-actions [align]="'end'">
+  <button mat-raised-button mat-dialog-close>close</button>
+  <button mat-raised-button color="primary" (click)="addProject()">
+    {{ actionBtn }}
+  </button>
 </div>
