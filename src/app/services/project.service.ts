@@ -32,7 +32,7 @@ export class ProjectService {
     return this.http.get<any>('http://localhost:3000/project/members/' + id);
   }
   addProjectMember(id: string, userId: string | string[]) {
-    return this.http.patch<any>(
+    return this.http.put<any>(
       'http://localhost:3000/project/members/' + id,
       typeof userId == typeof ''
         ? {
@@ -49,7 +49,13 @@ export class ProjectService {
       'http://localhost:3000/project/equipment/' + projectId,
       { equipmentId: equipmentId }
     );
+    
   }
-
+  removeProjectMember(projectId: string, memberId: string) {
+    return this.http.patch<any>(
+      'http://localhost:3000/project/members/' + projectId,
+      { memberId: memberId }
+    );
+    }
 }
 

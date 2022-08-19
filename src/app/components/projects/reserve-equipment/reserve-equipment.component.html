@@ -1,0 +1,19 @@
+<div class="pos">
+    <form class="example-form" [formGroup]="equipmentForm">
+      
+      
+      <mat-slide-toggle formControlName="prop_client" *ngIf="false">Client Equipment</mat-slide-toggle>
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Description</mat-label>
+        <textarea formControlName="description" matInput placeholder="description"></textarea>
+      </mat-form-field>
+      
+  
+    </form>
+    <div mat-dialog-actions [align]="'end'">
+      <button mat-raised-button mat-dialog-close>cancel</button>
+      <button mat-raised-button color="primary" (click)="addEquipmentProject()">Submit</button>
+  
+    </div>
+  </div>
+  

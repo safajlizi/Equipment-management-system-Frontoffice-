@@ -22,4 +22,5 @@ export class ProjecMemberComponent implements OnInit {
     this.listOrAdd = !this.listOrAdd;
   }
 
+
 }

@@ -1,5 +1,8 @@
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
+import { UserService } from 'src/app/services/user.service';
+import { TokenStorageService } from 'src/app/services/token-storage.service';
+
 @Component({
   selector: 'app-password',
   templateUrl: './password.component.html',
@@ -7,15 +10,40 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PasswordComponent implements OnInit {
   hide = true;
-
-  constructor(fb: FormBuilder) {
-
+  passwordResetForm!: FormGroup;
+  passwordsMatch = true;
+  message = '';
+  constructor(
+    private fb: FormBuilder,
+    private api: UserService,
+    private tokenStorage: TokenStorageService
+  ) {
+    this.passwordResetForm = this.fb.group({
+      oldpassword: ['', Validators.required],
+      newpassword: ['', Validators.required],
+      newpasswordconfirm: ['', Validators.required],
+    });
   }
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
+  checkConfirm(event: Event) {
+    if (
+      this.passwordResetForm.value['newpassword'] !==
+      this.passwordResetForm.value['newpasswordconfirm']
+    )
+      this.passwordsMatch = false;
+    else this.passwordsMatch = true;
   }
-
-  save(){
-  
+  submit() {
+    let userId = this.tokenStorage.getUser().id;
+    this.api.resetPassword(userId, this.passwordResetForm.value).subscribe(
+      () => {
+        this.message = 'Succesful!';
+      },
+      (err) => {
+        console.log(err);
+        this.message = err.message;
+      }
+    );
   }
 }

@@ -20,6 +20,13 @@ export class TokenStorageService {
     localStorage.removeItem(USER_KEY);
     localStorage.setItem(USER_KEY, JSON.stringify(user));
   }
+  public editUser(field: string, value: string) {
+    let user = this.getUser();
+    console.log(user);
+    user[field] = value;
+    console.log(user);
+    this.saveUser(user);
+  }
   public getUser(): any {
     const user = localStorage.getItem(USER_KEY);
     if (user) {
@@ -42,4 +49,5 @@ export class TokenStorageService {
 
     return JSON.parse(jsonPayload);
   }
+
 }

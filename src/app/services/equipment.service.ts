@@ -23,4 +23,20 @@ export class EquipmentService {
   filterEquipment(keyword: string) {
     return this.http.get<any>('http://localhost:3000/equipment/' + keyword);
   }
+  affectEquipToProjectUser(data:any) {
+    return this.http.post<any>('http://localhost:3000/equipment/project/user/take',data);
+  }
+  returnEquipfromProjectUser(data:any) {
+    return this.http.patch<any>('http://localhost:3000/equipment/project/user/return',data);
+  }
+  returnEquipfromProject(data:any) {
+    return this.http.patch<any>('http://localhost:3000/equipment/project/return',data);
+  }
+  affectEquipToProject(data:any) {
+    
+    return this.http.post<any>('http://localhost:3000/equipment/project/take',data);
+  }
+  getEquipmentByProject(id:string) {
+    return this.http.get<any>('http://localhost:3000/equipment/project/'+id);
+  }
 }

@@ -28,6 +28,7 @@ import { SettingListComponent } from './components/users/settings/setting-list/s
 import { PasswordComponent } from './components/users/settings/password/password.component';
 import { UsernameComponent } from './components/users/settings/username/username.component';
 import {MatMenuModule} from '@angular/material/menu';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 import { NavbarProjectComponent } from './components/projects/navbar-project/navbar-project.component';
 import { DatePipe } from '@angular/common';
@@ -44,10 +45,8 @@ import { ManagerCardComponent } from './components/projects/manager-card/manager
     SettingListComponent,
     PasswordComponent,
     UsernameComponent,
-
     NavbarProjectComponent,
      ManagerCardComponent,
-    
   ],
   imports: [
     BrowserModule,
@@ -72,6 +71,7 @@ import { ManagerCardComponent } from './components/projects/manager-card/manager
     MatCardModule,
     MatMenuModule,
     MatSlideToggleModule,
+    MatTooltipModule
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent]

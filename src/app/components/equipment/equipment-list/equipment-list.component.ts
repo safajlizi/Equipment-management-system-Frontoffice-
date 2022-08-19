@@ -82,7 +82,7 @@ export class EquipmentListComponent implements OnInit {
   ngOnInit(): void {
     this.getAllEquipment()
     if (this.tokenStorage.getToken()) {
-      console.log('afaa')
+     
       this.role = this.tokenStorage.getUser().role;
       console.log(this.tokenStorage.getUser())
     } else {

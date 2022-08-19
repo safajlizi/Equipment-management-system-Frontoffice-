@@ -60,10 +60,12 @@ export class ProjectMemberAddComponent implements OnInit {
       .subscribe(
         (response) => {
           this.message = 'Successful !';
+          alert('members added successfuly')
           this.selectedUsers = [];
         },
         (error) => {
           this.message = 'Unsuccessful ! ';
+          alert('member already in the project')
         }
       );
   }
@@ -72,5 +74,9 @@ export class ProjectMemberAddComponent implements OnInit {
       return { style: 'pos selected', bool: true };
     else return { style: 'pos', bool: false };
   }
-
+  isSelected(id:string):boolean
+  {    
+    console.log('safa'+id)
+    return this.selectedUsers.includes(id)
+  }
 }

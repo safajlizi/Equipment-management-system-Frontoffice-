@@ -1,0 +1,25 @@
+<div class="container" >
+
+  
+  <div class="pos">
+    <mat-toolbar>
+  
+      <span class="example-spacer"></span>
+      <button
+        mat-raised-button
+        style="color: rgba(12, 12, 63); margin-top: 30px; margin-bottom: 30px"
+        (click)="switch()" >
+        <mat-icon>add</mat-icon> Add members.
+      </button>
+    </mat-toolbar>
+
+  </div>
+  <div *ngIf="listOrAdd; else Add" >
+        
+    <app-project-members [projectId]="projectId"></app-project-members>
+  </div>
+  <ng-template #Add
+    ><app-project-member-add [projectId]="projectId"></app-project-member-add
+  ></ng-template>
+
+</div>

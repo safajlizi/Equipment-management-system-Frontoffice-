@@ -1,13 +1,7 @@
 import { Component, OnInit ,Input} from '@angular/core';
-import { ProjectService } from 'src/app/services/project.service';
-import {AfterViewInit, ViewChild} from '@angular/core';
-import {MatPaginator} from '@angular/material/paginator';
-import {MatSort} from '@angular/material/sort';
-import {MatTableDataSource} from '@angular/material/table';
-import {MatDialog} from '@angular/material/dialog';
-import { DataSource } from '@angular/cdk/collections';
-import { Project } from 'src/app/models/project';
 import { Router } from '@angular/router';
+import { TokenStorageService } from 'src/app/services/token-storage.service';
+import { UserService } from 'src/app/services/user.service';
 
 
 @Component({
@@ -16,34 +10,27 @@ import { Router } from '@angular/router';
   styleUrls: ['./project-member-list.component.css']
 })
 export class ProjectMemberListComponent implements OnInit {
-
-  projects : Project []=[]
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
-  @ViewChild(MatSort) sort!: MatSort;
-
-  constructor(private api:ProjectService,private dialog:MatDialog , private router:Router) { }
-  
-  getAllProjects(){
-    this.api.getProjects()
-   .subscribe({
-    next:(res)=>{
-          this.projects=res
-          console.log(this.projects)
-    },
-    error:(err)=>{
-       alert("error get")
-    }
-   })
-  }
+  sideNavStatus: boolean = false;
+  role = '';
+  showManaged: boolean = true;
+  managedProjects: any;
+  memberProjects: any;
+  constructor(
+    private tokenStorage: TokenStorageService,
+    private router: Router,
+    private userService: UserService
+  ) {}
 
   ngOnInit(): void {
-    this.getAllProjects()
-  }
-  ingresar() {
-
-    this.router.navigateByUrl('/dashboard/project')
     
-      }
+    let user = this.tokenStorage.getUser();
+    this.userService.getManagedProjects(user.id).subscribe((res) => {
+      this.managedProjects = res;
+    });
+    this.userService.getMemberProjects(user.id).subscribe((res) => {
+      this.memberProjects = res;
+    });
+  }
 
 }
 

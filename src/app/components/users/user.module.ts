@@ -35,6 +35,16 @@ import { UserlistComponent } from './userlist/userlist.component';
 import { EquipmentListComponent } from '../equipment/equipment-list/equipment-list.component';
 import { ReserveComponent } from '../equipment/reserve/reserve.component';
 import { Dashboard3Component } from '../projects/dashboard3/dashboard3.component'
+import { ProjectManagerListComponent } from '../projects/project-manager-list/project-manager-list.component';
+import { ProjectMembersComponent } from '../projects/project-members/project-members.component';
+import { ProjectEquipmentComponent } from '../projects/project-equipment/project-equipment.component';
+import { ProjectEquipmentAssignComponent } from '../projects/project-equipment-assign/project-equipment-assign.component';
+import { ProjectMembersRootComponent } from '../projects/project-members-root/project-members-root.component';
+import { ProjectEquipmentRootComponent } from '../projects/project-equipment-root/project-equipment-root.component';
+import { ProjectEquipmentAddComponent } from '../projects/project-equipment-add/project-equipment-add.component';
+import {MatTooltipModule} from '@angular/material/tooltip';
+import { ReserveEquipmentComponent } from '../projects/reserve-equipment/reserve-equipment.component';
+import { ProectReservedEquipmentComponent } from '../projects/proect-reserved-equipment/proect-reserved-equipment.component';
 
 import { DatePipe } from '@angular/common';
 import { ProjectMemberAddComponent } from '../projects/project-member-add/project-member-add.component';
@@ -56,10 +66,19 @@ import { ProjectMemberListComponent } from '../projects/project-member-list/proj
     UpdateUserComponent ,
     UserlistComponent,
     EquipmentListComponent,
-   
+    ProjectMembersComponent,
+    ProjectEquipmentComponent,
     ReserveComponent,
     ProjectMemberAddComponent,
-    ProjectMemberListComponent 
+    ProjectMemberListComponent ,
+    ProjectManagerListComponent,
+    ProjectEquipmentAssignComponent,
+    ProjectMembersRootComponent,
+    ProjectEquipmentRootComponent,
+    ProjectEquipmentAddComponent,
+    ReserveEquipmentComponent,
+    ProectReservedEquipmentComponent,
+
   ],
   imports: [
     CommonModule,
@@ -83,7 +102,7 @@ import { ProjectMemberListComponent } from '../projects/project-member-list/proj
     MatCardModule,
     MatMenuModule,
     MatSlideToggleModule,
-
+    MatTooltipModule
   ],
   providers: [DatePipe]
 })

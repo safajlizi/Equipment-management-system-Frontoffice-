@@ -13,6 +13,7 @@
   <button mat-raised-button color="'primary'" type="submit" (click)="openDialog()" *ngIf="role == 'ADMIN'" >
     <mat-icon>add</mat-icon> Add equipment 
   </button>
+  
 </td></tr>
 </table>
   <!--   ['label', 'prop_client', 'status', 'defaults','description','is_calibrated','calibrating_date'];
@@ -83,16 +84,18 @@
       <ng-container matColumnDef="action"  matColumnDef="action">
         <th mat-header-cell *matHeaderCellDef mat-sort-header class="title action" ><strong>Actions</strong>  </th>
         <td mat-cell *matCellDef="let row" class="action" >
-          <button mat-icon-button (click)="editEquipment(row)" *ngIf="role == 'ADMIN'"color="primary">
+          <button mat-icon-button (click)="editEquipment(row)" matTooltip="add equiment"  *ngIf="role == 'ADMIN'"color="primary">
             <mat-icon>edit</mat-icon>
           </button>
-          <button mat-icon-button (click)="deleteEquipment(row.id)" *ngIf="role == 'ADMIN'" color="warm">
+          <button mat-icon-button (click)="deleteEquipment(row.id)"   matTooltip="delete equiment"   
+          matTooltipClass="tooltipStyle" 
+          *ngIf="role == 'ADMIN'" color="warm">
             <mat-icon>delete</mat-icon>
           </button>
-          <button mat-icon-button (click)="openDialog()" color="warm">
+          <button mat-icon-button (click)="openDialog()"  matTooltip="History"  color="warm">
             <mat-icon>history</mat-icon>
           </button>
-          <button mat-icon-button (click)="reserve()" *ngIf="role != 'ADMIN'" color="warm">
+          <button mat-icon-button (click)="reserve()"  matTooltip="reserve equiment"  *ngIf="role != 'ADMIN'" color="warm">
             <mat-icon>add</mat-icon>
           </button>
         </td>
