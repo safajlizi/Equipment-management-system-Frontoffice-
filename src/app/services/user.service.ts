@@ -76,6 +76,7 @@ export class UserService {
   getManagedProjects(id: string): Observable<any> {
     return this.http.get(API_URL + 'projects/managed/' + id);
   }
+  //not works
   getMemberProjects(id: string): Observable<any> {
     return this.http.get(API_URL + 'projects/member/' + id);
   }

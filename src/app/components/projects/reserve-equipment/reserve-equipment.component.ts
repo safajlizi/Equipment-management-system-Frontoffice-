@@ -49,12 +49,16 @@ export class ReserveEquipmentComponent implements OnInit {
     this.api.patchEquipment(this.equipmentForm.value,this.editData.row.id)
     .subscribe({
       next:(res)=>{
-        alert("Equipment updated successfuly")
+        this._snackBar.open("Equipment updated successfuly",'',{ 
+          duration: 3000
+      })
         this.equipmentForm.reset();
         this.dialogRef.close();
       },
       error:()=>{
-        alert("error while updating equipment")
+        this._snackBar.open("error while updating equipment",'',{ 
+          duration: 3000
+      })
       }})
 
 
@@ -123,7 +127,6 @@ export class ReserveEquipmentComponent implements OnInit {
           this.equipmentForm.controls['equipment'].setValue(this.editData.EquipmentId);
           this.equipmentForm.controls['user'].setValue(this.tokenStorage.getUser().id);
           this.equipmentForm.controls['project'].setValue(this.editData.id);
-          alert(this.editData.id)
           console.log(this.equipmentForm.value)
           
           this.api.affectEquipToProjectUser(this.equipmentForm.value)

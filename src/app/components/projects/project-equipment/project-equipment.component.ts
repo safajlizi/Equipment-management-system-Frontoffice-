@@ -7,6 +7,7 @@ import {MatTableDataSource} from '@angular/material/table';
 import {MatDialog} from '@angular/material/dialog';
 import { Router,ActivatedRoute  } from '@angular/router';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 import { ProjectEquipmentAddComponent } from '../project-equipment-add/project-equipment-add.component';
@@ -31,7 +32,9 @@ export class ProjectEquipmentComponent implements OnInit {
   constructor(private api:EquipmentService,private dialog:MatDialog, private tokenStorage: TokenStorageService,
     private router: Router,
     private formBuilder: FormBuilder,
-    private route: ActivatedRoute) {
+    private route: ActivatedRoute
+    ,private _snackBar :MatSnackBar
+    ) {
      
      }
   openDialog() {
@@ -52,7 +55,7 @@ export class ProjectEquipmentComponent implements OnInit {
           this.dataSource.sort=this.sort 
     },
     error:(err)=>{
-       alert("error get")
+      this._snackBar.open("error get")
     }
    })
   }
@@ -72,11 +75,11 @@ export class ProjectEquipmentComponent implements OnInit {
   deleteEquipment(id:number){
     this.api.deleteEquipment(id).subscribe({
       next:(res)=>{
-        alert("equipment deleted successfuly")
+        this._snackBar.open("equipment deleted successfuly")
         this.getAllEquipment()
       },
       error:()=>{
-        alert("error while deletinf quipment")
+        this._snackBar.open("error while deletinf quipment")
       }
     })
   }

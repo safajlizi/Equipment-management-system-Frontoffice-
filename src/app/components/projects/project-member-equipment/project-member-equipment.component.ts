@@ -61,7 +61,9 @@ export class ProjectMemberEquipmentComponent implements OnInit {
 
     },
     error:(err)=>{
-      this._snackBar.open("error get equipment by project")
+      this._snackBar.open("error get equipment by project",'',{ 
+        duration: 3000
+    })
     }
    })
   }

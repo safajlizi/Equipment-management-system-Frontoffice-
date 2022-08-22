@@ -2,6 +2,7 @@ import { Component, OnInit ,Input} from '@angular/core';
 import { Router } from '@angular/router';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 import { UserService } from 'src/app/services/user.service';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-project-manager-list',
@@ -18,17 +19,30 @@ export class ProjectManagerListComponent implements OnInit {
   constructor(
     private tokenStorage: TokenStorageService,
     private router: Router,
-    private userService: UserService
+    private userService: UserService,
+    private _snackBar:MatSnackBar
+
   ) {}
 
   ngOnInit(): void {
     
     let user = this.tokenStorage.getUser();
-    this.userService.getManagedProjects(user.id).subscribe((res) => {
-      this.managedProjects = res;
-      console.log(res)
-      console.log(this.managedProjects)
-    });
+
+
+
+
+
+
+    this.userService.getManagedProjects(user.id).subscribe({
+      next:(res)=>{
+        this.managedProjects = res;
+      },
+      error:(err)=>{
+        this._snackBar.open("error get managed projects",'',{ 
+          duration: 3000
+      })
+      }
+     });
     this.userService.getMemberProjects(user.id).subscribe((res) => {
       this.memberProjects = res;
     });

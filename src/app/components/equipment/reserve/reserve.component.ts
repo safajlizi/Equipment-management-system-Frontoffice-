@@ -6,6 +6,8 @@ import { DatePipe } from '@angular/common'
 import { Router,ActivatedRoute  } from '@angular/router';
 import { TokenStorageService } from 'src/app/services/token-storage.service'
 import { UserService } from 'src/app/services/user.service';
+import {MatSnackBar} from '@angular/material/snack-bar';
+
 @Component({
   selector: 'app-reserve',
   templateUrl: './reserve.component.html',
@@ -18,7 +20,8 @@ export class ReserveComponent implements OnInit {
   memberProjects: any;
   constructor(public datepipe: DatePipe,private formBuilder :FormBuilder,private api:EquipmentService,
     @Inject(MAT_DIALOG_DATA)public editData:any,  private route: ActivatedRoute, private tokenStorage: TokenStorageService,  private userService: UserService,
-    private dialogRef:MatDialogRef<ReserveComponent>) { 
+    private dialogRef:MatDialogRef<ReserveComponent>,
+    private _snackBar: MatSnackBar) { 
       route.params.subscribe((params) => {
         this.projectId = params['id'];
 
@@ -51,12 +54,16 @@ export class ReserveComponent implements OnInit {
     this.api.patchEquipment(this.equipmentForm.value,this.editData.row.id)
     .subscribe({
       next:(res)=>{
-        alert("Equipment updated successfuly")
+        this._snackBar.open("Equipment updated successfuly",'',{ 
+          duration: 3000
+      })
         this.equipmentForm.reset();
         this.dialogRef.close();
       },
       error:()=>{
-        alert("error while updating equipment")
+        this._snackBar.open("error while updating equipment",'',{ 
+          duration: 3000
+      })
       }})
 
 
@@ -78,12 +85,12 @@ export class ReserveComponent implements OnInit {
         this.api.affectEquipToProject(this.equipmentForm.value)
       .subscribe({
         next:(res)=>{
-          alert("Equipment added successfuly")
+          this._snackBar.open("Equipment added successfuly")
           this.equipmentForm.reset();
           this.dialogRef.close();
         },
         error:()=>{
-          alert("error while adding equipment")
+          this._snackBar.open("error while adding equipment")
         }
       })
      } }
@@ -99,12 +106,12 @@ export class ReserveComponent implements OnInit {
         this.api.returnEquipfromProject(this.equipmentForm.value)
       .subscribe({
         next:(res)=>{
-          alert("equipment deleted successfuly")
+          this._snackBar.open("equipment deleted successfuly")
           this.equipmentForm.reset();
           this.dialogRef.close();
         },
         error:()=>{
-          alert("error while deleting equipment")
+          this._snackBar.open("error while deleting equipment")
         }
       })
      }}

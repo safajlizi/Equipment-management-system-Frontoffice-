@@ -20,4 +20,13 @@ export class HistoryService {
     return this.http.delete<any>("http://localhost:3000/history/"+id)
 
   }
+  getHistoryByUser(id:number){
+    return this.http.get<any>("http://localhost:3000/history/user"+id)
+  }
+  getHistoryByProject(id:number){
+    return this.http.get<any>("http://localhost:3000/history/project"+id)
+  }
+  getHistoryByEquipment(id:number){
+    return this.http.get<any>("http://localhost:3000/history/equipment"+id)
+  }
 }
