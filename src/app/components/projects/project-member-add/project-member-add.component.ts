@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ProjectService } from 'src/app/services/project.service';
 import { UserService } from 'src/app/services/user.service';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-project-member-add',
@@ -22,6 +23,7 @@ export class ProjectMemberAddComponent implements OnInit {
     private projectService: ProjectService,
     private formBuilder: FormBuilder,
     private route: ActivatedRoute
+    ,private _snackBar: MatSnackBar
   ) {
     route.params.subscribe((params) => {
       this.projectId = params['id'];
@@ -60,12 +62,16 @@ export class ProjectMemberAddComponent implements OnInit {
       .subscribe(
         (response) => {
           this.message = 'Successful !';
-          alert('members added successfuly')
+          this._snackBar.open('members added successfuly','',{ 
+            duration: 3000
+        })
           this.selectedUsers = [];
         },
         (error) => {
           this.message = 'Unsuccessful ! ';
-          alert('member already in the project')
+          this._snackBar.open('member already in the project','',{ 
+            duration: 3000
+        })
         }
       );
   }

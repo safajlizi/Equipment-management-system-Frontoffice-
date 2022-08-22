@@ -6,6 +6,7 @@ import { User } from 'src/app/models/user';
 import { EquipmentService } from 'src/app/services/equipment.service';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 import { UserService } from 'src/app/services/user.service';
+import { ReserveComponent } from '../../equipment/reserve/reserve.component';
 import { PasswordComponent } from '../settings/password/password.component';
 import { SettingListComponent } from '../settings/setting-list/setting-list.component';
 import { UsernameComponent } from '../settings/username/username.component';
@@ -36,5 +37,17 @@ export class ProfileComponent implements OnInit {
   passwordTrig() {
     const dialogRef = this.dialog.open(PasswordComponent, {});
   }
+  removeEquipmentfromProject(row :any){
+    if(row.other){
+      row.set
+    }
+        this.dialog.open(ReserveComponent,{
+      
+      data:{'EquipmentId':row,'toremove':true}  
+    })}
+
+
+  
+
 
 }

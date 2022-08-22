@@ -109,13 +109,12 @@ export class ProjectEquipmentComponent implements OnInit {
 
 
   reserve(row :any){
-    console.log("reserveing rowwwwwwwwwwwwwwww1111111111111111")
-    console.log(row)
+   
     if(row.other){
       row.set
     }
         this.dialog.open(ReserveEquipmentComponent,{
-      width:'30%',
+     
       data:{'EquipmentId':row,'id':this.projectId, 'toremove':false}  
     })}
     

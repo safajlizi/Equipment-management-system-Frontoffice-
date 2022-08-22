@@ -6,6 +6,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { ProjectService } from 'src/app/services/project.service';
 import { CreateProjectComponent } from '../create-project/create-project.component';
 import { ManagerCardComponent } from '../manager-card/manager-card.component';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 
 @Component({
@@ -22,7 +23,8 @@ export class ListProjectsComponent implements OnInit {
   @ViewChild(MatSort) sort!: MatSort;
   constructor(
     private projectService: ProjectService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private api :ProjectService,private _snackBar: MatSnackBar
   ) {}
 
   getAllProjects() {
@@ -34,9 +36,26 @@ export class ListProjectsComponent implements OnInit {
         this.dataSource.sort = this.sort;
       },
       error: (err) => {
-        alert('error get');
+        this._snackBar.open('error ge projects','',{ 
+          duration: 3000
+      });
       },
     });
+  }
+  deleteProject(id:string){
+    this.api.deleteProject(id).subscribe({
+      next:(res)=>{
+        this._snackBar.open("project deleted successfuly",'',{ 
+          duration: 3000
+      })
+        this.getAllProjects()
+      },
+      error:()=>{
+        this._snackBar.open("error while deleting project",'',{ 
+          duration: 3000
+      })
+      }
+    })
   }
   ngOnInit(): void {
     this.getAllProjects();
@@ -47,7 +66,9 @@ export class ListProjectsComponent implements OnInit {
         this.dialog.open(ManagerCardComponent, { data: res });
       },
       error: (err) => {
-        alert('error get manager');
+        this._snackBar.open('error get manager','',{ 
+          duration: 3000
+      });
       },
     });
   }
@@ -57,7 +78,9 @@ export class ListProjectsComponent implements OnInit {
         this.dialog.open(ManagerCardComponent, { data: res });
       },
       error: (err) => {
-        alert('error get manager');
+        this._snackBar.open('error get manager','',{ 
+          duration: 3000
+      });
       },
     });
   }
@@ -75,5 +98,15 @@ export class ListProjectsComponent implements OnInit {
     const dialogRef = this.dialog.open(CreateProjectComponent,{
       
     });}
+    editProject(row :any){
+      console.log(row)
+      this.dialog.open(CreateProjectComponent,{
+        width:'30%',
+        data:row  
+        
+      }).afterClosed().subscribe(val=>{
+        if(val==='update'){this.getAllProjects()}
+      })
+    }
 
 }

@@ -1,61 +1,29 @@
-<div class="pos">
-    <form class="example-form" [formGroup]="reserveForm">
-      <mat-form-field class="example-full-width" appearance="outline" *ngIf="false">
-        <mat-label>Label</mat-label>
-        <textarea matInput formControlName="label"></textarea>
-      </mat-form-field>
-  
-  
-      <table cellspacing="2">
-        <tr>
-          <td>
-            <mat-form-field [ngStyle]="{'width': reserveForm.value.status == 'uncompliant state' ? '250px' : '500px'}"
-              appearance="outline">
-              <mat-label>Status</mat-label>
-              <mat-select formControlName="status" placeholder="role">
-                <mat-option value="compliant state" selected>Compliant state</mat-option>
-                <mat-option value="uncompliant state">Uncompliant state</mat-option>
-  
-              </mat-select>
-            </mat-form-field>
-          </td>
-          <td>
-            <mat-form-field appearance="outline" *ngIf='reserveForm.value.status == "uncompliant state"'>
-              <mat-label>details</mat-label>
-              <textarea matInput formControlName="descriptionStatus"></textarea>
-            </mat-form-field>
-          </td>
-        </tr>
-      </table>
-  
-      <mat-form-field class="example-full-width" appearance="outline">
-      <mat-label>Project</mat-label>
-      <mat-select formControlName="project" placeholder="project"  *ngFor="let row of projects" >
-         <mat-option value={{row.projectname}}>{{row.projectname}}</mat-option>  
-      </mat-select>
-    </mat-form-field>
-  
-  
-      <mat-form-field appearance="outline" class="example-full-width">
-        <mat-label>Reservation date</mat-label>
-        <input formControlName="date_res" matInput [matDatepicker]="picker">
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
-      </mat-form-field>
-  
-      <mat-form-field appearance="outline" class="example-full-width">
-        <mat-label>Liberation date</mat-label>
-        <input formControlName="date_lib" matInput [matDatepicker]="picker2">
-        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
-        <mat-datepicker #picker2></mat-datepicker>
-      </mat-form-field>
-  
-  
-  
+
+    <form class="example-form" [formGroup]="equipmentForm">
+     
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Description</mat-label>
+        <input
+        formControlName="description" matInput placeholder="description"
+        /> </mat-form-field>
+        <mat-form-field   class="example-full-width"  appearance="outline">
+          <mat-label>project</mat-label>
+          
+          <mat-select formControlName="project"  placeholder="projectName">
+            <div *ngFor="let project of memberProjects">
+             <mat-option [value]="project.id">{{project.name}}</mat-option>
+          
+      </div>
+          </mat-select>
+        </mat-form-field>
+      
+     
     </form>
     <div mat-dialog-actions [align]="'end'">
       <button mat-raised-button mat-dialog-close>cancel</button>
-      <button mat-raised-button color="primary" (click)="addHistory()">{{actionBtn}}</button>
+      <button mat-raised-button color="primary" (click)="addEquipmentProject()">Submit</button>
   
     </div>
-  </div>
+    
+
+ 

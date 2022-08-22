@@ -9,10 +9,10 @@
     >
     <mat-card-actions align="end">
       
-        <button mat-menu-item (click)="usernameTrig()">
+        <button mat-menu-item (click)="usernameTrig()" style="border-color: white ;">
           Username <i class="fa-solid fa-pen"></i>
         </button>
-        <button mat-menu-item (click)="passwordTrig()">
+        <button mat-menu-item (click)="passwordTrig()"  style="border-color: white ;">
           Password <i class="fa-solid fa-pen"></i>
         </button>
       
@@ -24,6 +24,11 @@
     <mat-card-content>
       <div *ngFor="let equip of equipments">
         <mat-card-content>{{ equip.label }} {{ equip.id }}</mat-card-content>
+        <mat-card-actions align="end">
+          <button mat-icon-button (click)="removeEquipmentfromProject(equip.id)" matTooltip="liberate equiment" >
+            <i class="fa-solid fa-trash"></i>  
+            </button>
+        </mat-card-actions>
       </div>
     </mat-card-content>
   </mat-card>

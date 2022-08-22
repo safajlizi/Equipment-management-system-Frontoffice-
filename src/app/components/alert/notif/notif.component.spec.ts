@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { UserhistoryComponent } from './userhistory.component';
+import { NotifComponent } from './notif.component';
 
-describe('UserhistoryComponent', () => {
-  let component: UserhistoryComponent;
-  let fixture: ComponentFixture<UserhistoryComponent>;
+describe('NotifComponent', () => {
+  let component: NotifComponent;
+  let fixture: ComponentFixture<NotifComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ UserhistoryComponent ]
+      declarations: [ NotifComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(UserhistoryComponent);
+    fixture = TestBed.createComponent(NotifComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

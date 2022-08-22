@@ -6,7 +6,8 @@ import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
 import {MatDialog} from '@angular/material/dialog';
 import { AddUserComponent } from '../add-user/add-user.component';
-import { UserhistoryComponent } from '../userhistory/userhistory.component';
+import {MatSnackBar} from '@angular/material/snack-bar';
+
 @Component({
   selector: 'app-userlist',
   templateUrl: './userlist.component.html',
@@ -20,14 +21,13 @@ export class UserlistComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(private api:UserService,private dialog: MatDialog) { }
+  constructor(private api:UserService,private dialog: MatDialog,private _snackBar: MatSnackBar) { }
 
 
 
   openDialog() {
-    const dialogRef = this.dialog.open(UserhistoryComponent,{
       
-    });
+    
   }
   getAllUsers() {
     this.api.getUsers().subscribe({
@@ -37,7 +37,9 @@ export class UserlistComponent implements OnInit {
         this.dataSource.sort = this.sort;
       },
       error: (err) => {
-        alert('error get user');
+        this._snackBar.open('error get user','',{ 
+          duration: 3000
+      });
       },
     });
   }
@@ -53,11 +55,15 @@ export class UserlistComponent implements OnInit {
   deleteUser(id:string){
     this.api.deleteUser(id).subscribe({
       next:(res)=>{
-        alert("user deleted successfuly")
+        this._snackBar.open("user deleted successfuly",'',{ 
+          duration: 3000
+      })
         this.getAllUsers()
       },
       error:()=>{
-        alert("error while deleting user")
+        this._snackBar.open("error while deleting user",'',{ 
+          duration: 3000
+      })
       }
     })
   }

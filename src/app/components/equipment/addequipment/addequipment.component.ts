@@ -3,6 +3,8 @@ import{FormGroup,FormBuilder,Validators} from'@angular/forms'
 import { EquipmentService } from 'src/app/services/equipment.service';
 import {MatDialogRef,MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DatePipe } from '@angular/common'
+import {MatSnackBar} from '@angular/material/snack-bar';
+
 @Component({
   selector: 'app-addequipment',
   templateUrl: './addequipment.component.html',
@@ -13,7 +15,7 @@ export class AddequipmentComponent implements OnInit {
   actionBtn:string="save"
   constructor(public datepipe: DatePipe,private formBuilder :FormBuilder,private api:EquipmentService,
     @Inject(MAT_DIALOG_DATA)public editData:any, 
-    private dialogRef:MatDialogRef<AddequipmentComponent>) { }
+    private dialogRef:MatDialogRef<AddequipmentComponent>,private _snackBar: MatSnackBar) { }
   ngOnInit(): void {
     this.equipmentForm=this.formBuilder.group({
       label:['', Validators.required],
@@ -54,12 +56,16 @@ export class AddequipmentComponent implements OnInit {
     this.api.patchEquipment(this.equipmentForm.value,this.editData.id)
     .subscribe({
       next:(res)=>{
-        alert("Equipment updated successfuly")
+        this._snackBar.open("Equipment updated successfuly",'',{ 
+          duration: 3000
+      })
         this.equipmentForm.reset();
         this.dialogRef.close();
       },
       error:()=>{
-        alert("error while updating equipment")
+        this._snackBar.open("error while updating equipment",'',{ 
+          duration: 3000
+      })
       }})
 
 
@@ -72,12 +78,16 @@ export class AddequipmentComponent implements OnInit {
       this.api.postEquipment(this.equipmentForm.value)
       .subscribe({
         next:(res)=>{
-          alert("Equipment added successfuly")
+          this._snackBar.open("Equipment added successfuly",'',{ 
+            duration: 3000
+        })
           this.equipmentForm.reset();
           this.dialogRef.close();
         },
         error:()=>{
-          alert("error while adding equipment")
+          this._snackBar.open("error while adding equipment",'',{ 
+            duration: 3000
+        })
         }
       })
      } }

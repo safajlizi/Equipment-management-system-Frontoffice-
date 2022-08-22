@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ProjectService } from 'src/app/services/project.service';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 
 @Component({
@@ -11,7 +12,7 @@ export class ProjectMembersComponent implements OnInit {
 
   @Input() projectId!: string;
   members: any;
-  constructor(private projectService: ProjectService) {}
+  constructor(private projectService: ProjectService,private _snackBar: MatSnackBar) {}
 
   ngOnInit(): void {
     this.projectService
@@ -23,7 +24,9 @@ export class ProjectMembersComponent implements OnInit {
   removeMember(idM:string) {
     this.projectService.removeProjectMember(this.projectId,idM).subscribe({
       next:(res)=>{
-        alert("member  deleted successfuly")
+        this._snackBar.open("member  deleted successfuly",'',{ 
+          duration: 3000
+      })
         this.projectService
       .getProjectMembers(this.projectId)
       .subscribe((response) => {
@@ -31,7 +34,9 @@ export class ProjectMembersComponent implements OnInit {
       });
       },
       error:()=>{
-        alert("error while deleting member")
+        this._snackBar.open("error while deleting member",'',{ 
+          duration: 3000
+      })
       }
     })
   }

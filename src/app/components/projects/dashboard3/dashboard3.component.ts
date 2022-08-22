@@ -4,6 +4,8 @@ import { Project } from 'src/app/models/project';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 import { UserService } from 'src/app/services/user.service';
 import { ProjectService } from 'src/app/services/project.service';
+import {MatSnackBar} from '@angular/material/snack-bar';
+
 @Component({
   selector: 'app-dashboard3',
   templateUrl: './dashboard3.component.html',
@@ -19,7 +21,7 @@ export class Dashboard3Component implements OnInit {
     private tokenStorage: TokenStorageService,
     private router: Router,
     private userService: UserService,
-    private api:ProjectService
+    private api:ProjectService,private _snackBar: MatSnackBar
   ) {}
   getAllProjects(){
     this.api.getProjects()
@@ -29,7 +31,9 @@ export class Dashboard3Component implements OnInit {
           console.log(this.managedProjects)
     },
     error:(err)=>{
-       alert("error get")
+      this._snackBar.open("error get project",'',{ 
+        duration: 3000
+    })
     }
    })
   }

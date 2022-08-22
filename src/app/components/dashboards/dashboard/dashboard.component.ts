@@ -10,16 +10,19 @@ import { TokenStorageService } from 'src/app/services/token-storage.service';
 export class DashboardComponent implements OnInit {
   sideNavStatus:boolean=false
   role!: string;
+  history=false
   constructor(
     private tokenStorage: TokenStorageService,
     private router: Router
-  ) {}
+  ) {
+    if(this.router.url.includes('/history')){
+    this.history=true
+  }}
 
   ngOnInit(): void {
     if (this.tokenStorage.getToken()) {
       console.log('afaa')
       this.role = this.tokenStorage.getUser().role;
-      console.log(this.tokenStorage.getUser())
     } else {
       this.router.navigateByUrl('/login');
     }

@@ -5,6 +5,8 @@ import {MatDialogRef,MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DatePipe } from '@angular/common'
 import { Router,ActivatedRoute  } from '@angular/router';
 import { TokenStorageService } from 'src/app/services/token-storage.service'
+import {MatSnackBar} from '@angular/material/snack-bar';
+
 
 @Component({
   selector: 'app-reserve-equipment',
@@ -18,11 +20,10 @@ export class ReserveEquipmentComponent implements OnInit {
   actionBtn:string="save"
   constructor(public datepipe: DatePipe,private formBuilder :FormBuilder,private api:EquipmentService,
     @Inject(MAT_DIALOG_DATA)public editData:any,  private route: ActivatedRoute, private tokenStorage: TokenStorageService,
-    private dialogRef:MatDialogRef<ReserveEquipmentComponent>) { 
+    private dialogRef:MatDialogRef<ReserveEquipmentComponent>,private _snackBar: MatSnackBar) { 
       route.params.subscribe((params) => {
         this.projectId = params['id'];
-        console.log('dddddddddd')
-        console.log(params['id'])
+       
       });
 
     }
@@ -60,66 +61,88 @@ export class ReserveEquipmentComponent implements OnInit {
   }
 
   addEquipmentProject(){
+    if(!this.editData.reserveUser)
+    {
     if(this.editData && this.editData.toremove ==false){
+
       if(this.equipmentForm.valid){
       
         this.equipmentForm.controls['equipment'].setValue(this.editData.EquipmentId);
-        console.log('ewuipment')
-
-        console.log(this.editData.row)
+     
         this.equipmentForm.controls['user'].setValue(this.tokenStorage.getUser().id);
-        console.log('userr*****')
 
-        console.log(this.tokenStorage.getUser().id)
         this.equipmentForm.controls['project'].setValue(this.editData.id);
-        console.log('project')
-        console.log("//////////////////////////////////////")
-
-        console.log(this.editData.id)
-        console.log("7777777777777777777777777777777777777777")
+      
 
         console.log(this.equipmentForm.value)
         this.api.affectEquipToProject(this.equipmentForm.value)
       .subscribe({
         next:(res)=>{
-          alert("Equipment added successfuly")
+          this._snackBar.open("Equipment added successfuly",'',{ 
+            duration: 3000
+        })
           this.equipmentForm.reset();
           this.dialogRef.close();
         },
         error:()=>{
-          alert("error while adding equipment")
+          this._snackBar.open("error while adding equipment",'',{ 
+            duration: 3000
+        })
         }
       })
      } }
      else{
       if(this.equipmentForm.valid){
-      
+
         this.equipmentForm.controls['equipment'].setValue(this.editData.row.Equipment_id);
-        console.log('ewuipment')
-
-        console.log(this.editData.row)
+       
         this.equipmentForm.controls['user'].setValue(this.tokenStorage.getUser().id);
-        console.log('userr*****')
-
-        console.log(this.tokenStorage.getUser().id)
+       
         this.equipmentForm.controls['project'].setValue(this.editData.id);
-        console.log('project')
-
-        console.log(this.editData.id)
+        
         this.api.returnEquipfromProject(this.equipmentForm.value)
       .subscribe({
         next:(res)=>{
-          alert("equipment deleted successfuly")
+          this._snackBar.open("equipment deleted successfuly",'',{ 
+            duration: 3000
+        })
           this.equipmentForm.reset();
           this.dialogRef.close();
         },
         error:()=>{
-          alert("error while deleting equipment")
+          this._snackBar.open("error while deleting equipment",'',{ 
+            duration: 3000
+        })
         }
       })
+     }}
+    
      }
-     }
-     
+      else{
+        if(this.equipmentForm.valid){
+          this.equipmentForm.controls['equipment'].setValue(this.editData.EquipmentId);
+          this.equipmentForm.controls['user'].setValue(this.tokenStorage.getUser().id);
+          this.equipmentForm.controls['project'].setValue(this.editData.id);
+          alert(this.editData.id)
+          console.log(this.equipmentForm.value)
+          
+          this.api.affectEquipToProjectUser(this.equipmentForm.value)
+        .subscribe({
+          next:(res)=>{
+            this._snackBar.open("Equipment reserve successfuly",'',{ 
+              duration: 3000
+          })
+            this.equipmentForm.reset();
+            this.dialogRef.close();
+          },
+          error:()=>{
+            this._snackBar.open("error whilereservinggg equipment",'',{ 
+              duration: 3000
+          })
+          }
+        })
+       }
+      }
   } 
 
 }

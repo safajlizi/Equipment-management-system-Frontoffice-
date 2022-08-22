@@ -7,6 +7,7 @@ import {MatTableDataSource} from '@angular/material/table';
 import {MatDialog} from '@angular/material/dialog';
 import { Router,ActivatedRoute  } from '@angular/router';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 import { ProjectEquipmentAddComponent } from '../project-equipment-add/project-equipment-add.component';
@@ -31,7 +32,8 @@ export class ProectReservedEquipmentComponent implements OnInit {
   constructor(private api:EquipmentService,private dialog:MatDialog, private tokenStorage: TokenStorageService,
     private router: Router,
     private formBuilder: FormBuilder,
-    private route: ActivatedRoute) {
+    private route: ActivatedRoute
+    ,private _snackBar: MatSnackBar) {
      
      }
   openDialog() {
@@ -55,7 +57,9 @@ export class ProectReservedEquipmentComponent implements OnInit {
           this.dataSource.sort=this.sort 
     },
     error:(err)=>{
-       alert("error get Equipment of the project")
+      this._snackBar.open("error get Equipment of the project",'',{ 
+        duration: 3000
+    })
     }
    })
   }
@@ -73,11 +77,15 @@ export class ProectReservedEquipmentComponent implements OnInit {
   deleteEquipment(id:number){
     this.api.deleteEquipment(id).subscribe({
       next:(res)=>{
-        alert("equipment deleted successfuly")
+        this._snackBar.open("equipment deleted successfuly",'',{ 
+          duration: 3000
+      })
         this.getEquipmentById()
       },
       error:()=>{
-        alert("error while deletinf quipment")
+        this._snackBar.open("error while deletinf quipment",'',{ 
+          duration: 3000
+      })
       }
     })
   }
@@ -110,7 +118,7 @@ export class ProectReservedEquipmentComponent implements OnInit {
       row.set
     }
         this.dialog.open(ReserveEquipmentComponent,{
-      width:'30%',
+      
       data:{'row':row,'id':this.projectId,'toremove':true}  
     })}
 

@@ -92,12 +92,13 @@
           *ngIf="role == 'ADMIN'" color="warm">
             <mat-icon>delete</mat-icon>
           </button>
-          <button mat-icon-button (click)="openDialog()"  matTooltip="History"  color="warm">
+          <button mat-icon-button   routerLink="./history/{{row.id}}" matTooltip="History"  color="warm">
             <mat-icon>history</mat-icon>
           </button>
-          <button mat-icon-button (click)="reserve()"  matTooltip="reserve equiment"  *ngIf="role != 'ADMIN'" color="warm">
+          <button mat-icon-button (click)="reserve(row.id)"  matTooltip="reserve equiment"  *ngIf="role != 'ADMIN'" color="warm">
             <mat-icon>add</mat-icon>
           </button>
+       
         </td>
       </ng-container>
 

@@ -4,8 +4,8 @@
         <app-side-nav [sideNavStatus]="sideNavStatus" [ngClass]="{'app-side-nav-open':sideNavStatus}" *ngIf="role != 'ADMIN'">
         </app-side-nav>
         <div *ngIf="role == 'ADMIN'" >
-              <app-dashboard2></app-dashboard2>
-              
+              <app-dashboard2 ></app-dashboard2>
+            
         </div>
         <div class="pos"*ngIf="role != 'ADMIN'">
             <router-outlet></router-outlet>

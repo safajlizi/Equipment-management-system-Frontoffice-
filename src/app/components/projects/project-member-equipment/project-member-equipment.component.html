@@ -1,0 +1,104 @@
+<div class="container" style="max-width: 1600px;">
+    <mat-toolbar>
+        <span class="example-spacer"></span>
+        <button
+          mat-raised-button
+          style="color: rgba(12, 12, 63); margin-top: 30px; margin-bottom: 30px"
+          routerLink="../../../" >
+          <i class="fa-solid fa-chevron-left"></i> Back
+        </button>
+      </mat-toolbar>
+    
+    <table class="example-full-width ab" cellspacing="0">
+      <tr>
+        <td Style="width:100%">
+     <mat-form-field appearance="standard">
+      <mat-label>Filter</mat-label>
+      <input matInput (keyup)="applyFilter($event)"Style="widht:1200px" placeholder="label ,status, description.... " #input>
+    
+    </mat-form-field>
+    </td>
+    <td>
+  
+    
+  </td></tr>
+  </table>
+     
+  
+    <div class="mat-elevation-z8 tab">
+      <table mat-table [dataSource]="dataSource" matSort Style="border-color:rgba(250, 130, 17, 1 )">
+  
+        <ng-container matColumnDef="label" >
+          <th mat-header-cell *matHeaderCellDef mat-sort-header class="title"> <strong>Id</strong> </th>
+          <td mat-cell *matCellDef="let row"    > {{row.Equipment_label}}</td>
+        </ng-container>
+  
+       <!-- Equipment_calibrating_date: "2022-08-23T22:00:00.000Z"
+Equipment_category: "usb"
+Equipment_created_at: "2022-08-17T02:06:58.206Z"
+Equipment_date_lib: null
+Equipment_date_res: null
+Equipment_defaults: null
+Equipment_description: "rrrrrrrrrrrr"
+Equipment_id: "95340d90-58ad-4dc2-b475-2ada1651fdcb"
+Equipment_is_calibrated: 1
+Equipment_label: "safaaa"
+Equipment_managerId: null
+Equipment_projectId: "2b4e5e7d-b90b-4d57-9d37-8e2d305e08a5"
+Equipment_prop_client: 0
+Equipment_status: "AVAILABLETOPROJECT"
+Equipment_updated_at: "2022-08-21T07:20:44.000Z"-->
+        
+        <ng-container matColumnDef="prop_client">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header class="title"> <strong>Property</strong> </th>
+          <td mat-cell *matCellDef="let row"> {{row.Equipment_prop_client ==true ? "client":"sofia"}} </td>
+        </ng-container>
+         
+        <ng-container matColumnDef="category">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header class="title"><strong>Category</strong>  </th>
+          <td mat-cell *matCellDef="let row"> {{row.Equipment_category}}</td>
+        </ng-container>
+  
+        <ng-container matColumnDef="status">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header class="title"> <strong>Availibility</strong> </th>
+          <td mat-cell *matCellDef="let row"> {{row.Equipment_status}} </td>
+        </ng-container>
+  
+        
+        <ng-container matColumnDef="is_calibrated">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header class="title"> <strong>calibration status</strong></th>
+          <td mat-cell *matCellDef="let row"> {{row.Equipment_is_calibrated==1 ? "CA":"NA"}} </td>
+        </ng-container>
+  
+        <ng-container matColumnDef="calibrating_date">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header class="title"><strong>Validity deadline date</strong>  </th>
+          <td mat-cell *matCellDef="let row"> {{row.Equipment_created_at| date}}</td>
+        </ng-container>
+  
+        <ng-container matColumnDef="action"  matColumnDef="action">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header class="title action" ><strong>Actions</strong>  </th>
+          <td mat-cell *matCellDef="let row" class="action" >
+           
+            <button mat-icon-button (click)="openDialog()"   matTooltip="History" color="warm">
+              <mat-icon>history</mat-icon>
+            </button>
+            <button mat-icon-button (click)="reserve(row.Equipment_id)"  matTooltip="reserve equiment" [disabled]="row.status =='AVAILABLETOPROJECT'"  color="warm">
+              <mat-icon>add</mat-icon>
+            </button>
+            
+          
+          </td>
+        </ng-container>
+  
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  
+        <!-- Row shown when there is no matching data. -->
+        <tr class="mat-row" *matNoDataRow>
+          <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+        </tr>
+      </table>
+  
+      <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of equiment"></mat-paginator>
+    </div>
+  </div>

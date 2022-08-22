@@ -5,6 +5,7 @@ import {MatDialogRef,MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DatePipe } from '@angular/common'
 import { Router } from '@angular/router';
 import { MatTableDataSource } from '@angular/material/table';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 
 @Component({
@@ -19,7 +20,7 @@ export class CreateProjectComponent implements OnInit {
   actionBtn:string="save"
   constructor(public datepipe: DatePipe,private formBuilder :FormBuilder,private api:ProjectService,private router: Router,
     @Inject(MAT_DIALOG_DATA)public editData:any, 
-    private dialogRef:MatDialogRef<CreateProjectComponent >) { }
+    private dialogRef:MatDialogRef<CreateProjectComponent >,private _snackBar: MatSnackBar) { }
   ngOnInit(): void {
     this.projectForm=this.formBuilder.group({
       name: new FormControl('', [Validators.required]),
@@ -31,8 +32,8 @@ export class CreateProjectComponent implements OnInit {
     })
     if(this.editData){
       this.actionBtn="Update"
-      this.projectForm.controls['name'].setValue(this.editData.projectname);
-      this.projectForm.controls['manager'].setValue(this.editData.name);
+      this.projectForm.controls['name'].setValue(this.editData.name);
+      this.projectForm.controls['manager'].setValue(this.editData.manager);
 
     }
 
@@ -43,19 +44,23 @@ export class CreateProjectComponent implements OnInit {
     this.api.putProject(this.projectForm.value,this.editData.id)
     .subscribe({
       next:(res)=>{
-        alert("Project updated successfuly")
+        this._snackBar.open("Project updated successfuly",'',{ 
+          duration: 3000
+      })
         this.projectForm.reset();
         this.dialogRef.close();
       },
       error:()=>{
-        alert("error while updating project")
+        this._snackBar.open("error while updating project",'',{ 
+          duration: 3000
+      })
       }})
 
 
   }
   addProject(){
  
-     
+     if(!this.editData){
       if (this.projectForm.valid) {
         this.api.postProject(this.projectForm.value).subscribe({
           next: (res) => {
@@ -64,10 +69,15 @@ export class CreateProjectComponent implements OnInit {
             
           },
           error: (error) => {
-            alert('error while adding equipment' + error.message);
+            this._snackBar.open('error while adding equipment' + error.message,'',{ 
+              duration: 3000
+          });
           },
         });
+      }}
+      else{
+       this.updateProject()
       }
     }
 
-  }
+}

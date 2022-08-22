@@ -1,0 +1,23 @@
+<div class="container">
+  <mat-toolbar>
+    <span class="example-spacer"></span>
+    <button
+      mat-raised-button
+      style="color: rgba(12, 12, 63); margin-top: 30px; margin-bottom: 30px"
+      routerLink="../../../" >
+      <i class="fa-solid fa-chevron-left"></i> Back
+    </button>
+  </mat-toolbar>
+  <main *ngFor="let member of members">
+      <mat-card class="pos" mat-align-card="center" style="margin:5px"> 
+      <mat-card-title
+        >{{ member.firstname }} {{ member.lastname }}</mat-card-title
+      >
+      <mat-card-subtitle> {{ member.role }}</mat-card-subtitle>
+      <mat-card-content>
+        <i class="fa-solid fa-envelope"></i>
+        {{ member.email }}</mat-card-content
+      >
+      
+    </mat-card>
+  </main></div>

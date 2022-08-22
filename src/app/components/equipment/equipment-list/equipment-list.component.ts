@@ -8,6 +8,8 @@ import { AddequipmentComponent } from '../addequipment/addequipment.component';
 import {MatDialog} from '@angular/material/dialog';
 import { ReserveComponent } from '../reserve/reserve.component';
 import { Router } from '@angular/router';
+import {MatSnackBar} from '@angular/material/snack-bar';
+
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 @Component({
   selector: 'app-equipment-list',
@@ -26,7 +28,7 @@ export class EquipmentListComponent implements OnInit {
 
 
   constructor(private api:EquipmentService,private dialog:MatDialog, private tokenStorage: TokenStorageService,
-    private router: Router) { }
+    private router: Router,private _snackBar: MatSnackBar) { }
   openDialog() {
     const dialogRef = this.dialog.open(AddequipmentComponent,{
       
@@ -44,7 +46,9 @@ export class EquipmentListComponent implements OnInit {
           this.dataSource.sort=this.sort 
     },
     error:(err)=>{
-       alert("error get")
+      this._snackBar.open("error get equipment",'',{ 
+        duration: 3000
+    })
     }
    })
   }
@@ -62,11 +66,15 @@ export class EquipmentListComponent implements OnInit {
   deleteEquipment(id:number){
     this.api.deleteEquipment(id).subscribe({
       next:(res)=>{
-        alert("equipment deleted successfuly")
+        this._snackBar.open("equipment deleted successfuly",'',{ 
+          duration: 3000
+      })
         this.getAllEquipment()
       },
       error:()=>{
-        alert("error while deletinf quipment")
+        this._snackBar.open("error while deletinf quipment",'',{ 
+          duration: 3000
+      })
       }
     })
   }
@@ -90,9 +98,9 @@ export class EquipmentListComponent implements OnInit {
     }
   }
 
-  reserve(){
+  reserve(row: any){
     const dialogRef = this.dialog.open(ReserveComponent,{
-      
+      data:{'EquipmentId':row, 'toremove':false }  
     });
   
 

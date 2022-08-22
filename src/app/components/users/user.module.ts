@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { UserRoutingModule } from './user-routing.module';
 import { ProfileComponent } from './profile/profile.component';
-import { HistoryComponent } from './history/history.component';
 import { CurrentMatComponent } from './current-mat/current-mat.component'
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatToolbarModule} from '@angular/material/toolbar';
@@ -45,9 +44,19 @@ import { ProjectEquipmentAddComponent } from '../projects/project-equipment-add/
 import {MatTooltipModule} from '@angular/material/tooltip';
 import { ReserveEquipmentComponent } from '../projects/reserve-equipment/reserve-equipment.component';
 import { ProectReservedEquipmentComponent } from '../projects/proect-reserved-equipment/proect-reserved-equipment.component';
-
+import { ProjectMemberMembersComponent } from '../projects/project-member-members/project-member-members.component';
+import { ProjectMemberEquipmentComponent } from '../projects/project-member-equipment/project-member-equipment.component';
+import { HistoryComponent } from '../history/history/history.component';
+import { SettingListComponent } from './settings/setting-list/setting-list.component';
+import { PasswordComponent } from './settings/password/password.component';
+import { UsernameComponent } from './settings/username/username.component';
 import { DatePipe } from '@angular/common';
 import { ProjectMemberAddComponent } from '../projects/project-member-add/project-member-add.component';
+import { UserHistoryComponent } from '../history/user-history/user-history.component';
+import { DetailsComponent } from '../equipment/details/details.component';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { NotifComponent } from '../alert/notif/notif.component';
+
 import { ProjectMemberListComponent } from '../projects/project-member-list/project-member-list.component';
 @NgModule({
   declarations: [
@@ -78,10 +87,18 @@ import { ProjectMemberListComponent } from '../projects/project-member-list/proj
     ProjectEquipmentAddComponent,
     ReserveEquipmentComponent,
     ProectReservedEquipmentComponent,
-
+    ProjectMemberMembersComponent,
+    ProjectMemberEquipmentComponent,
+    HistoryComponent,
+    SettingListComponent,
+    PasswordComponent,
+    UsernameComponent,
+    UserHistoryComponent,
+    DetailsComponent,
+    NotifComponent
   ],
   imports: [
-    CommonModule,
+    CommonModule ,
     UserRoutingModule,
     MatTabsModule,
     MatToolbarModule,
@@ -102,7 +119,8 @@ import { ProjectMemberListComponent } from '../projects/project-member-list/proj
     MatCardModule,
     MatMenuModule,
     MatSlideToggleModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatSnackBarModule
   ],
   providers: [DatePipe]
 })

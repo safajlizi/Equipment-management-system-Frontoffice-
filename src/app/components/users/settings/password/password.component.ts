@@ -2,6 +2,8 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
+import {MatDialogRef,MAT_DIALOG_DATA } from '@angular/material/dialog'
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-password',
@@ -16,7 +18,9 @@ export class PasswordComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private api: UserService,
-    private tokenStorage: TokenStorageService
+    private tokenStorage: TokenStorageService,
+    private dialogRef:MatDialogRef<PasswordComponent>
+    ,private _snackBar: MatSnackBar
   ) {
     this.passwordResetForm = this.fb.group({
       oldpassword: ['', Validators.required],
@@ -38,11 +42,18 @@ export class PasswordComponent implements OnInit {
     let userId = this.tokenStorage.getUser().id;
     this.api.resetPassword(userId, this.passwordResetForm.value).subscribe(
       () => {
-        this.message = 'Succesful!';
+        this._snackBar.open("password updated Successfuly!",'',{ 
+          duration: 3000
+      })
+        this.passwordResetForm.reset()
+        this.dialogRef.close
       },
       (err) => {
-        console.log(err);
-        this.message = err.message;
+        this._snackBar.open(err.message,'',{ 
+          duration: 3000
+      })
+        this.passwordResetForm.reset()
+
       }
     );
   }
