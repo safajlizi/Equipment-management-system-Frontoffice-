@@ -25,6 +25,7 @@ export class UserHistoryComponent implements OnInit {
    .subscribe({
     next:(res)=>{
         this.history=res 
+        console.log(res)
    },
     error:(err)=>{
       this._snackBar.open("error get hisotry")

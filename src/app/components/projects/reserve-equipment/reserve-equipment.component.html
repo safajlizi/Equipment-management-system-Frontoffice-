@@ -6,7 +6,15 @@
         <input
         formControlName="description" matInput placeholder="description"
         />
-      </mat-form-field>
+    
+      </mat-form-field><br> 
+         <mat-form-field appearance="outline"   >
+          <mat-label>Choose a liberating date</mat-label>
+          <input formControlName="date_lib" matInput [matDatepicker]="picker">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+       
     </form>
     <div mat-dialog-actions [align]="'end'">
       <button mat-raised-button mat-dialog-close>cancel</button>

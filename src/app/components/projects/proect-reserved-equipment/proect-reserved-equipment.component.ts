@@ -50,7 +50,8 @@ export class ProectReservedEquipmentComponent implements OnInit {
    .subscribe({
     next:(res)=>{
   
-
+      console.log('sa')
+      console.log(res)
     
           this.dataSource=new MatTableDataSource(res)
           this.dataSource.paginator=this.paginator

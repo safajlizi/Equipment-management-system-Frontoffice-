@@ -1,20 +1,18 @@
 <div class="pos">
   <form class="example-form" [formGroup]="equipmentForm">
+   
+
     <mat-form-field class="example-full-width" appearance="outline">
-      <mat-label>Label</mat-label>
+      <mat-label>Label/eq.name</mat-label>
       <textarea matInput formControlName="label"></textarea>
     </mat-form-field>
 
 
-    <mat-form-field class="example-full-width" *ngIf="false" appearance="outline">
-      <mat-label>availability</mat-label>
-      <textarea matInput formControlName="availability"></textarea>
-    </mat-form-field>
 
     <table  cellspacing="2">
       <tr>
         <td>
-          <mat-form-field  [ngStyle]="{'width': equipmentForm.value.category == 'other' ? '250px' : '500px'}" appearance="outline">
+          <mat-form-field  [ngStyle]="{'width': equipmentForm.value.category == 'other' ? '200px' : '500px'}" appearance="outline">
             <mat-label>Category</mat-label>
             <mat-select formControlName="category" placeholder="role">
               <mat-option value="card" selected>Card</mat-option>
@@ -25,7 +23,7 @@
           </mat-form-field>
         </td>
         <td>
-          <mat-form-field  appearance="outline" *ngIf='equipmentForm.value.category == "other"'>
+          <mat-form-field  appearance="outline"style="width:300px" *ngIf='equipmentForm.value.category == "other"'>
             <mat-label>Other</mat-label>
             <textarea matInput formControlName="other"></textarea>
           </mat-form-field>
@@ -35,64 +33,42 @@
     <table  cellspacing="2">
       <tr>
         <td>
-          <mat-form-field [ngStyle]="{'width': equipmentForm.value.status == 'uncompliant state' ? '250px' : '500px'}" appearance="outline">
-            <mat-label>Status</mat-label>
-            <mat-select formControlName="status" placeholder="role">
+          <mat-form-field [ngStyle]="{'width': equipmentForm.value.conformity == 'notcompliant' ? '200px' : '500px'}" appearance="outline">
+            <mat-label> conformity</mat-label>
+            <mat-select formControlName="conformity" placeholder="role">
               <mat-option value="compliant" selected>Compliant</mat-option>
-              <mat-option value="no compliant">No compliant</mat-option>
+              <mat-option value="notcompliant">No compliant</mat-option>
 
             </mat-select>
           </mat-form-field>
         </td>
         <td>
-          <mat-form-field  appearance="outline" *ngIf='equipmentForm.value.status == "no compliant"'>
+          <mat-form-field  appearance="outline" style="width:300px" *ngIf='equipmentForm.value.conformity == "notcompliant"'>
             <mat-label>details</mat-label>
-            <textarea matInput formControlName="descriptionStatus"></textarea>
+            <textarea matInput formControlName="defaults"></textarea>
           </mat-form-field>
         </td>
       </tr>
     </table>
 
-    <!--<mat-radio-group formControlName="prop_client" aria-labelledby="example-radio-group-label"
-      class="example-radio-group">
-      <mat-label>Client Equipment</mat-label>
-
-      <mat-radio-button class="example-radio-button" value="true">
-        yes
-      </mat-radio-button>
-      <mat-radio-button class="example-radio-button" value="false">
-        no
-      </mat-radio-button>
-    </mat-radio-group>-->
-    
-    <mat-slide-toggle formControlName="prop_client" *ngIf="false">Client Equipment</mat-slide-toggle>
-    <mat-form-field class="example-full-width" appearance="outline">
-      <mat-label>Description</mat-label>
-      <textarea formControlName="description" matInput placeholder="description"></textarea>
-    </mat-form-field>
+    <mat-slide-toggle formControlName="property">calibrated equipment</mat-slide-toggle>
     <table  cellspacing="0">
       <tr>
         <td>
-        <!--  <mat-radio-group formControlName="is_calibrated" aria-labelledby="example-radio-group-label"
-      class="example-radio-group">
-
-      <mat-label>calibrated equipment ? </mat-label>
-
-      <mat-radio-button class="example-radio-button" value="true">
-        yes
-      </mat-radio-button>
-      <mat-radio-button class="example-radio-button" value="false">
-        no
-      </mat-radio-button>
-    </mat-radio-group>-->
-    <mat-slide-toggle formControlName="is_calibrated">calibrated equipment</mat-slide-toggle>
-
+ 
+    <mat-form-field [ngStyle]="{'width': equipmentForm.value.calibration =='ok' ? '200px' : '500px'}" appearance="outline">
+      <mat-label>  calibration</mat-label>
+      <mat-select formControlName="calibration" placeholder="role">
+        <mat-option value="ok" selected>ok</mat-option>
+        <mat-option value="nok">Nok</mat-option>
+      </mat-select>
+    </mat-form-field>
         </td>
         <td>
          
-    <mat-form-field appearance="outline" style="width:300px">
+    <mat-form-field appearance="outline" style="width:300px" *ngIf='equipmentForm.value.calibration == "ok"'>
       <mat-label>Choose a calibrate date</mat-label>
-      <input formControlName="calibrating_date" matInput [matDatepicker]="picker">
+      <input formControlName="validity_date" matInput [matDatepicker]="picker">
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>

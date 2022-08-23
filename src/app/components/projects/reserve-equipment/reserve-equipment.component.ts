@@ -33,6 +33,8 @@ export class ReserveEquipmentComponent implements OnInit {
       equipment:[null],
       project:[null],
       description:[null],
+      date_lib:[null],
+
      
      
     })
@@ -97,7 +99,7 @@ export class ReserveEquipmentComponent implements OnInit {
      else{
       if(this.equipmentForm.valid){
 
-        this.equipmentForm.controls['equipment'].setValue(this.editData.row.Equipment_id);
+        this.equipmentForm.controls['equipment'].setValue(this.editData.row.id);
        
         this.equipmentForm.controls['user'].setValue(this.tokenStorage.getUser().id);
        

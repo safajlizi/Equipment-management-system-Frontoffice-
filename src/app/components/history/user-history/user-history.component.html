@@ -4,10 +4,9 @@
     <main *ngFor="let row of history">
 
         <mat-card class="pos" mat-align-card="center" style="background-color:  rgba(236, 149, 35, 0.486);margin:5px;height:160px ">
-            <mat-card-title>Equipment name : </mat-card-title>
+            <mat-card-title>Equipment name : {{row.equipment.label}} </mat-card-title>
             <mat-card-subtitle>Action :{{ row.action_type }} </mat-card-subtitle>
             <mat-card-content>
-                Username : <br>
                 Description :{{ row.description }} <br>
  </mat-card-content>
  <div mat-dialog-actions [align]="'end'">

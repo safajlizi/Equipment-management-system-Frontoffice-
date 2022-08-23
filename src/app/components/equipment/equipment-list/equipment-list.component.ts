@@ -41,6 +41,7 @@ export class EquipmentListComponent implements OnInit {
     this.api.getEquipment()
    .subscribe({
     next:(res)=>{
+      
           this.dataSource=new MatTableDataSource(res)
           this.dataSource.paginator=this.paginator
           this.dataSource.sort=this.sort 
@@ -102,6 +103,13 @@ export class EquipmentListComponent implements OnInit {
       data:{'EquipmentId':row, 'toremove':false }  
     });
   
+
+}
+details(row: any){
+  const dialogRef = this.dialog.open(ReserveComponent,{
+    data:{'EquipmentId':row, 'toremove':false }  
+  });
+
 
 }
 }

@@ -18,6 +18,9 @@ export class ProjectMembersComponent implements OnInit {
     this.projectService
       .getProjectMembers(this.projectId)
       .subscribe((response) => {
+        console.log("response")
+
+        console.log(response)
         this.members = response;
       });
   }

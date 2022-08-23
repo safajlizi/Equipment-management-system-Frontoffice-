@@ -14,7 +14,6 @@ export class ProjectManagerListComponent implements OnInit {
   role = '';
   showManaged: boolean = true;
   managedProjects: any;
-  memberProjects: any;
   size:any
   constructor(
     private tokenStorage: TokenStorageService,
@@ -36,6 +35,7 @@ export class ProjectManagerListComponent implements OnInit {
     this.userService.getManagedProjects(user.id).subscribe({
       next:(res)=>{
         this.managedProjects = res;
+        
       },
       error:(err)=>{
         this._snackBar.open("error get managed projects",'',{ 
@@ -43,9 +43,7 @@ export class ProjectManagerListComponent implements OnInit {
       })
       }
      });
-    this.userService.getMemberProjects(user.id).subscribe((res) => {
-      this.memberProjects = res;
-    });
+   
   }
  count(list:[any]):number{
  return list.length

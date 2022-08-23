@@ -19,31 +19,29 @@ export class AddequipmentComponent implements OnInit {
   ngOnInit(): void {
     this.equipmentForm=this.formBuilder.group({
       label:['', Validators.required],
-      prop_client:[false],
-      availability:[false],
-      status:['Compliant state', Validators.required],
+
+      property:[false],
+      conformity:['compliant', Validators.required],
+      defaults:[null],
       description:[null],
-      descriptionStatus:[null],
-      is_calibrated:[false],
-      calibrating_date:[null, Validators.prototype],
+      calibration:[false],
+      validity_date:[null, Validators.prototype],
       category:[null, Validators.required],
       other:[null],
-      manager:[null]
-      
+      manager:[]
      
     })
     if(this.editData){
       this.actionBtn="Update"
       this.equipmentForm.controls['label'].setValue(this.editData.label);
-      this.equipmentForm.controls['prop_client'].setValue(this.editData.prop_client);
-      this.equipmentForm.controls['status'].setValue(this.editData.status);
-      this.equipmentForm.controls['availability'].setValue(this.editData.status);
-      this.equipmentForm.controls['descriptionStatus'].setValue(this.editData.descriptionStatus);
+
+      this.equipmentForm.controls['property'].setValue(this.editData.property);
+      this.equipmentForm.controls['conformity'].setValue(this.editData.conformity);
+      this.equipmentForm.controls['defaults'].setValue(this.editData.defaults);
       this.equipmentForm.controls['other'].setValue(this.editData.other);
 
-      this.equipmentForm.controls['description'].setValue(this.editData.description);
-      this.equipmentForm.controls['is_calibrated'].setValue(this.editData. is_calibrated);
-      this.equipmentForm.controls['calibrating_date'].setValue(this.editData.calibrating_date);
+      this.equipmentForm.controls['calibration'].setValue(this.editData.calibration);
+      this.equipmentForm.controls['validity_date'].setValue(this.editData.validity_date);
       this.equipmentForm.controls['category'].setValue(this.editData.category);
 
     }
@@ -72,9 +70,14 @@ export class AddequipmentComponent implements OnInit {
   }
   addEquipment(){
     if(!this.editData){
+      console.log("safaaaaaa")
       if(this.equipmentForm.valid){
-        this.equipmentForm.controls['calibrating_date'].setValue(this.datepipe.transform(this.equipmentForm.value.calibrating_date, 'yyyy-MM-dd') )
-       
+        
+
+        this.equipmentForm.controls['validity_date'].setValue(this.datepipe.transform(this.equipmentForm.value.validity_date, 'yyyy-MM-dd') )
+        if(this.equipmentForm.value.property == true ){this.equipmentForm.controls['property'].setValue('client')}
+        else{this.equipmentForm.controls['property'].setValue('sofia')}
+        if(this.equipmentForm.value.other ){this.equipmentForm.controls['category'].setValue(this.equipmentForm.value.other)}
       this.api.postEquipment(this.equipmentForm.value)
       .subscribe({
         next:(res)=>{

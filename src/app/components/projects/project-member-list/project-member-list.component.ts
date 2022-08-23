@@ -27,6 +27,7 @@ export class ProjectMemberListComponent implements OnInit {
   
     this.userService.getMemberProjects(user.id).subscribe({
       next:(res)=>{
+        console.log(res)
         this.memberProjects = res;
       },
       error:(err)=>{
