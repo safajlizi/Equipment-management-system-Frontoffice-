@@ -23,7 +23,6 @@ getEHistoryByEquipment(){
       .subscribe({
         next:(res)=>{
           this.history = res; 
-        console.log(res)
         },
         error:(err)=>{
           this._snackBar.open("error get equipment hisotry ")
@@ -31,7 +30,7 @@ getEHistoryByEquipment(){
        });
 }
   ngOnInit(): void {
-    this.historyService.getHistory()
+    /*this.historyService.getHistory()
       .subscribe({
         next:(res)=>{
           this.history = res; 
@@ -39,7 +38,8 @@ getEHistoryByEquipment(){
         error:(err)=>{
           this._snackBar.open("error get equipment hisotry ")
         }
-       });
+       });*/
+       this.getEHistoryByEquipment()
     
   }
   

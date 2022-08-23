@@ -21,7 +21,6 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.tokenStorage.getToken()) {
-      console.log('afaa')
       this.role = this.tokenStorage.getUser().role;
     } else {
       this.router.navigateByUrl('/login');

@@ -60,6 +60,8 @@ export class ListProjectsComponent implements OnInit {
   ngOnInit(): void {
     this.getAllProjects();
   }
+
+
   async displayProjectManager(projectId: string) {
     this.projectService.getProjectManager(projectId).subscribe({
       next: (res) => {
@@ -71,7 +73,9 @@ export class ListProjectsComponent implements OnInit {
       });
       },
     });
+
   }
+
   getEquipment(projectId: string) {
     this.projectService.getProjectEquipment(projectId).subscribe({
       next: (res) => {
@@ -99,7 +103,6 @@ export class ListProjectsComponent implements OnInit {
       
     });}
     editProject(row :any){
-      console.log(row)
       this.dialog.open(CreateProjectComponent,{
         width:'30%',
         data:row  

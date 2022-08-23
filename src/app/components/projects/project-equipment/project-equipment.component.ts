@@ -48,8 +48,7 @@ export class ProjectEquipmentComponent implements OnInit {
     this.api.getEquipment()
    .subscribe({
     next:(res)=>{
-      console.log('qll eauipment')
-      console.log(res)
+   
           this.dataSource=new MatTableDataSource(res)
           this.dataSource.paginator=this.paginator
           this.dataSource.sort=this.sort 
@@ -101,7 +100,6 @@ export class ProjectEquipmentComponent implements OnInit {
     if (this.tokenStorage.getToken()) {
      
       this.role = this.tokenStorage.getUser().role;
-      console.log(this.tokenStorage.getUser())
     } else {
       this.router.navigateByUrl('/login');
     }

@@ -23,7 +23,7 @@ export class ManagerCardComponent implements OnInit {
   this.api.getProjectManager(this.getData.id).subscribe({
     next: (res) => {
      this.projectManager=res
-    
+   
 
     },
     error: (err) => {

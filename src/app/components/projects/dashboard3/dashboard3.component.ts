@@ -28,7 +28,6 @@ export class Dashboard3Component implements OnInit {
    .subscribe({
     next:(res)=>{
           this.managedProjects=res
-          console.log(this.managedProjects)
     },
     error:(err)=>{
       this._snackBar.open("error get project",'',{ 

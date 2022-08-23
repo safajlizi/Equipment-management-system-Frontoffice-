@@ -54,10 +54,7 @@ export class ProjectMemberEquipmentComponent implements OnInit {
           this.dataSource=new MatTableDataSource(res)
           this.dataSource.paginator=this.paginator
           this.dataSource.sort=this.sort 
-          console.log('res')
 
-          console.log(res)
-          console.log('res')
 
     },
     error:(err)=>{

@@ -25,7 +25,7 @@ export class UserHistoryComponent implements OnInit {
    .subscribe({
     next:(res)=>{
         this.history=res 
-      console.log(res) },
+   },
     error:(err)=>{
       this._snackBar.open("error get hisotry")
     }
@@ -38,14 +38,7 @@ export class UserHistoryComponent implements OnInit {
       this.router.navigateByUrl('/login');
     }
     
-    /*this.historyService
-      .getHistory()
-      .subscribe((response) => {
-        console.log(response)
-        this.history = response;
-        console.log(this.history)
-        
-      });*/
+  
       this.getUserHistory()
   }
   

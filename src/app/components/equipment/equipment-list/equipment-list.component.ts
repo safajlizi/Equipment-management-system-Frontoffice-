@@ -92,7 +92,6 @@ export class EquipmentListComponent implements OnInit {
     if (this.tokenStorage.getToken()) {
      
       this.role = this.tokenStorage.getUser().role;
-      console.log(this.tokenStorage.getUser())
     } else {
       this.router.navigateByUrl('/login');
     }

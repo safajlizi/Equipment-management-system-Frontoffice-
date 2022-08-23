@@ -13,9 +13,7 @@ export class SideNavComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.tokenStorage.getToken()) {
-      console.log('afaa')
       this.userId = this.tokenStorage.getUser().id;
-      console.log(this.tokenStorage.getUser())
     } else {
       this.router.navigateByUrl('/login');
     }

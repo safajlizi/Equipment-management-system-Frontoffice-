@@ -51,7 +51,7 @@ export class ProectReservedEquipmentComponent implements OnInit {
     next:(res)=>{
   
 
-      console.log(res)
+    
           this.dataSource=new MatTableDataSource(res)
           this.dataSource.paginator=this.paginator
           this.dataSource.sort=this.sort 
@@ -106,7 +106,6 @@ export class ProectReservedEquipmentComponent implements OnInit {
     if (this.tokenStorage.getToken()) {
      
       this.role = this.tokenStorage.getUser().role;
-      console.log(this.tokenStorage.getUser())
     } else {
       this.router.navigateByUrl('/login');
     }

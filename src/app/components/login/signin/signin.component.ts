@@ -37,7 +37,6 @@ export class SigninComponent implements OnInit {
 
    onSubmit(): void {
     const { identifier, password } = this.form.controls;
-    console.log(this.form.value);
     this.authService.login(identifier.value, password.value).subscribe({
       next: (data) => {
         this.tokenStorage.saveToken(data.jwt);

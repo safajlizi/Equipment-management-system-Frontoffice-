@@ -29,7 +29,7 @@ export class ProjectService {
     return this.http.get<any>('http://localhost:3000/project/manager/' + id);
   }
   getProjectMembers(id: string) {
-    return this.http.get<any>('http://localhost:3000/project/members/' + id);
+    return this.http.get<any>('http://localhost:3000/project/user/' + id);
   }
   addProjectMember(id: string, userId: string | string[]) {
     return this.http.put<any>(

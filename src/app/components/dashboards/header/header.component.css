@@ -34,7 +34,6 @@ img{
     color:white;
     background-color: rgba(12, 12, 63);
     border: none;
-    border-radius: 50px;
     cursor: pointer;
     transition:all 0.3 ease 0s;
     

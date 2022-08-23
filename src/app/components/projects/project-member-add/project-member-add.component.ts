@@ -54,7 +54,7 @@ export class ProjectMemberAddComponent implements OnInit {
       return;
     }
     this.selectedUsers.push(id);
-    console.log('selected :', this.selectedUsers);
+
   }
   onSave() {
     this.projectService
@@ -82,7 +82,6 @@ export class ProjectMemberAddComponent implements OnInit {
   }
   isSelected(id:string):boolean
   {    
-    console.log('safa'+id)
     return this.selectedUsers.includes(id)
   }
 }

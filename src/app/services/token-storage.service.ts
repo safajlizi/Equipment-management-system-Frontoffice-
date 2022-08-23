@@ -22,9 +22,7 @@ export class TokenStorageService {
   }
   public editUser(field: string, value: string) {
     let user = this.getUser();
-    console.log(user);
     user[field] = value;
-    console.log(user);
     this.saveUser(user);
   }
   public getUser(): any {

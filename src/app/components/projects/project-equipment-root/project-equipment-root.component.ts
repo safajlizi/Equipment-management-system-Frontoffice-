@@ -22,7 +22,6 @@ export class ProjectEquipmentRootComponent implements OnInit {
       this.IsInaddSpace=true
     }
     this.location= this.router.url
-    console.log(this.location)
   }
   switch() {
     this.listOrAdd = !this.listOrAdd;

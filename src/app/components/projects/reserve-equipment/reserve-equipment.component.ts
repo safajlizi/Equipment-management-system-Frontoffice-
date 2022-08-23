@@ -78,7 +78,6 @@ export class ReserveEquipmentComponent implements OnInit {
         this.equipmentForm.controls['project'].setValue(this.editData.id);
       
 
-        console.log(this.equipmentForm.value)
         this.api.affectEquipToProject(this.equipmentForm.value)
       .subscribe({
         next:(res)=>{
@@ -127,7 +126,6 @@ export class ReserveEquipmentComponent implements OnInit {
           this.equipmentForm.controls['equipment'].setValue(this.editData.EquipmentId);
           this.equipmentForm.controls['user'].setValue(this.tokenStorage.getUser().id);
           this.equipmentForm.controls['project'].setValue(this.editData.id);
-          console.log(this.equipmentForm.value)
           
           this.api.affectEquipToProjectUser(this.equipmentForm.value)
         .subscribe({
