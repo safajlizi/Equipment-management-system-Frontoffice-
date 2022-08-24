@@ -7,6 +7,7 @@ import { EquipmentService } from 'src/app/services/equipment.service';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 import { UserService } from 'src/app/services/user.service';
 import { ReserveComponent } from '../../equipment/reserve/reserve.component';
+import { ReserveEquipmentComponent } from '../../projects/reserve-equipment/reserve-equipment.component';
 import { PasswordComponent } from '../settings/password/password.component';
 import { SettingListComponent } from '../settings/setting-list/setting-list.component';
 import { UsernameComponent } from '../settings/username/username.component';
@@ -41,9 +42,9 @@ export class ProfileComponent implements OnInit {
     if(row.other){
       row.set
     }
-        this.dialog.open(ReserveComponent,{
+        this.dialog.open(ReserveEquipmentComponent,{
       
-      data:{'EquipmentId':row,'toremove':true}  
+      data:{'row':row,'toremove':true,'reserveUser':true}  
     })}
 
 

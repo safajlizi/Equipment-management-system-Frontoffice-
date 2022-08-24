@@ -31,8 +31,8 @@ img{
 
 }
 .log{
-    color:white;
-    background-color: rgba(12, 12, 63);
+    color: rgba(12, 12, 63);
+    background-color: rgb(254, 254, 255);
     border: none;
     cursor: pointer;
     transition:all 0.3 ease 0s;

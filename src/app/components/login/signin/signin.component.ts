@@ -14,6 +14,7 @@ export class SigninComponent implements OnInit {
   isLoggedIn = false;
   isLoginFailed = false;
   role!: string;
+  message=false
 
   constructor(private router: Router,
     private fb: FormBuilder,
@@ -39,16 +40,19 @@ export class SigninComponent implements OnInit {
     const { identifier, password } = this.form.controls;
     this.authService.login(identifier.value, password.value).subscribe({
       next: (data) => {
+        
         this.tokenStorage.saveToken(data.jwt);
         this.tokenStorage.saveUser(this.tokenStorage.parseJwt(data.jwt));
         this.isLoginFailed = false;
         this.isLoggedIn = true;
+        this.message=false
         this.role = this.tokenStorage.getUser().role;
         this.router.navigateByUrl('/dashboard');
         this.reloadPage();
       },
       error: (err) => {
         this.isLoginFailed = true;
+        this.message=true
       },
     });
   }

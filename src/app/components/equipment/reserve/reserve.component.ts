@@ -44,6 +44,7 @@ export class ReserveComponent implements OnInit {
     if(this.editData.row){
       this.actionBtn="Update"
       
+      
     }
 
 

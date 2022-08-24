@@ -25,7 +25,7 @@
       <div *ngFor="let equip of equipments">
         <mat-card-content>{{ equip.label }} {{ equip.id }}</mat-card-content>
         <mat-card-actions align="end">
-          <button mat-icon-button (click)="removeEquipmentfromProject(equip.id)" matTooltip="liberate equiment" >
+          <button mat-icon-button (click)="removeEquipmentfromProject(equip)" matTooltip="liberate equiment" >
             <i class="fa-solid fa-trash"></i>  
             </button>
         </mat-card-actions>

@@ -78,7 +78,7 @@ export class UserService {
   }
   //not works
   getMemberProjects(id: string): Observable<any> {
-    return this.http.get("http://localhost:3000/" + 'project/user/' + id);
+    return this.http.get(API_URL + 'projects/member/' + id);
   }
   filter(keyword: string): Observable<any> {
     return this.http.get(API_URL + 'filter/' + keyword);

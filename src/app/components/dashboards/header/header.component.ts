@@ -9,6 +9,7 @@ import { TokenStorageService } from 'src/app/services/token-storage.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+  role!: string;
 
   @Output() sideNavToggled = new EventEmitter<boolean>();
   menuStatus: boolean = false;
@@ -17,7 +18,14 @@ export class HeaderComponent implements OnInit {
     private tokenStorage: TokenStorageService
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    if (this.tokenStorage.getToken()) {
+      this.role = this.tokenStorage.getUser().role;
+    } else {
+      this.router.navigateByUrl('/login');
+    }
+    
+  }
   SideNavToggle() {
     this.menuStatus = !this.menuStatus;
     this.sideNavToggled.emit(this.menuStatus);
