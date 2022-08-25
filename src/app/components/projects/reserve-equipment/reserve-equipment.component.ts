@@ -31,25 +31,21 @@ export class ReserveEquipmentComponent implements OnInit {
     });
   }
   ngOnInit(): void {
-    this.equipmentForm=this.formBuilder.group({
-      user:[null],
-      equipment:[null],
-      project:[null],
-      description:[null],
-      date_lib:[null],
-
-     
-     
-    })
-    if(this.editData.row){
-      this.actionBtn="Update"
-      
+    this.equipmentForm = this.formBuilder.group({
+      user: [null],
+      equipment: [null],
+      project: [null],
+      description: [null],
+      date_lib: [null],
+    });
+    if (this.editData.row) {
+      this.actionBtn = 'Update';
     }
   }
 
   AddEquipmentProjectmember() {
     this.api
-      .patchEquipment(this.equipmentForm.value, this.editData.row.id)
+      .patchEquipment(this.equipmentForm.value, this.editData.EquipmentId)
       .subscribe({
         next: (res) => {
           this._snackBar.open('Equipment updated successfuly', '', {
@@ -71,7 +67,7 @@ export class ReserveEquipmentComponent implements OnInit {
       if (this.editData && this.editData.toremove == false) {
         if (this.equipmentForm.valid) {
           this.equipmentForm.controls['equipment'].setValue(
-            this.editData.row.id
+            this.editData.EquipmentId
           );
 
           this.equipmentForm.controls['user'].setValue(
@@ -98,6 +94,14 @@ export class ReserveEquipmentComponent implements OnInit {
       } else {
         if (this.equipmentForm.valid) {
           this.equipmentForm.controls['equipment'].setValue(
+            this.editData.EquipmentId
+          );
+
+          this.equipmentForm.controls['user'].setValue(
+            this.tokenStorage.getUser().id
+          );
+
+          this.equipmentForm.controls['equipment'].setValue(
             this.editData.row.id
           );
 
@@ -105,78 +109,83 @@ export class ReserveEquipmentComponent implements OnInit {
             this.tokenStorage.getUser().id
           );
 
-        this.equipmentForm.controls['equipment'].setValue(this.editData.row.id);
-       
-        this.equipmentForm.controls['user'].setValue(this.tokenStorage.getUser().id);
-       
-        this.equipmentForm.controls['project'].setValue(this.editData.id);
-        
-        this.api.returnEquipfromProject(this.equipmentForm.value)
-      .subscribe({
-        next:(res)=>{
-          this._snackBar.open("equipment deleted successfuly",'',{ 
-            duration: 3000
-        })
-          this.equipmentForm.reset();
-          this.dialogRef.close();
-        },
-        error:()=>{
-          this._snackBar.open("error while deleting equipment",'',{ 
-            duration: 3000
-        })
-        }
-      })
-     }}
-    
-     }
-      else{
-        if(this.editData.toremove){
-          console.log(this.editData.row)
-          this.equipmentForm.controls['equipment'].setValue(this.editData.row.id);
-       
-        this.equipmentForm.controls['user'].setValue(this.tokenStorage.getUser().id);
-       
-        this.equipmentForm.controls['project'].setValue(this.editData.row.project.id);
-        
-        this.api.returnEquipfromProjectUser(this.equipmentForm.value)
-      .subscribe({
-        next:(res)=>{
-          this._snackBar.open("equipment deleted successfuly",'',{ 
-            duration: 3000
-        })
-          this.equipmentForm.reset();
-          this.dialogRef.close();
-        },
-        error:()=>{
-          this._snackBar.open("error while deleting equipment",'',{ 
-            duration: 3000
-        })
-        }
-      })
-        }
-        else{
-        if(this.equipmentForm.valid){
-          this.equipmentForm.controls['equipment'].setValue(this.editData.EquipmentId);
-          this.equipmentForm.controls['user'].setValue(this.tokenStorage.getUser().id);
           this.equipmentForm.controls['project'].setValue(this.editData.id);
-          alert(this.editData.id)
-          
-          this.api.affectEquipToProjectUser(this.equipmentForm.value)
-        .subscribe({
-          next:(res)=>{
-            this._snackBar.open("Equipment reserve successfuly",'',{ 
-              duration: 3000
-          })
-            this.equipmentForm.reset();
-            this.dialogRef.close();
-          },
-          error:()=>{
-            this._snackBar.open("error whilereservinggg equipment",'',{ 
-              duration: 3000
-          })
-          }
-        })
-       }}
+
+          this.api.returnEquipfromProject(this.equipmentForm.value).subscribe({
+            next: (res) => {
+              this._snackBar.open('equipment deleted successfuly', '', {
+                duration: 3000,
+              });
+              this.equipmentForm.reset();
+              this.dialogRef.close();
+            },
+            error: () => {
+              this._snackBar.open('error while deleting equipment', '', {
+                duration: 3000,
+              });
+            },
+          });
+        }
+      }
+    } else {
+      if (this.editData.toremove) {
+        console.log(this.editData.row);
+        this.equipmentForm.controls['equipment'].setValue(
+          this.editData.EquipmentId
+        );
+
+        this.equipmentForm.controls['user'].setValue(
+          this.tokenStorage.getUser().id
+        );
+
+        this.equipmentForm.controls['project'].setValue(
+          this.editData.row.project.id
+        );
+
+        this.api
+          .returnEquipfromProjectUser(this.equipmentForm.value)
+          .subscribe({
+            next: (res) => {
+              this._snackBar.open('equipment deleted successfuly', '', {
+                duration: 3000,
+              });
+              this.equipmentForm.reset();
+              this.dialogRef.close();
+            },
+            error: () => {
+              this._snackBar.open('error while deleting equipment', '', {
+                duration: 3000,
+              });
+            },
+          });
+      } else {
+        if (this.equipmentForm.valid) {
+          this.equipmentForm.controls['equipment'].setValue(
+            this.editData.EquipmentId
+          );
+          this.equipmentForm.controls['user'].setValue(
+            this.tokenStorage.getUser().id
+          );
+          this.equipmentForm.controls['project'].setValue(this.editData.id);
+          alert(this.editData.id);
+
+          this.api
+            .affectEquipToProjectUser(this.equipmentForm.value)
+            .subscribe({
+              next: (res) => {
+                this._snackBar.open('Equipment reserve successfuly', '', {
+                  duration: 3000,
+                });
+                this.equipmentForm.reset();
+                this.dialogRef.close();
+              },
+              error: () => {
+                this._snackBar.open('error whilereservinggg equipment', '', {
+                  duration: 3000,
+                });
+              },
+            });
+        }
       }
     }
   }

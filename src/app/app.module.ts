@@ -34,6 +34,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { ManagerCardComponent } from './components/projects/manager-card/manager-card.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { ProjectHistoryComponent } from './components/projects/project-history/project-history.component';
+import { FaultyFormComponent } from './components/equipment/faulty-form/faulty-form.component';
 
 @NgModule({
   declarations: [

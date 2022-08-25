@@ -1,4 +1,3 @@
-
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Equipment } from 'src/app/models/equipment';
@@ -15,7 +14,7 @@ import { UsernameComponent } from '../settings/username/username.component';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.css']
+  styleUrls: ['./profile.component.css'],
 })
 export class ProfileComponent implements OnInit {
   user: any;
@@ -38,17 +37,12 @@ export class ProfileComponent implements OnInit {
   passwordTrig() {
     const dialogRef = this.dialog.open(PasswordComponent, {});
   }
-  removeEquipmentfromProject(row :any){
-    if(row.other){
-      row.set
+  removeEquipmentfromProject(row: any) {
+    if (row.other) {
+      row.set;
     }
-        this.dialog.open(ReserveEquipmentComponent,{
-      
-      data:{'row':row,'toremove':true,'reserveUser':true}  
-    })}
-
-
-  
-
-
+    this.dialog.open(ReserveEquipmentComponent, {
+      data: { row: row, toremove: true, reserveUser: true },
+    });
+  }
 }
