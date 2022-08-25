@@ -1,22 +1,30 @@
-<div class="container" >
-
-  
+<div class="container">
   <div class="pos">
     <mat-toolbar>
-  
       <span class="example-spacer"></span>
       <button
         mat-raised-button
         style="color: rgba(12, 12, 63); margin-top: 30px; margin-bottom: 30px"
-        routerLink="../addequipment/{{projectId}}" >
+        routerLink="../addequipment/{{ projectId }}"
+      >
         <mat-icon>add</mat-icon> Add equipment.
       </button>
+      <button
+        mat-raised-button
+        style="color: rgba(12, 12, 63); margin-top: 30px; margin-bottom: 30px"
+        routerLink="../history/{{ projectId }}"
+      >
+        <mat-icon>history</mat-icon> Check project History.
+      </button>
     </mat-toolbar>
-
   </div>
-  <div  >
-   <app-project-equipment [projectId]="projectId"  *ngIf="false"></app-project-equipment>
-   <app-proect-reserved-equipment [projectId]="projectId" ></app-proect-reserved-equipment >
+  <div>
+    <app-project-equipment
+      [projectId]="projectId"
+      *ngIf="false"
+    ></app-project-equipment>
+    <app-proect-reserved-equipment
+      [projectId]="projectId"
+    ></app-proect-reserved-equipment>
   </div>
-
 </div>

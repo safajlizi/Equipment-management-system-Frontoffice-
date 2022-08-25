@@ -1,25 +1,31 @@
 <div class="container">
-  <h1 style="margin-left: 10px">Historique personnel:</h1>
+  <h1 style="margin-left: 10px">
+    Historique du projet <strong>{{ history[0].project.name }}</strong
+    >:
+  </h1>
   <main *ngFor="let row of history">
     <mat-card
       class="pos"
       mat-align-card="center"
-      style="
-        background-color: rgba(236, 149, 35, 0.486);
-        margin: 5px;
-        height: 14em;
-      "
+      [ngStyle]="{
+        'background-color':
+          row.action_type == 'take'
+            ? 'rgba(236, 149, 35, 0.486)'
+            : 'rgba(35, 89, 236, 0.486)'
+      }"
+      style="margin: 5px; height: 14em"
     >
       <mat-card-title
         >Equipment name : {{ row.equipment.label }}</mat-card-title
       >
       <mat-card-subtitle>Réference : {{ row.equipment.ref }}</mat-card-subtitle>
-      <mat-card-subtitle>Action :{{ row.action_type }} </mat-card-subtitle>
+      <mat-card-subtitle
+        >Action : <strong>{{ row.action_type }}</strong>
+      </mat-card-subtitle>
       <mat-card-content>
         Username : <strong>{{ row.user.username }}</strong
         ><br />
-        Description : <strong>{{ row.description }}</strong> <br />
-        Project : <strong>{{ row.project.name }}</strong>
+        Description : <strong>{{ row.description }}</strong>
         <div mat-dialog-actions [align]="'end'">
           {{ row.created_at | date }}
         </div>

@@ -14,35 +14,48 @@ import { ProjectEquipmentAddComponent } from '../projects/project-equipment-add/
 import { ProjectMemberMembersComponent } from '../projects/project-member-members/project-member-members.component';
 import { ProjectMemberEquipmentComponent } from '../projects/project-member-equipment/project-member-equipment.component';
 import { UserHistoryComponent } from '../history/user-history/user-history.component';
+import { ProjectHistoryComponent } from '../projects/project-history/project-history.component';
 
 const routes: Routes = [
   {
-      path: '', component: DashboardComponent,
-      children: [
-          { path: '', component: EquipmentListComponent },
-          { path: 'profile', component: ProfileComponent},
-        { path: 'projects', component: Dashboard3Component},
-   
-        { path: 'projects/equipment/addequipment/:id', component:ProjectEquipmentAddComponent},
-        { path: 'projects/members/:id', component:ProjectMembersRootComponent},
-        { path: 'projects/member/members/:id', component:ProjectMemberMembersComponent},
-        { path: 'projects/member/equipment/:id', component:ProjectMemberEquipmentComponent},
-        { path: 'userhistory/:id', component: UserHistoryComponent},
-        { path: 'projects/equipment/:id', component:ProjectEquipmentRootComponent},
-          { path: 'history/:id', component: HistoryComponent },
-          { path: '**', redirectTo: '' }
+    path: '',
+    component: DashboardComponent,
+    children: [
+      { path: '', component: EquipmentListComponent },
+      { path: 'profile', component: ProfileComponent },
+      { path: 'projects', component: Dashboard3Component },
 
-      ]
-  }
+      {
+        path: 'projects/equipment/addequipment/:id',
+        component: ProjectEquipmentAddComponent,
+      },
+      {
+        path: 'projects/equipment/history/:id',
+        component: ProjectHistoryComponent,
+      },
+      { path: 'projects/members/:id', component: ProjectMembersRootComponent },
+      {
+        path: 'projects/member/members/:id',
+        component: ProjectMemberMembersComponent,
+      },
+      {
+        path: 'projects/member/equipment/:id',
+        component: ProjectMemberEquipmentComponent,
+      },
+      { path: 'userhistory/:id', component: UserHistoryComponent },
+      {
+        path: 'projects/equipment/:id',
+        component: ProjectEquipmentRootComponent,
+      },
+      { path: 'history/:id', component: HistoryComponent },
+      { path: '**', redirectTo: '' },
+    ],
+  },
 ];
-
 
 @NgModule({
   declarations: [],
-  imports: [
-    RouterModule.forChild(routes),
-    CommonModule
-  ],
-  exports: [RouterModule]
+  imports: [RouterModule.forChild(routes), CommonModule],
+  exports: [RouterModule],
 })
-export class UserRoutingModule { }
+export class UserRoutingModule {}

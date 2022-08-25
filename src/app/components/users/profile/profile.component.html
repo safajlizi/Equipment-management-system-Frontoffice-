@@ -1,6 +1,5 @@
 <div class="container">
-
-  <mat-card class="pos " mat-align-card="center">
+  <mat-card class="pos" mat-align-card="center">
     <mat-card-title>{{ user.username }}</mat-card-title>
     <mat-card-subtitle> {{ user.role }}</mat-card-subtitle>
     <mat-card-content>
@@ -8,14 +7,20 @@
       {{ user.email }}</mat-card-content
     >
     <mat-card-actions align="end">
-      
-        <button mat-menu-item (click)="usernameTrig()" style="border-color: white ;">
-          Username <i class="fa-solid fa-pen"></i>
-        </button>
-        <button mat-menu-item (click)="passwordTrig()"  style="border-color: white ;">
-          Password <i class="fa-solid fa-pen"></i>
-        </button>
-      
+      <button
+        mat-raised-button
+        (click)="usernameTrig()"
+        style="border-color: white"
+      >
+        Username <i class="fa-solid fa-pen"></i>
+      </button>
+      <button
+        mat-raised-button
+        (click)="passwordTrig()"
+        style="border-color: white"
+      >
+        Password <i class="fa-solid fa-pen"></i>
+      </button>
     </mat-card-actions>
   </mat-card>
 
@@ -25,12 +30,15 @@
       <div *ngFor="let equip of equipments">
         <mat-card-content>{{ equip.label }} {{ equip.id }}</mat-card-content>
         <mat-card-actions align="end">
-          <button mat-icon-button (click)="removeEquipmentfromProject(equip)" matTooltip="liberate equiment" >
-            <i class="fa-solid fa-trash"></i>  
-            </button>
+          <button
+            mat-icon-button
+            (click)="removeEquipmentfromProject(equip.id)"
+            matTooltip="liberate equiment"
+          >
+            <i class="fa-solid fa-trash"></i>
+          </button>
         </mat-card-actions>
       </div>
     </mat-card-content>
   </mat-card>
-
 </div>

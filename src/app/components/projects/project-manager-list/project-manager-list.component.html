@@ -1,28 +1,50 @@
- <div class="maindiv" *ngFor="let project of managedProjects" style="margin: 25px;">
-    <mat-card class="pos" mat-align-card="center" >
-    <mat-card-title>{{ project.name}}</mat-card-title>
-  
-    <mat-card-actions >
-      <table >
-  <tr>
-    <td style="width:10%;">
-     
-     <mat-card-subtitle style="margin-right:5px"><i class="fa-regular fa-user"></i>  members</mat-card-subtitle>
-     <td style="width:80%;" >
-      <mat-card-subtitle><i class="fa-solid fa-layer-group"></i>  equipment</mat-card-subtitle>
-     </td>
-     <td>
-      <button mat-raised-button color="'primary'" type="submit" style=" background-color: rgba(12, 12, 63);color:white" routerLink="./members/{{ project.id }}" >
-           Manage members 
-        </button>
-     </td>
-     <td>
-      <button mat-raised-button color="'primary'" type="submit"  style=" background-color: rgba(12, 12, 63);color:white" routerLink="./equipment/{{ project.id }}" >
-           Manage equipment 
-        </button>
-     </td>
-  </tr>
-  </table>
-</mat-card-actions>
+<div
+  class="maindiv"
+  *ngFor="let project of managedProjects"
+  style="margin: 25px"
+>
+  <mat-card class="pos" mat-align-card="center">
+    <mat-card-title>{{ project.name }}</mat-card-title>
+
+    <mat-card-actions>
+      <table>
+        <tr>
+          <td style="width: 10%">
+            <mat-card-subtitle style="margin-right: 5px"
+              ><i class="fa-regular fa-user"></i> Members</mat-card-subtitle
+            >
+          </td>
+
+          <td style="width: 80%">
+            <mat-card-subtitle
+              ><i class="fa-solid fa-layer-group"></i>
+              Equipment</mat-card-subtitle
+            >
+          </td>
+          <td>
+            <button
+              mat-raised-button
+              color="'primary'"
+              type="submit"
+              style="background-color: rgba(12, 12, 63); color: white"
+              routerLink="./members/{{ project.id }}"
+            >
+              Manage members
+            </button>
+          </td>
+          <td>
+            <button
+              mat-raised-button
+              color="'primary'"
+              type="submit"
+              style="background-color: rgba(12, 12, 63); color: white"
+              routerLink="./equipment/{{ project.id }}"
+            >
+              Manage equipment
+            </button>
+          </td>
+        </tr>
+      </table>
+    </mat-card-actions>
   </mat-card>
 </div>

@@ -1,29 +1,21 @@
+<form class="example-form" [formGroup]="equipmentForm">
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Description</mat-label>
+    <input formControlName="description" matInput placeholder="description" />
+  </mat-form-field>
+  <mat-form-field class="example-full-width" appearance="outline">
+    <mat-label>project</mat-label>
 
-    <form class="example-form" [formGroup]="equipmentForm">
-     
-      <mat-form-field class="example-full-width" appearance="fill">
-        <mat-label>Description</mat-label>
-        <input
-        formControlName="description" matInput placeholder="description"
-        /> </mat-form-field>
-        <mat-form-field   class="example-full-width"  appearance="outline">
-          <mat-label>project</mat-label>
-          
-          <mat-select formControlName="project"  placeholder="projectName">
-            <div *ngFor="let project of memberProjects">
-             <mat-option [value]="project.id">{{project.name}}</mat-option>
-          
+    <mat-select formControlName="project" placeholder="projectName">
+      <div *ngFor="let project of projects">
+        <mat-option [value]="project.id">{{ project.name }}</mat-option>
       </div>
-          </mat-select>
-        </mat-form-field>
-      
-     
-    </form>
-    <div mat-dialog-actions [align]="'end'">
-      <button mat-raised-button mat-dialog-close>cancel</button>
-      <button mat-raised-button color="primary" (click)="addEquipmentProject()">Submit</button>
-  
-    </div>
-    
-
- 
+    </mat-select>
+  </mat-form-field>
+</form>
+<div mat-dialog-actions [align]="'end'">
+  <button mat-raised-button mat-dialog-close>cancel</button>
+  <button mat-raised-button color="primary" (click)="addEquipmentProject()">
+    Submit
+  </button>
+</div>
