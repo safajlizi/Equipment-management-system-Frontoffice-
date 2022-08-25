@@ -4,7 +4,8 @@ import { ActivatedRoute } from '@angular/router';
 import { ProjectService } from 'src/app/services/project.service';
 import { UserService } from 'src/app/services/user.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
-
+import { TokenStorageService } from 'src/app/services/token-storage.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-project-member-add',
   templateUrl: './project-member-add.component.html',
@@ -18,12 +19,16 @@ export class ProjectMemberAddComponent implements OnInit {
   selectedUsers: string[] = [];
   message: string = '';
   cardStyle: string = '';
+  id:any
   constructor(
     private userService: UserService,
     private projectService: ProjectService,
     private formBuilder: FormBuilder,
     private route: ActivatedRoute
-    ,private _snackBar: MatSnackBar
+    ,private _snackBar: MatSnackBar,
+    private tokenStorage: TokenStorageService,
+    private router :Router
+
   ) {
     route.params.subscribe((params) => {
       this.projectId = params['id'];
@@ -34,6 +39,12 @@ export class ProjectMemberAddComponent implements OnInit {
     this.userSearchForm = this.formBuilder.group({
       keyword: [''],
     });
+    if (this.tokenStorage.getToken()) {
+      this.id = this.tokenStorage.getUser().id;
+    } else {
+      this.router.navigateByUrl('/login');
+    }
+    
   }
   onChange(event: Event) {
     if (!this.userSearchForm.controls['keyword'].value) {

@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 import { UserService } from 'src/app/services/user.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import { EquipmentService } from 'src/app/services/equipment.service';
 
 @Component({
   selector: 'app-project-manager-list',
@@ -14,8 +15,8 @@ export class ProjectManagerListComponent implements OnInit {
   role = '';
   showManaged: boolean = true;
   managedProjects: any;
-  size:any
-  constructor(
+ 
+  constructor(private api:EquipmentService,
     private tokenStorage: TokenStorageService,
     private router: Router,
     private userService: UserService,
@@ -23,15 +24,14 @@ export class ProjectManagerListComponent implements OnInit {
 
   ) {}
 
+
+
+ 
+
+
   ngOnInit(): void {
     
-    let user = this.tokenStorage.getUser();
-
-
-
-
-
-
+    let user = this.tokenStorage.getUser()
     this.userService.getManagedProjects(user.id).subscribe({
       next:(res)=>{
         this.managedProjects = res;

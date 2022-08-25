@@ -39,4 +39,7 @@ export class EquipmentService {
   getEquipmentByProject(id:string) {
     return this.http.get<any>('http://localhost:3000/equipment/project/'+id);
   }
+  declareFaulty(data:any) {
+    return this.http.post<any>('http://localhost:3000/equipment/faulty',data);
+  }
 }

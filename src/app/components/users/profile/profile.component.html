@@ -19,18 +19,19 @@
     </mat-card-actions>
   </mat-card>
 
-  <mat-card class="pos">
-    <mat-card-title>Inventory of current equipment.</mat-card-title>
-    <mat-card-content>
+
       <div *ngFor="let equip of equipments">
-        <mat-card-content>{{ equip.label }} {{ equip.id }}</mat-card-content>
+        
+        <mat-card class="pos" style=" background-color:rgb(216, 216, 216);">
+    <mat-card-content style="margin:3px ">
+        <mat-card-title>{{ equip.ref }}</mat-card-title>
+        <mat-card-subtitle> {{ equip.label}}</mat-card-subtitle>
         <mat-card-actions align="end">
-          <button mat-icon-button (click)="removeEquipmentfromProject(equip)" matTooltip="liberate equiment" >
+          <button mat-icon-button (click)="removeEquipmentfromProject(equip)" matTooltip="liberate equipment" >
             <i class="fa-solid fa-trash"></i>  
             </button>
         </mat-card-actions>
-      </div>
+      
     </mat-card-content>
-  </mat-card>
-
-</div>
+  </mat-card></div></div>
+ 

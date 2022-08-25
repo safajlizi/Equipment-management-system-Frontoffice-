@@ -4,6 +4,7 @@ import { EquipmentService } from 'src/app/services/equipment.service';
 import {MatDialogRef,MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DatePipe } from '@angular/common'
 import {MatSnackBar} from '@angular/material/snack-bar';
+import {Router} from '@angular/router'
 
 @Component({
   selector: 'app-addequipment',
@@ -15,7 +16,7 @@ export class AddequipmentComponent implements OnInit {
   actionBtn:string="save"
   constructor(public datepipe: DatePipe,private formBuilder :FormBuilder,private api:EquipmentService,
     @Inject(MAT_DIALOG_DATA)public editData:any, 
-    private dialogRef:MatDialogRef<AddequipmentComponent>,private _snackBar: MatSnackBar) { }
+    private dialogRef:MatDialogRef<AddequipmentComponent>,private _snackBar: MatSnackBar,private router:Router) { }
   ngOnInit(): void {
     this.equipmentForm=this.formBuilder.group({
       label:['', Validators.required],
@@ -23,8 +24,8 @@ export class AddequipmentComponent implements OnInit {
       property:[false],
       conformity:['compliant', Validators.required],
       defaults:[null],
-      description:[null],
-      calibration:[false],
+      description:[''],
+      calibration:['nok'],
       validity_date:[null, Validators.prototype],
       category:[null, Validators.required],
       other:[null],
@@ -50,7 +51,8 @@ export class AddequipmentComponent implements OnInit {
   }
   
   updateEquipment(){
-  
+    if(this.equipmentForm.value.property == true ){this.equipmentForm.controls['property'].setValue('client')}
+    else{this.equipmentForm.controls['property'].setValue('sofia')}
     this.api.patchEquipment(this.equipmentForm.value,this.editData.id)
     .subscribe({
       next:(res)=>{
@@ -59,6 +61,7 @@ export class AddequipmentComponent implements OnInit {
       })
         this.equipmentForm.reset();
         this.dialogRef.close();
+        
       },
       error:()=>{
         this._snackBar.open("error while updating equipment",'',{ 
@@ -70,8 +73,7 @@ export class AddequipmentComponent implements OnInit {
   }
   addEquipment(){
     if(!this.editData){
-      console.log("safaaaaaa")
-      if(this.equipmentForm.valid){
+       if(this.equipmentForm.valid){
         
 
         this.equipmentForm.controls['validity_date'].setValue(this.datepipe.transform(this.equipmentForm.value.validity_date, 'yyyy-MM-dd') )

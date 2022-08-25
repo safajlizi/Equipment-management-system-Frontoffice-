@@ -12,6 +12,9 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 import { ProjectEquipmentAddComponent } from '../project-equipment-add/project-equipment-add.component';
 import { ReserveEquipmentComponent } from '../reserve-equipment/reserve-equipment.component';
+import { DefaultComponent } from '../../equipment/default/default.component';
+import { DetailsComponent } from '../../equipment/details/details.component';
+import { RemoveEquipmentComponent } from '../remove-equipment/remove-equipment.component';
 @Component({
   selector: 'app-proect-reserved-equipment',
   templateUrl: './proect-reserved-equipment.component.html',
@@ -49,9 +52,7 @@ export class ProectReservedEquipmentComponent implements OnInit {
     this.api.getEquipmentByProject(this.projectId)
    .subscribe({
     next:(res)=>{
-  
-      console.log('sa')
-      console.log(res)
+   
     
           this.dataSource=new MatTableDataSource(res)
           this.dataSource.paginator=this.paginator
@@ -117,9 +118,9 @@ export class ProectReservedEquipmentComponent implements OnInit {
     if(row.other){
       row.set
     }
-        this.dialog.open(ReserveEquipmentComponent,{
+        this.dialog.open(RemoveEquipmentComponent,{
       
-      data:{'row':row,'id':this.projectId,'toremove':true}  
+      data:{'row':row,'id':this.projectId,'isManager':true}  
     })}
 
 
@@ -131,6 +132,13 @@ export class ProectReservedEquipmentComponent implements OnInit {
       width:'30%',
       data:{'row':row,'id':this.projectId,'toremove':true}  
     })}
-    
+    details(row: any){
+      const dialogRef = this.dialog.open(DetailsComponent,{
+        data:{'details':row}  
+      });}
+      default(row: any){
+        const dialogRef = this.dialog.open(DefaultComponent,{
+          data:{'EquipmentId':row, 'projectId':this.projectId  }  
+        });}
 
 }

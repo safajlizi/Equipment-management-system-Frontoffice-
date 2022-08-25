@@ -3,18 +3,8 @@
   <mat-form-field class="example-full-width" appearance="fill">
     <mat-label>Description</mat-label>
     <input formControlName="description" matInput placeholder="description" />
-  </mat-form-field>
-  <mat-form-field class="example-full-width" appearance="outline">
-    <mat-label>project</mat-label>
 
-    <mat-select formControlName="project" placeholder="projectName">
-      <div *ngFor="let project of managedProjects">
-        <mat-option [value]="project.id">{{project.name}}</mat-option>
-
-      </div>
-    </mat-select>
-  </mat-form-field>
-
+  </mat-form-field><br>
 
 </form>
 <div mat-dialog-actions [align]="'end'">

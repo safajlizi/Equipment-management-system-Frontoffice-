@@ -1,15 +1,9 @@
-
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Equipment } from 'src/app/models/equipment';
-import { User } from 'src/app/models/user';
-import { EquipmentService } from 'src/app/services/equipment.service';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 import { UserService } from 'src/app/services/user.service';
-import { ReserveComponent } from '../../equipment/reserve/reserve.component';
-import { ReserveEquipmentComponent } from '../../projects/reserve-equipment/reserve-equipment.component';
+import { RemoveEquipmentComponent } from '../../projects/remove-equipment/remove-equipment.component';
 import { PasswordComponent } from '../settings/password/password.component';
-import { SettingListComponent } from '../settings/setting-list/setting-list.component';
 import { UsernameComponent } from '../settings/username/username.component';
 
 @Component({
@@ -42,13 +36,12 @@ export class ProfileComponent implements OnInit {
     if(row.other){
       row.set
     }
-        this.dialog.open(ReserveEquipmentComponent,{
+        this.dialog.open(RemoveEquipmentComponent,{
       
-      data:{'row':row,'toremove':true,'reserveUser':true}  
+      data:{'row':row,'isManager':false}  
     })}
 
 
   
-
 
 }

@@ -7,6 +7,7 @@ import { ProjectService } from 'src/app/services/project.service';
 import { CreateProjectComponent } from '../create-project/create-project.component';
 import { ManagerCardComponent } from '../manager-card/manager-card.component';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import { MemberCardComponent } from '../member-card/member-card.component';
 
 
 @Component({
@@ -62,30 +63,18 @@ export class ListProjectsComponent implements OnInit {
   }
 
 
-  async displayProjectManager(projectId: string) {
-    this.projectService.getProjectManager(projectId).subscribe({
-      next: (res) => {
-        this.dialog.open(ManagerCardComponent, { data: res });
-      },
-      error: (err) => {
-        this._snackBar.open('error get manager','',{ 
-          duration: 3000
-      });
-      },
+  async displayProjectManager(row:any) {
+    
+
+    const dialogRef = this.dialog.open(ManagerCardComponent,{
+      data:{'manager':row, 'toremove':false }  
     });
 
   }
 
   getEquipment(projectId: string) {
-    this.projectService.getProjectEquipment(projectId).subscribe({
-      next: (res) => {
-        this.dialog.open(ManagerCardComponent, { data: res });
-      },
-      error: (err) => {
-        this._snackBar.open('error get manager','',{ 
-          duration: 3000
-      });
-      },
+    const dialogRef = this.dialog.open(MemberCardComponent,{
+      data:{'id':projectId }  
     });
   }
   applyFilter(event: Event) {

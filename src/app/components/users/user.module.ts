@@ -37,7 +37,6 @@ import { Dashboard3Component } from '../projects/dashboard3/dashboard3.component
 import { ProjectManagerListComponent } from '../projects/project-manager-list/project-manager-list.component';
 import { ProjectMembersComponent } from '../projects/project-members/project-members.component';
 import { ProjectEquipmentComponent } from '../projects/project-equipment/project-equipment.component';
-import { ProjectEquipmentAssignComponent } from '../projects/project-equipment-assign/project-equipment-assign.component';
 import { ProjectMembersRootComponent } from '../projects/project-members-root/project-members-root.component';
 import { ProjectEquipmentRootComponent } from '../projects/project-equipment-root/project-equipment-root.component';
 import { ProjectEquipmentAddComponent } from '../projects/project-equipment-add/project-equipment-add.component';
@@ -56,6 +55,9 @@ import { UserHistoryComponent } from '../history/user-history/user-history.compo
 import { DetailsComponent } from '../equipment/details/details.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { NotifComponent } from '../alert/notif/notif.component';
+import { DefaultComponent } from '../equipment/default/default.component';
+import { RemoveEquipmentComponent } from '../projects/remove-equipment/remove-equipment.component';
+import { MemberCardComponent } from '../projects/member-card/member-card.component';
 
 import { ProjectMemberListComponent } from '../projects/project-member-list/project-member-list.component';
 @NgModule({
@@ -81,7 +83,6 @@ import { ProjectMemberListComponent } from '../projects/project-member-list/proj
     ProjectMemberAddComponent,
     ProjectMemberListComponent ,
     ProjectManagerListComponent,
-    ProjectEquipmentAssignComponent,
     ProjectMembersRootComponent,
     ProjectEquipmentRootComponent,
     ProjectEquipmentAddComponent,
@@ -95,7 +96,11 @@ import { ProjectMemberListComponent } from '../projects/project-member-list/proj
     UsernameComponent,
     UserHistoryComponent,
     DetailsComponent,
-    NotifComponent
+    NotifComponent,
+    DefaultComponent,
+    RemoveEquipmentComponent,
+    MemberCardComponent 
+ 
   ],
   imports: [
     CommonModule ,

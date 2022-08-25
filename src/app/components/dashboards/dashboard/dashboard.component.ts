@@ -8,16 +8,17 @@ import { TokenStorageService } from 'src/app/services/token-storage.service';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-  sideNavStatus:boolean=false
+  sideNavStatus: boolean = false
   role!: string;
-  history=false
+  history = false
   constructor(
     private tokenStorage: TokenStorageService,
     private router: Router
   ) {
-    if(this.router.url.includes('/history')){
-    this.history=true
-  }}
+    if (this.router.url.includes('/history')) {
+      this.history = true
+    }
+  }
 
   ngOnInit(): void {
     if (this.tokenStorage.getToken()) {
@@ -25,7 +26,7 @@ export class DashboardComponent implements OnInit {
     } else {
       this.router.navigateByUrl('/login');
     }
-    
+
   }
 
 

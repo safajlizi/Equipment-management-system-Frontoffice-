@@ -12,6 +12,8 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 import { ProjectEquipmentAddComponent } from '../project-equipment-add/project-equipment-add.component';
 import { ReserveEquipmentComponent } from '../reserve-equipment/reserve-equipment.component'
+import { DefaultComponent } from '../../equipment/default/default.component';
+import { DetailsComponent } from '../../equipment/details/details.component';
 
 @Component({
   selector: 'app-project-member-equipment',
@@ -20,7 +22,7 @@ import { ReserveEquipmentComponent } from '../reserve-equipment/reserve-equipmen
 })
 export class ProjectMemberEquipmentComponent implements OnInit {
 
-  displayedColumns: string[] = ['label','category','prop_client' ,'status','is_calibrated','calibrating_date','action'];
+  displayedColumns: string[] = ['label','category','prop_client','conformity' ,'status','is_calibrated','calibrating_date','action'];
   dataSource!: MatTableDataSource<any>;
   selectedE: string[] = [];
 
@@ -132,4 +134,14 @@ export class ProjectMemberEquipmentComponent implements OnInit {
     isAvail (status:string):boolean{
      return status == "AVAILABLETOPROJECT"? true : false
     }
+
+    default(row: any){
+      const dialogRef = this.dialog.open(DefaultComponent,{
+        data:{'equipmentId':row, 'projectId':this.projectId }  
+      });}
+      details(row: any){
+        const dialogRef = this.dialog.open(DetailsComponent,{
+          data:{'details':row}  
+        });}
+    
 }

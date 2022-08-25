@@ -64,7 +64,13 @@ Equipment_updated_at: "2022-08-21T07:20:44.000Z"-->
           <td mat-cell *matCellDef="let row"> {{row.availability}} </td>
         </ng-container>
   
-        
+        <ng-container matColumnDef="conformity">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header class="title"> <strong>conformity status</strong> </th>
+          <td mat-cell *matCellDef="let row"> {{row.conformity}} <button mat-icon-button *ngIf="row.conformity == 'notcompliant'"  matTooltip="defaults" (click)="details(row.defaults)" color="warm">
+            <mat-icon>contact_support</mat-icon>
+          </button>
+             </td>
+        </ng-container>
         <ng-container matColumnDef="is_calibrated">
           <th mat-header-cell *matHeaderCellDef mat-sort-header class="title"> <strong>calibration status</strong></th>
           <td mat-cell *matCellDef="let row"> {{row.calibration}} </td>
@@ -82,9 +88,13 @@ Equipment_updated_at: "2022-08-21T07:20:44.000Z"-->
             <button mat-icon-button (click)="openDialog()"   matTooltip="History" color="warm">
               <mat-icon>history</mat-icon>
             </button>
-            <button mat-icon-button (click)="reserve(row.id)"  matTooltip="reserve equiment" [disabled]="row.status =='AVAILABLETOPROJECT'"  color="warm">
+            <button mat-icon-button (click)="reserve(row.id)"  matTooltip="reserve equiment" [disabled]="row.availability ==	'INUSETOPROJECT'"  color="warm">
               <mat-icon>add</mat-icon>
             </button>
+            <button mat-icon-button   matTooltip="details about equipment status" (click)="default(row.details)" color="warm">
+              <mat-icon>details</mat-icon>
+            </button>
+         
             
           
           </td>

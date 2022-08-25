@@ -1,21 +1,22 @@
-
 <div class="container">
   <table class="example-full-width" cellspacing="0">
     <tr>
       <td Style="width:90%">
-   <mat-form-field appearance="standard" >
-    <mat-label>Filter</mat-label>
-    <input matInput (keyup)="applyFilter($event)"Style="width:3000px"  placeholder="project name ,department ,project manager  " #input>
-  
-  </mat-form-field>
-  </td>
-  <td>
-    
-  <button mat-raised-button color="'primary'" type="submit" (click)="add()">
-    <mat-icon>add</mat-icon> Add project 
-  </button>
-</td></tr>
-</table>
+        <mat-form-field appearance="standard">
+          <mat-label>Filter</mat-label>
+          <input matInput (keyup)="applyFilter($event)" Style="width:3000px"
+            placeholder="project name ,department ,project manager  " #input>
+
+        </mat-form-field>
+      </td>
+      <td>
+
+        <button mat-raised-button color="'primary'" type="submit" (click)="add()">
+          <mat-icon>add</mat-icon> Add project
+        </button>
+      </td>
+    </tr>
+  </table>
 
   <div class="mat-elevation-z8">
     <table mat-table [dataSource]="dataSource" matSort>
@@ -32,11 +33,7 @@
       <ng-container matColumnDef="manager">
         <th mat-header-cell *matHeaderCellDef mat-sort-header class="title"><strong>Manager</strong></th>
         <td mat-cell *matCellDef="let row">
-          <button
-            mat-button
-            (click)="displayProjectManager(row.id)"
-            color="primary"
-          >
+          <button mat-button (click)="displayProjectManager(row.manager)" color="primary">
             View Manager.
           </button>
         </td>
@@ -49,14 +46,14 @@
           </button>
         </td>
       </ng-container>
-      <ng-container matColumnDef="action"  matColumnDef="action">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header class="title action" ><strong>Actions</strong>  </th>
-        <td mat-cell *matCellDef="let row" class="action" >
-         
+      <ng-container matColumnDef="action" matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="title action"><strong>Actions</strong> </th>
+        <td mat-cell *matCellDef="let row" class="action">
+
           <button mat-icon-button (click)="deleteProject(row.id)" matTooltip="delete project" color="warm">
             <mat-icon>delete</mat-icon>
           </button>
-      
+
         </td>
       </ng-container>
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
@@ -67,9 +64,6 @@
           </tr>-->
     </table>
 
-    <mat-paginator
-      [pageSizeOptions]="[5, 10, 25, 100]"
-      aria-label="Select page of users"
-    ></mat-paginator>
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
   </div>
 </div>

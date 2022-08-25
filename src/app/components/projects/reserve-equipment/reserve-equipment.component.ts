@@ -32,7 +32,7 @@ export class ReserveEquipmentComponent implements OnInit {
       user:[null],
       equipment:[null],
       project:[null],
-      description:[null],
+      description:[''],
       date_lib:[null],
 
      
@@ -125,7 +125,7 @@ export class ReserveEquipmentComponent implements OnInit {
      }
       else{
         if(this.editData.toremove){
-          console.log(this.editData.row)
+ 
           this.equipmentForm.controls['equipment'].setValue(this.editData.row.id);
        
         this.equipmentForm.controls['user'].setValue(this.tokenStorage.getUser().id);
@@ -153,8 +153,7 @@ export class ReserveEquipmentComponent implements OnInit {
           this.equipmentForm.controls['equipment'].setValue(this.editData.EquipmentId);
           this.equipmentForm.controls['user'].setValue(this.tokenStorage.getUser().id);
           this.equipmentForm.controls['project'].setValue(this.editData.id);
-          alert(this.editData.id)
-          
+           
           this.api.affectEquipToProjectUser(this.equipmentForm.value)
         .subscribe({
           next:(res)=>{

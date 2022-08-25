@@ -1,0 +1,21 @@
+
+    <form class="example-form" [formGroup]="equipmentForm">
+     
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Description</mat-label>
+          <input
+          formControlName="description" matInput placeholder="description"
+          />
+      
+        </mat-form-field><br> 
+        
+         
+      </form>
+      <div mat-dialog-actions [align]="'end'">
+        <button mat-raised-button mat-dialog-close>cancel</button>
+        <button mat-raised-button color="primary" (click)="removeEquipment()">Submit</button>
+    
+      </div>
+      
+  
+   

@@ -19,7 +19,7 @@ import { ReserveEquipmentComponent } from '../reserve-equipment/reserve-equipmen
   styleUrls: ['./project-equipment.component.css']
 })
 export class ProjectEquipmentComponent implements OnInit {
-  displayedColumns: string[] = ['label','category','prop_client' ,'status','manager','is_calibrated','calibrating_date','action'];
+  displayedColumns: string[] = ['label','category','prop_client' ,'status','manager','availability','is_calibrated','calibrating_date','action'];
   dataSource!: MatTableDataSource<any>;
   selectedE: string[] = [];
 

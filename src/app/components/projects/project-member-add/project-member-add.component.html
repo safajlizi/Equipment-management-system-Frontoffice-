@@ -38,7 +38,7 @@
 
   </div>
     <div *ngFor="let user of shownUsers">
-      <mat-card [ngClass]="isIn(user.id).style" *ngIf="isSelected(user.id)==false " mat-align-card="center">
+      <mat-card [ngClass]="isIn(user.id).style" *ngIf="isSelected(user.id)==false  && user.id != id" mat-align-card="center">
         <mat-card-title>{{ user.username }}</mat-card-title>
         <mat-card-subtitle> {{ user.role }}</mat-card-subtitle>
         <mat-card-content>

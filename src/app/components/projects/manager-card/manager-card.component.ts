@@ -10,30 +10,14 @@ import {ProjectService}from 'src/app/services/project.service'
   styleUrls: ['./manager-card.component.css']
 })
 export class ManagerCardComponent implements OnInit {
- projectManager :any
-  constructor(
-    private api: ProjectService,
-    private dialog: MatDialog,private _snackBar: MatSnackBar,
-    @Inject(MAT_DIALOG_DATA)public getData:any,
-  ) { }
+ manager!: any;
+  constructor(@Inject(MAT_DIALOG_DATA)public editData:any, 
+  private dialogRef:MatDialogRef<ManagerCardComponent >,private _snackBar: MatSnackBar) { }
 
-
- getProjectManager(){
-  if(this.getData)
-  this.api.getProjectManager(this.getData.id).subscribe({
-    next: (res) => {
-     this.projectManager=res
-   
-
-    },
-    error: (err) => {
-      this._snackBar.open('error get manager','',{ 
-        duration: 3000
-    });
-    },
-  });
- }  
- ngOnInit(): void {
-  this.getProjectManager()
+  ngOnInit(): void {
+    if(this.editData){
+      this.manager=this.editData.manager
+      console.log(this.editData.manager)
+    }
   }
 }

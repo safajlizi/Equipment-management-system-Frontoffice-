@@ -1,6 +1,6 @@
 <div class="pos">
   <form class="example-form" [formGroup]="equipmentForm">
-   
+
 
     <mat-form-field class="example-full-width" appearance="outline">
       <mat-label>Label/eq.name</mat-label>
@@ -9,10 +9,11 @@
 
 
 
-    <table  cellspacing="2">
+    <table cellspacing="2">
       <tr>
         <td>
-          <mat-form-field  [ngStyle]="{'width': equipmentForm.value.category == 'other' ? '200px' : '500px'}" appearance="outline">
+          <mat-form-field [ngStyle]="{'width': equipmentForm.value.category == 'other' ? '200px' : '500px'}"
+            appearance="outline">
             <mat-label>Category</mat-label>
             <mat-select formControlName="category" placeholder="role">
               <mat-option value="card" selected>Card</mat-option>
@@ -23,17 +24,18 @@
           </mat-form-field>
         </td>
         <td>
-          <mat-form-field  appearance="outline"style="width:300px" *ngIf='equipmentForm.value.category == "other"'>
+          <mat-form-field appearance="outline" style="width:300px" *ngIf='equipmentForm.value.category == "other"'>
             <mat-label>Other</mat-label>
             <textarea matInput formControlName="other"></textarea>
           </mat-form-field>
         </td>
       </tr>
     </table>
-    <table  cellspacing="2">
+    <table cellspacing="2">
       <tr>
         <td>
-          <mat-form-field [ngStyle]="{'width': equipmentForm.value.conformity == 'notcompliant' ? '200px' : '500px'}" appearance="outline">
+          <mat-form-field [ngStyle]="{'width': equipmentForm.value.conformity == 'notcompliant' ? '200px' : '500px'}"
+            appearance="outline">
             <mat-label> conformity</mat-label>
             <mat-select formControlName="conformity" placeholder="role">
               <mat-option value="compliant" selected>Compliant</mat-option>
@@ -43,7 +45,8 @@
           </mat-form-field>
         </td>
         <td>
-          <mat-form-field  appearance="outline" style="width:300px" *ngIf='equipmentForm.value.conformity == "notcompliant"'>
+          <mat-form-field appearance="outline" style="width:300px"
+            *ngIf='equipmentForm.value.conformity == "notcompliant"'>
             <mat-label>details</mat-label>
             <textarea matInput formControlName="defaults"></textarea>
           </mat-form-field>
@@ -52,31 +55,32 @@
     </table>
 
     <mat-slide-toggle formControlName="property">calibrated equipment</mat-slide-toggle>
-    <table  cellspacing="0">
+    <table cellspacing="0">
       <tr>
         <td>
- 
-    <mat-form-field [ngStyle]="{'width': equipmentForm.value.calibration =='ok' ? '200px' : '500px'}" appearance="outline">
-      <mat-label>  calibration</mat-label>
-      <mat-select formControlName="calibration" placeholder="role">
-        <mat-option value="ok" selected>ok</mat-option>
-        <mat-option value="nok">Nok</mat-option>
-      </mat-select>
-    </mat-form-field>
+
+          <mat-form-field [ngStyle]="{'width': equipmentForm.value.calibration =='ok' ? '200px' : '500px'}"
+            appearance="outline">
+            <mat-label> calibration</mat-label>
+            <mat-select formControlName="calibration" placeholder="role">
+              <mat-option value="ok" selected>ok</mat-option>
+              <mat-option value="nok">Nok</mat-option>
+            </mat-select>
+          </mat-form-field>
         </td>
         <td>
-         
-    <mat-form-field appearance="outline" style="width:300px" *ngIf='equipmentForm.value.calibration == "ok"'>
-      <mat-label>Choose a calibrate date</mat-label>
-      <input formControlName="validity_date" matInput [matDatepicker]="picker">
-      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-datepicker #picker></mat-datepicker>
-    </mat-form-field>
+
+          <mat-form-field appearance="outline" style="width:300px" *ngIf='equipmentForm.value.calibration == "ok"'>
+            <mat-label>Choose a calibrate date</mat-label>
+            <input formControlName="validity_date" matInput [matDatepicker]="picker">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
         </td>
       </tr>
     </table>
 
-   
+
 
   </form>
   <div mat-dialog-actions [align]="'end'">
