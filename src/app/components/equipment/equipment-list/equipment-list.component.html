@@ -1,21 +1,31 @@
-<div class="container" style="max-width: 1600px;">
+<div class="container" style="max-width: 1600px">
   <table class="example-full-width ab" cellspacing="0">
     <tr>
       <td Style="width:100%">
-   <mat-form-field appearance="standard">
-    <mat-label>Filter</mat-label>
-    <input matInput (keyup)="applyFilter($event)"Style="widht:1200px" placeholder="label ,status, description.... " #input>
-  
-  </mat-form-field>
-  </td>
-  <td>
-    
-  <button mat-raised-button color="'primary'" type="submit" (click)="openDialog()" *ngIf="role == 'ADMIN'" >
-    <mat-icon>add</mat-icon> Add equipment 
-  </button>
-  
-</td></tr>
-</table>
+        <mat-form-field appearance="standard">
+          <mat-label>Filter</mat-label>
+          <input
+            matInput
+            (keyup)="applyFilter($event)"
+            Style="width:1200px"
+            placeholder="label ,status, description.... "
+            #input
+          />
+        </mat-form-field>
+      </td>
+      <td>
+        <button
+          mat-raised-button
+          color="'primary'"
+          type="submit"
+          (click)="openDialog()"
+          *ngIf="role == 'ADMIN'"
+        >
+          <mat-icon>add</mat-icon> Add equipment
+        </button>
+      </td>
+    </tr>
+  </table>
   <!--   ['label', 'prop_client', 'status', 'defaults','description','is_calibrated','calibrating_date'];
 
     <form class="d-flex me-5 a1">
@@ -24,93 +34,153 @@
     </form>
 -->
   <div class="mat-elevation-z8 tab">
-    <table mat-table [dataSource]="dataSource" matSort Style="border-color:rgba(250, 130, 17, 1 )">
-
-
-      <ng-container matColumnDef="id" >
-        <th mat-header-cell *matHeaderCellDef mat-sort-header class="title"> <strong>Id</strong> </th>
-        <td mat-cell *matCellDef="let row"> {{row.ref}}</td>
+    <table
+      mat-table
+      [dataSource]="dataSource"
+      matSort
+      Style="border-color:rgba(250, 130, 17, 1 )"
+    >
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="title">
+          <strong>Id</strong>
+        </th>
+        <td mat-cell *matCellDef="let row">{{ row.ref }}</td>
       </ng-container>
-      <ng-container matColumnDef="label" >
-        <th mat-header-cell *matHeaderCellDef mat-sort-header class="title"> <strong>Label/eq.name</strong> </th>
-        <td mat-cell *matCellDef="let row">{{row.label}} </td>
+      <ng-container matColumnDef="label">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="title">
+          <strong>Label/eq.name</strong>
+        </th>
+        <td mat-cell *matCellDef="let row">{{ row.label }}</td>
       </ng-container>
-      
+
       <ng-container matColumnDef="prop_client">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header class="title"> <strong>Property</strong> </th>
-        <td mat-cell *matCellDef="let row"> {{row.property}} </td>
-      </ng-container>
-       
-      <ng-container matColumnDef="category">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header class="title"><strong>Category</strong>  </th>
-        <td mat-cell *matCellDef="let row"> {{row.category}}</td>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="title">
+          <strong>Property</strong>
+        </th>
+        <td mat-cell *matCellDef="let row">{{ row.property }}</td>
       </ng-container>
 
-      
-      
+      <ng-container matColumnDef="category">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="title">
+          <strong>Category</strong>
+        </th>
+        <td mat-cell *matCellDef="let row">
+          {{ row.category }}
+        </td>
+      </ng-container>
+
       <ng-container matColumnDef="status">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header class="title"> <strong>conformity status</strong> </th>
-        <td mat-cell *matCellDef="let row"> {{row.conformity}} </td>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="title">
+          <strong>Conformity status</strong>
+        </th>
+        <td mat-cell *matCellDef="let row">{{ row.conformity }}</td>
       </ng-container>
 
       <ng-container matColumnDef="availability">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header class="title"> <strong>Availability</strong> </th>
-        <td mat-cell *matCellDef="let row"> {{row.availability}} </td>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="title">
+          <strong>Availability</strong>
+        </th>
+        <td mat-cell *matCellDef="let row">{{ row.availability }}</td>
       </ng-container>
 
-      
-
-          <ng-container matColumnDef="manager">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header class="title"><strong>Owner</strong>  </th>
-        <td mat-cell *matCellDef="let row"> <div *ngIf="row.availability !='AVAILABLETOALL'">{{row.manager.username}}</div> </td>
+      <ng-container matColumnDef="description" *ngIf="false">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="title">
+          <strong>Description</strong>
+        </th>
+        <td mat-cell *matCellDef="let row">{{ row.description }}</td>
       </ng-container>
-      
+
+      <ng-container matColumnDef="manager">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="title">
+          <strong>Owner</strong>
+        </th>
+        <td mat-cell *matCellDef="let row">
+          {{ row.manager ? row.manager.email : "No manager" }}
+        </td>
+      </ng-container>
+
       <ng-container matColumnDef="is_calibrated">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header class="title"> <strong>calibration status</strong></th>
-        <td mat-cell *matCellDef="let row"> {{row.calibration}} </td>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="title">
+          <strong>calibration status</strong>
+        </th>
+        <td mat-cell *matCellDef="let row">{{ row.calibration }}</td>
       </ng-container>
-
-  
 
       <ng-container matColumnDef="calibrating_date">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header class="title"><strong>Validity deadline date</strong>  </th>
-        <td mat-cell *matCellDef="let row"> {{row.validity_date| date}}</td>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="title">
+          <strong>Validity deadline date</strong>
+        </th>
+        <td mat-cell *matCellDef="let row">
+          {{ row.validity_date | date }}
+        </td>
       </ng-container>
 
-      <ng-container matColumnDef="action"  matColumnDef="action">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header class="title action" ><strong>Actions</strong>  </th>
-        <td mat-cell *matCellDef="let row" class="action" >
-          <button mat-icon-button (click)="editEquipment(row)" matTooltip="add equiment"  *ngIf="role == 'ADMIN'"color="primary">
+      <ng-container matColumnDef="action" matColumnDef="action">
+        <th
+          mat-header-cell
+          *matHeaderCellDef
+          mat-sort-header
+          class="title action"
+        >
+          <strong>Actions</strong>
+        </th>
+        <td mat-cell *matCellDef="let row" class="action">
+          <button
+            mat-icon-button
+            (click)="editEquipment(row)"
+            matTooltip="add equiment"
+            *ngIf="role == 'ADMIN'"
+            color="primary"
+          >
             <mat-icon>edit</mat-icon>
           </button>
-          <button mat-icon-button (click)="deleteEquipment(row.id)"   matTooltip="delete equiment"   
-          matTooltipClass="tooltipStyle" 
-          *ngIf="role == 'ADMIN'" color="warm">
+          <button
+            mat-icon-button
+            (click)="deleteEquipment(row.id)"
+            matTooltip="delete equiment"
+            matTooltipClass="tooltipStyle"
+            *ngIf="role == 'ADMIN'"
+            color="warm"
+          >
             <mat-icon>delete</mat-icon>
           </button>
-          <button mat-icon-button   routerLink="./history/{{row.id}}" matTooltip="History"  color="warm">
+          <button
+            mat-icon-button
+            routerLink="./history/{{ row.id }}"
+            matTooltip="History"
+            color="warm"
+          >
             <mat-icon>history</mat-icon>
           </button>
-          <button mat-icon-button (click)="reserve(row.id)"  matTooltip="reserve equiment"  *ngIf="role != 'ADMIN'" color="warm">
+          <button
+            mat-icon-button
+            (click)="reserve(row.id)"
+            matTooltip="reserve equiment"
+            *ngIf="role != 'ADMIN'"
+            color="warm"
+          >
             <mat-icon>add</mat-icon>
           </button>
           <button mat-icon-button   matTooltip="details about equipment status" (click)="details(row.details)" color="warm">
             <mat-icon>details</mat-icon>
           </button>
-       
         </td>
       </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
 
       <!-- Row shown when there is no matching data. -->
       <tr class="mat-row" *matNoDataRow>
-        <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+        <td class="mat-cell" colspan="4">
+          No data matching the filter "{{ input.value }}"
+        </td>
       </tr>
     </table>
 
-    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of equiment"></mat-paginator>
+    <mat-paginator
+      [pageSizeOptions]="[5, 10, 25, 100]"
+      aria-label="Select page of equiment"
+    ></mat-paginator>
   </div>
-
 </div>

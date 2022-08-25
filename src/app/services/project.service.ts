@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-
 @Injectable({
   providedIn: 'root',
 })
@@ -49,13 +48,11 @@ export class ProjectService {
       'http://localhost:3000/project/equipment/' + projectId,
       { equipmentId: equipmentId }
     );
-    
   }
   removeProjectMember(projectId: string, memberId: string) {
     return this.http.patch<any>(
       'http://localhost:3000/project/members/' + projectId,
       { memberId: memberId }
     );
-    }
+  }
 }
-

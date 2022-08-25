@@ -5,35 +5,35 @@ import { AppComponent } from './app.component';
 
 import { SigninComponent } from './components/login/signin/signin.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatTabsModule} from '@angular/material/tabs';
-import {MatToolbarModule} from '@angular/material/toolbar';
-import {MatIconModule} from '@angular/material/icon';
-import {MatButtonModule} from '@angular/material/button';
-import {MatDialogModule} from '@angular/material/dialog';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDialogModule } from '@angular/material/dialog';
 import { AddequipmentComponent } from './components/equipment/addequipment/addequipment.component';
-import {MatInputModule} from '@angular/material/input';
-import {MatRadioModule} from '@angular/material/radio';
-import {MatDatepickerModule } from '@angular/material/datepicker';
+import { MatInputModule } from '@angular/material/input';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 
-import {MatNativeDateModule} from '@angular/material/core'
+import { MatNativeDateModule } from '@angular/material/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import {MatTableModule} from '@angular/material/table';
-import {MatPaginatorModule} from '@angular/material/paginator';
-import {MatSortModule} from '@angular/material/sort';
-import {MatSelectModule} from '@angular/material/select';
-import {MatCardModule} from '@angular/material/card';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { MatSelectModule } from '@angular/material/select';
+import { MatCardModule } from '@angular/material/card';
 
-import {MatMenuModule} from '@angular/material/menu';
-import {MatTooltipModule} from '@angular/material/tooltip';
-import {MatExpansionModule} from '@angular/material/expansion';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 import { NavbarProjectComponent } from './components/projects/navbar-project/navbar-project.component';
 import { DatePipe } from '@angular/common';
-import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { ManagerCardComponent } from './components/projects/manager-card/manager-card.component';
-import {MatSnackBarModule} from '@angular/material/snack-bar';
-
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { ProjectHistoryComponent } from './components/projects/project-history/project-history.component';
 
 @NgModule({
   declarations: [
@@ -42,9 +42,6 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     AddequipmentComponent,
     NavbarProjectComponent,
     ManagerCardComponent,
-    
-     
-     
   ],
   imports: [
     BrowserModule,
@@ -61,7 +58,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     MatNativeDateModule,
     ReactiveFormsModule,
     FormsModule,
-    HttpClientModule ,
+    HttpClientModule,
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
@@ -71,9 +68,9 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     MatSlideToggleModule,
     MatTooltipModule,
     MatExpansionModule,
-    MatSnackBarModule
+    MatSnackBarModule,
   ],
   providers: [DatePipe],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

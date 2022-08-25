@@ -1,24 +1,38 @@
-<div class="container" >
-
-    <mat-toolbar>
-        <span class="example-spacer"></span>
-        <button mat-raised-button style="color: rgba(12, 12, 63); margin-top: 30px; margin-bottom: 30px; "
-            routerLink="../../">
-            <i class="fa-solid fa-chevron-left"></i> Back
-        </button>
-    </mat-toolbar>
+<div class="container">
+  <mat-toolbar>
+    <span class="example-spacer"></span>
+    <button
+      mat-raised-button
+      style="color: rgba(12, 12, 63); margin-top: 30px; margin-bottom: 30px"
+      routerLink="../../"
+    >
+      <i class="fa-solid fa-chevron-left"></i> Back
+    </button>
+  </mat-toolbar>
+  <div *ngIf="history.length > 0; else noHistory">
     <main *ngFor="let row of history">
-
-        <mat-card class="pos" mat-align-card="center" style="background-color:  rgba(236, 149, 35, 0.486);margin:5px ;height:180px">
-            <mat-card-title>Equipment name : </mat-card-title>
-            <mat-card-subtitle>Action :{{ row.action_type }} </mat-card-subtitle>
-            <mat-card-content>
-                Username : <br>
-                Description :{{ row.description }} <br>
- </mat-card-content>
- <div mat-dialog-actions [align]="'end'">
-               {{row.created_at | date }}</div>
-
-        </mat-card>
+      <mat-card
+        class="pos"
+        mat-align-card="center"
+        style="
+          background-color: rgba(236, 149, 35, 0.486);
+          margin: 5px;
+          height: 180px;
+        "
+      >
+        <mat-card-title>Equipment name : </mat-card-title>
+        <mat-card-subtitle>Action :{{ row.action_type }} </mat-card-subtitle>
+        <mat-card-content>
+          Username : <br />
+          Description :{{ row.description }} <br />
+        </mat-card-content>
+        <div mat-dialog-actions [align]="'end'">
+          {{ row.created_at | date }}
+        </div>
+      </mat-card>
     </main>
+  </div>
+  <ng-template #noHistory>
+    <h1 style="text-align: center">No history.</h1>
+  </ng-template>
 </div>
