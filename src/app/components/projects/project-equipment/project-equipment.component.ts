@@ -8,7 +8,6 @@ import {MatDialog} from '@angular/material/dialog';
 import { Router,ActivatedRoute  } from '@angular/router';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import {MatSnackBar} from '@angular/material/snack-bar';
-
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 import { ProjectEquipmentAddComponent } from '../project-equipment-add/project-equipment-add.component';
 import { ReserveEquipmentComponent } from '../reserve-equipment/reserve-equipment.component';

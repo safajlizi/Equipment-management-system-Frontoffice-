@@ -28,5 +28,24 @@
         </p>
       </div>
     </div>
-  </main>
+    <main *ngFor="let row of history">
+        <div class="history">
+            <div class="top">
+                <table>
+                    <tr>
+                        <td style="width:280px ;"> <strong >Res :</strong>{{row.created_at | date }}<strong >/ Lib :</strong>{{row.date_lib| date }} </td>
+                        <td><strong >| Action : from </strong>{{row.action_type =='take' ? 'Return': 'Take' }} <strong>to</strong> {{ row.action_type =='return' ? 'Return': 'Take' }}</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="buttom">
+                <p><strong>Equipment name : </strong> {{ row.equipment.ref}}/
+                    {{row.equipment.label}} <strong>| Username : </strong> {{row.user.username}} |
+                   <strong>Description :</strong> {{ row.description }}</p>
+            </div>
+
+        </div>
+
+    </main>
+
 </div>

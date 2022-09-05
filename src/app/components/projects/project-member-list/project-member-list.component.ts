@@ -29,7 +29,7 @@ export class ProjectMemberListComponent implements OnInit {
     this.userService.getMemberProjects(user.id).subscribe({
       next:(res)=>{
         this.memberProjects = res;
-        if(this.memberProjects.length){this.size=this.memberProjects.length}
+        if(this.memberProjects.length != 0){this.size=this.memberProjects.length}
 
       },
       error:(err)=>{

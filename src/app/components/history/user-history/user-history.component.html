@@ -7,11 +7,11 @@
     <main *ngFor="let row of history">
         <div class="history">
             <div class="top">
-                <h3> {{row.created_at | date }} | Action :{{ row.action_type }}</h3>
+                <h3> {{row.created_at | date }} <strong>| Action :</strong>{{ row.action_type }}</h3>
             </div>
             <div class="buttom">
-                <p>Equipment name : {{ row.equipment.ref}}/
-                    {{row.equipment.label}} | Description :{{ row.description }}</p>
+                <p> <strong>Equipment name :</strong>  {{ row.equipment.ref}}/
+                    {{row.equipment.label}}<strong> | Description :</strong> {{ row.description }}</p>
             </div>
 
         </div>

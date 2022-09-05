@@ -23,7 +23,7 @@ const routes: Routes = [
       path: '', component: DashboardComponent,
       children: [
         { path: '', component: EquipmentListComponent },
-        { path: 'profile', component: ProfileComponent},
+        { path: 'profile', component: ProfileComponent,},
         { path: 'projects', component: Dashboard3Component},
         { path: 'projects/equipment/addequipment/:id', component:ProjectEquipmentAddComponent},
         { path: 'projects/members/:id', component:ProjectMembersComponent},
@@ -32,10 +32,9 @@ const routes: Routes = [
         { path: 'projects/member/equipment/:id', component:ProjectMemberEquipmentComponent},
         { path: 'userhistory/:id', component: UserHistoryComponent},
         { path: 'projects/equipment/:id', component:ProjectEquipmentRootComponent},
-          { path: 'history/:id', component: HistoryComponent },
-          { path: 'details/:id', component: DetailsEquipmentComponent},
-
-          { path: '**', redirectTo: '' }
+        { path: 'history/:id', component: HistoryComponent },
+        { path: 'details/:id', component: DetailsEquipmentComponent},
+        { path: '**', redirectTo: '' }
 
       ]
   }

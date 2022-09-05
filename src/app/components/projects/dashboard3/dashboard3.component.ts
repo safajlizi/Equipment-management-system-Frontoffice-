@@ -22,7 +22,15 @@ export class Dashboard3Component implements OnInit {
     private router: Router,
     private userService: UserService,
     private api:ProjectService,private _snackBar: MatSnackBar
-  ) {}
+  ) {
+
+    if (this.tokenStorage.getToken()) {
+     
+      this.role = this.tokenStorage.getUser().role;
+    } else {
+      this.router.navigateByUrl('/login');
+    }
+  }
   getAllProjects(){
     this.api.getProjects()
    .subscribe({

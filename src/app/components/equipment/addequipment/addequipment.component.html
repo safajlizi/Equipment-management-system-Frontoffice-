@@ -3,13 +3,13 @@
 
     <table cellspacing="2">
       <tr>
-        <td style="width: 250px;">
+        <td style="width: 240px;">
     <mat-form-field class="example-full-width" appearance="outline">
       <mat-label>Label/eq.name</mat-label>
       <textarea matInput formControlName="label"></textarea>
     </mat-form-field>
         </td>
-        <td style="width: 250px;">
+        <td style="width: 240px;">
           <mat-form-field class="example-full-width" appearance="outline">
             <mat-label>Serial number</mat-label>
             <textarea matInput formControlName="serial_number"></textarea>
@@ -22,7 +22,7 @@
     <table cellspacing="2">
       <tr>
         <td>
-          <mat-form-field [ngStyle]="{'width': equipmentForm.value.category == 'other' ? '200px' : '500px'}"
+          <mat-form-field [ngStyle]="{'width': equipmentForm.value.category == 'other' ? '240px' : '480px'}"
             appearance="outline">
             <mat-label>Category</mat-label>
             <mat-select formControlName="category" placeholder="role">
@@ -36,7 +36,7 @@
           </mat-form-field>
         </td>
         <td>
-          <mat-form-field appearance="outline" style="width:300px" *ngIf='equipmentForm.value.category == "other"'>
+          <mat-form-field appearance="outline" style="width:240px" *ngIf='equipmentForm.value.category == "other"'>
             <mat-label>Other</mat-label>
             <textarea matInput formControlName="other"></textarea>
           </mat-form-field>
@@ -46,7 +46,7 @@
     <table cellspacing="2">
       <tr>
         <td>
-          <mat-form-field [ngStyle]="{'width': equipmentForm.value.conformity == 'notcompliant' ? '200px' : '500px'}"
+          <mat-form-field [ngStyle]="{'width': equipmentForm.value.conformity == 'notcompliant' ? '240px' : '240px'}"
             appearance="outline">
             <mat-label> Conformity</mat-label>
             <mat-select formControlName="conformity" placeholder="role">
@@ -57,7 +57,7 @@
           </mat-form-field>
         </td>
         <td>
-          <mat-form-field appearance="outline" style="width:300px"
+          <mat-form-field appearance="outline" style="width:280px"
             *ngIf='equipmentForm.value.conformity =="notcompliant"'>
             <mat-label>Details</mat-label>
             <textarea matInput formControlName="defaults"></textarea>

@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { } from '@angular/compiler';
 @Component({
   selector: 'app-dashboard2',
   templateUrl: './dashboard2.component.html',
-  styleUrls: ['./dashboard2.component.css']
+  styleUrls: ['./dashboard2.component.css'],
 })
 export class Dashboard2Component implements OnInit {
   tabIndex: Tabs = Tabs.Equipment;
@@ -15,7 +15,9 @@ export class Dashboard2Component implements OnInit {
   setTab(tab: Tabs) {
     this.tabIndex = tab;
   }
-
+  yourFn(a:any){
+    console.log(a)   
+}
 }
 
 enum Tabs {

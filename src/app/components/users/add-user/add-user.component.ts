@@ -43,12 +43,10 @@ export class AddUserComponent implements OnInit {
       this.userForm.controls['role'].setValue(this.edittData.role);
     }
   }
-  updateUser() {
-    this.api.patchUser(this.userForm.value, this.edittData.id).subscribe({
-      next: (res) => {
-        this._snackBar.open('User updated successfuly', '', {
-          duration: 3000,
-        });
+  updateUser(){
+    this.api.patchUser(this.userForm.value,this.edittData.id)
+    .subscribe({
+      next:(res)=>{
 
         this.userForm.reset();
         this.dialogRef.close();

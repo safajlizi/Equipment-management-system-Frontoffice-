@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit  } from '@angular/core';
 import { EquipmentService } from 'src/app/services/equipment.service';
 import {ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
@@ -39,6 +39,7 @@ export class EquipmentListComponent implements OnInit {
     });
 
   }
+  
   getAllEquipment() {
     this.api.getEquipment()
       .subscribe({
@@ -78,21 +79,6 @@ export class EquipmentListComponent implements OnInit {
 
         }
       })
-  }
-  deleteE(id:number){
-    this.api.deleteEquipment(id).subscribe({
-      next:(res)=>{
-        this._snackBar.open("equipment deleted successfuly",'',{ 
-          duration: 3000
-      })
-        this.getAllEquipment()
-      },
-      error:()=>{
-        this._snackBar.open("error while deletinf quipment",'',{ 
-          duration: 3000
-      })
-      }
-    })
   }
 
   editEquipment(row: any) {

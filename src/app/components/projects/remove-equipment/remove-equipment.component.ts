@@ -74,36 +74,20 @@ export class RemoveEquipmentComponent implements OnInit {
                 });
               },
             });
-        }
-      } else {
-        this.equipmentForm.controls['equipment'].setValue(this.editData.row.id);
-        this.equipmentForm.controls['user'].setValue(
-          this.tokenStorage.getUser().id
-        );
-        this.equipmentForm.controls['project'].setValue(
-          this.editData.row.project.id
-        );
-
-        this.api
-          .returnEquipfromProjectUser(this.equipmentForm.value)
-          .subscribe({
-            next: (res) => {
-              this._snackBar.open('equipment deleted successfuly', '', {
-                duration: 3000,
-              });
-              this.equipmentForm.reset();
-              this.dialogRef.close();
-              this.router.routeReuseStrategy.shouldReuseRoute = () => false;
-              this.router.navigate(['../profile'], {
-                relativeTo: this.route,
-              });
-            },
-            error: () => {
-              this._snackBar.open('error while deleting equipment', '', {
-                duration: 3000,
-              });
-            },
-          });
+            this.equipmentForm.reset();
+            this.dialogRef.close();
+            this.router.routeReuseStrategy.shouldReuseRoute=()=>false;
+            this.router.navigate(['./'],{
+              relativeTo: this.route
+            })
+          },
+          error: () => {
+            this._snackBar.open('error while deleting equipment', '', {
+              duration: 3000,
+            });
+          },
+        }) 
+     
       }
     }
   }

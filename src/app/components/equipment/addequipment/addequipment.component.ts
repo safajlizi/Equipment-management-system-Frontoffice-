@@ -10,51 +10,44 @@ import { Router, ActivatedRoute } from '@angular/router';
   selector: 'app-addequipment',
   templateUrl: './addequipment.component.html',
   styleUrls: ['./addequipment.component.css'],
+
 })
 export class AddequipmentComponent implements OnInit {
-  equipmentForm!: FormGroup;
-  actionBtn: string = 'save';
-  constructor(
-    public datepipe: DatePipe,
-    private formBuilder: FormBuilder,
-    private api: EquipmentService,
-    @Inject(MAT_DIALOG_DATA) public editData: any,
-    private dialogRef: MatDialogRef<AddequipmentComponent>,
-    private _snackBar: MatSnackBar,
-    private router: Router,
-    private route: ActivatedRoute
-  ) {}
+  equipmentForm!:FormGroup;
+  actionBtn:string="save"
+  constructor(public datepipe: DatePipe,private formBuilder :FormBuilder,private api:EquipmentService,
+    @Inject(MAT_DIALOG_DATA)public editData:any, 
+    private dialogRef:MatDialogRef<AddequipmentComponent>,private _snackBar: MatSnackBar,private router:Router,private route:ActivatedRoute,
+    ) { }
+
   ngOnInit(): void {
-    this.equipmentForm = this.formBuilder.group({
-      label: ['', Validators.required],
+    this.equipmentForm=this.formBuilder.group({
+      label:['', Validators.required],
+      property:[false],
+      conformity:['compliant', Validators.required],
+      defaults:[null],
+      description:[''],
+      maker:[''],
+      serial_number:[],
+      calibration:['na'],
+      validity_date:[null, Validators.prototype],
+      category:[null, Validators.required],
+      other:[null],
+     
+    })
+    if(this.editData){
+      this.actionBtn="Update"
 
-      property: [false],
-      conformity: ['compliant', Validators.required],
-      defaults: [null],
-      description: [''],
-      maker: [''],
-      serial_number: [],
-      calibration: ['na'],
-      validity_date: [null, Validators.prototype],
-      category: [null, Validators.required],
-      other: [null],
-    });
-    if (this.editData) {
-      this.actionBtn = 'Update';
-
-      this.equipmentForm.controls['property'].setValue(this.editData.property);
-      this.equipmentForm.controls['conformity'].setValue(
-        this.editData.conformity
-      );
+      this.equipmentForm.controls['property'].setValue(this.editData.property =='client');
+      this.equipmentForm.controls['conformity'].setValue(this.editData.conformity=='Not Compliant' ?'notcompliant':this.editData.conformity);
       this.equipmentForm.controls['defaults'].setValue(this.editData.defaults);
       this.equipmentForm.controls['other'].setValue(this.editData.other);
-
-      this.equipmentForm.controls['calibration'].setValue(
-        this.editData.calibration
-      );
-      this.equipmentForm.controls['validity_date'].setValue(
-        this.editData.validity_date
-      );
+      this.equipmentForm.controls['label'].setValue(this.editData.label);
+      this.equipmentForm.controls['maker'].setValue(this.editData.maker);
+      this.equipmentForm.controls['serial_number'].setValue(this.editData.serial_number);
+      this.equipmentForm.controls['description'].setValue(this.editData.description);
+      this.equipmentForm.controls['calibration'].setValue(this.editData.calibration);
+      this.equipmentForm.controls['validity_date'].setValue(this.editData.validity_date);
       this.equipmentForm.controls['category'].setValue(this.editData.category);
     }
   }
