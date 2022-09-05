@@ -1,5 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { } from '@angular/compiler';
+import {} from '@angular/compiler';
 @Component({
   selector: 'app-dashboard2',
   templateUrl: './dashboard2.component.html',
@@ -7,7 +7,7 @@ import { } from '@angular/compiler';
 })
 export class Dashboard2Component implements OnInit {
   tabIndex: Tabs = Tabs.Equipment;
-  role = "admin"
+  role = 'admin';
   ngOnInit() {
     this.setTab(Tabs.Users);
   }
@@ -15,14 +15,12 @@ export class Dashboard2Component implements OnInit {
   setTab(tab: Tabs) {
     this.tabIndex = tab;
   }
-  yourFn(a:any){
-    console.log(a)   
-}
+  yourFn(a: any) {}
 }
 
 enum Tabs {
   Equipment = 0,
   Users = 1,
   Projects,
-  Settings
+  Settings,
 }

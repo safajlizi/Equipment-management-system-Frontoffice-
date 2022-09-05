@@ -74,20 +74,13 @@ export class RemoveEquipmentComponent implements OnInit {
                 });
               },
             });
-            this.equipmentForm.reset();
-            this.dialogRef.close();
-            this.router.routeReuseStrategy.shouldReuseRoute=()=>false;
-            this.router.navigate(['./'],{
-              relativeTo: this.route
-            })
-          },
-          error: () => {
-            this._snackBar.open('error while deleting equipment', '', {
-              duration: 3000,
-            });
-          },
-        }) 
-     
+          this.equipmentForm.reset();
+          this.dialogRef.close();
+          this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+          this.router.navigate(['./'], {
+            relativeTo: this.route,
+          });
+        }
       }
     }
   }
