@@ -1,0 +1,17 @@
+<form class="example-form" [formGroup]="serieNumberForm">
+
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>New serialNumber</mat-label>
+      <input
+        matInput
+        placeholder="SerialNumber"
+       
+        formControlName="serieNumber"
+      />
+    </mat-form-field>
+  </form>
+  <div mat-dialog-actions [align]="'end'">
+    <button mat-raised-button mat-dialog-close>Cancel</button>
+    <button mat-raised-button color="primary" (click)="save()">Save</button>
+  </div>
+  

@@ -1,6 +1,4 @@
 
-
-
 table {
     width: 100%;
   }
@@ -27,21 +25,17 @@ table {
     
   }
 
-
  .title  {
   background-color: rgba(250, 130, 17, 1 );
  }
   
-
- 
 .filter{
   background-color:  rgba(223, 221, 219,0.1) ;
 }
 .action{
   width: 20%;
 }
-/* ******************/
-
+ 
 tr.example-element-row:not(.example-expanded-row):hover {
   background: whitesmoke;
 }
@@ -80,4 +74,8 @@ tr.example-element-row:not(.example-expanded-row):active {
 
 .example-element-description-attribution {
   opacity: 0.5;
+}
+strong{
+  font-size:17px;
+ font-family:  Optima, sans-serif
 }

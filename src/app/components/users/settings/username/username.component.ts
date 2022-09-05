@@ -4,7 +4,7 @@ import { TokenStorageService } from 'src/app/services/token-storage.service';
 import { UserService } from 'src/app/services/user.service';
 import {MatDialogRef,MAT_DIALOG_DATA } from '@angular/material/dialog'
 import {MatSnackBar} from '@angular/material/snack-bar';
-
+import { Router,ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-username',
@@ -20,7 +20,8 @@ export class UsernameComponent implements OnInit {
     private api: UserService,
     private tokenStorage: TokenStorageService,
     private dialogRef:MatDialogRef<UsernameComponent>
-    ,private _snackBar: MatSnackBar
+    ,private _snackBar: MatSnackBar,
+    private router:Router, private route:ActivatedRoute
   ) {
     this.usernameChangeForm = this.fb.group({
       username: ['', Validators.required],
@@ -41,6 +42,10 @@ export class UsernameComponent implements OnInit {
           this.tokenStorage.editUser('username', res.username);
           this.usernameChangeForm.reset()
           this.dialogRef.close();
+          this.router.routeReuseStrategy.shouldReuseRoute=()=>false;
+          this.router.navigate(['./'],{
+            relativeTo: this.route
+          })
         },
         (err) => {
           this._snackBar.open("This username already exists!",'',{ 

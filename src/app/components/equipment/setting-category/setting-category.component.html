@@ -1,0 +1,28 @@
+<div class="container"  style="margin-top: 15px;">
+    <div class="container card"> 
+        <p style="font-weight: lighter;margin-left: 16opx;"><span style="font: italic small-caps bold 26px/2 cursive;">Add category </span></p>
+       <table>
+        <tr>
+            <td style="width:90%;"><form class="example-form" [formGroup]="categoryForm">
+                    <mat-form-field class="example-full-width" appearance="outline">
+                      <mat-label>Category Name</mat-label>
+                      <input
+                        matInput
+                        placeholder="Category name"
+                        formControlName="category"
+                      />
+                    </mat-form-field>
+                  </form>
+                </td>
+            <td style="width:10% ;">   
+                <button mat-raised-button color="primary" (click)="addCategory()">Submit</button>
+            </td>
+        </tr>
+      </table>          
+        <div   *ngFor="let i of int" style="margin: 10px; margin-bottom:20px">
+        <div class="container">
+            category {{i}}
+        </div>
+        </div>
+    </div>
+</div>

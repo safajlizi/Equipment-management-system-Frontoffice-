@@ -14,10 +14,10 @@
   </div>
   <div *ngIf="listOrAdd; else Add">
 
-    <app-project-members [projectId]="projectId"></app-project-members>
+    <app-project-members ></app-project-members>
   </div>
   <ng-template #Add>
-    <app-project-member-add [projectId]="projectId"></app-project-member-add>
+    <app-project-member-add  ></app-project-member-add>
   </ng-template>
 
 </div>

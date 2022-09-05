@@ -24,12 +24,33 @@ i{
     padding-left: 10px;
 
  }
-  .nav-list-item:hover {
+ a{
+   display:flex;
+   align-items: center;
+   height: 50px;
+   width: 100%;
+   color:rgba(12, 12, 63);
+   padding-left: 20px;
+   padding-right: 20px;
+
+
+}
+a  i{
+   font-size: 20px;
+   height: 25px;
+   width: 25px;
+   margin-right: 15px;
+   margin-left: 0px;
+   text-align: left;
+   color:rgba(12, 12, 63);
+   line-height: 25px;
+}
+  a:hover {
     background-color: #e78a10;
     border-radius:5%; 
 
-
  }
+
  .nav-list-item i{
     font-size: 20px;
     height: 25px;
@@ -43,7 +64,17 @@ i{
     width: 170px;
     text-transform: capitalize;
  }
+a:focus{
+   background-color: #e78a10;
+   border-radius:5%; 
+
+}
+
+
+
  *{
     text-decoration: none;
     color: white;
  }
+ 
+ 

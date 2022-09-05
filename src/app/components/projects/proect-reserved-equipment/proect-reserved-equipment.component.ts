@@ -31,7 +31,6 @@ export class ProectReservedEquipmentComponent implements OnInit {
   role!: string;
   urlTest: any
   @Input() projectId!: string;
-
   constructor(private api:EquipmentService,private dialog:MatDialog, private tokenStorage: TokenStorageService,
     private router: Router,
     private formBuilder: FormBuilder,
@@ -39,21 +38,11 @@ export class ProectReservedEquipmentComponent implements OnInit {
     ,private _snackBar: MatSnackBar) {
      
      }
-  openDialog() {
-    //const dialogRef = this.dialog.open(AddequipmentComponent,{ });
-
-    
-    }
-  
-   
-
 
   getEquipmentById(){
     this.api.getEquipmentByProject(this.projectId)
    .subscribe({
     next:(res)=>{
-   
-    
           this.dataSource=new MatTableDataSource(res)
           this.dataSource.paginator=this.paginator
           this.dataSource.sort=this.sort 
@@ -115,6 +104,7 @@ export class ProectReservedEquipmentComponent implements OnInit {
   }
 
   removeEquipmentfromProject(row :any){
+    
     if(row.other){
       row.set
     }
@@ -132,10 +122,12 @@ export class ProectReservedEquipmentComponent implements OnInit {
       width:'30%',
       data:{'row':row,'id':this.projectId,'toremove':true}  
     })}
-    details(row: any){
-      const dialogRef = this.dialog.open(DetailsComponent,{
-        data:{'details':row}  
-      });}
+    details(row: any) {
+      const dialogRef = this.dialog.open(DetailsComponent, {
+        data: { 'details': row, }
+      });
+  
+    }
       default(row: any){
         const dialogRef = this.dialog.open(DefaultComponent,{
           data:{'EquipmentId':row, 'projectId':this.projectId  }  

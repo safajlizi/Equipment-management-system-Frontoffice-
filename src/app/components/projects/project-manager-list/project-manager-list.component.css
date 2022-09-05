@@ -1,7 +1,8 @@
-.maindiv{
-    box-shadow: 0px 0px 10px rgba(206, 119, 20,1);
-}
-.pos:hover {
+
+.pos{
     background-color: #e78a10;
 
+}
+.pos:hover {
+ box-shadow: 0px 0px 10px rgb(32, 42, 87);
  }

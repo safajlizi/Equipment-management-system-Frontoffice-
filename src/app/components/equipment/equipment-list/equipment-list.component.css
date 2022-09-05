@@ -1,16 +1,18 @@
-
-
-
+.example-container {
+  max-height: 800px;
+  width: 100%;
+  max-width: 100%;
+  overflow: auto;
+}
 table {
   max-width: 1600px;
     width:100%;
+    
 }
-  
 
   .mat-form-field {
     font-size: 14px;
-    width: 100%;
-    
+    width: 100%;    
   }
   
   td, th {
@@ -34,21 +36,15 @@ table {
     margin : 0 auto;
     
   }
-
-
  .title  {
   background-color: rgba(250, 130, 17, 1 );
  }
-  
-
- 
 .filter{
   background-color:  rgba(223, 221, 219,0.1) ;
 }
 .action{
   width: 20%;
 }
-/* ******************/
 
 tr.example-element-row:not(.example-expanded-row):hover {
   background: whitesmoke;
@@ -88,4 +84,22 @@ tr.example-element-row:not(.example-expanded-row):active {
 
 .example-element-description-attribution {
   opacity: 0.5;
+}
+.titlle {
+  font: italic small-caps bold 26px/2 cursive;
+  position: relative;
+  float: left;
+  letter-spacing: 4px;
+  text-shadow: 1px 1px #e78a10;
+  margin-right: 115px;
+  transform: scaleY(1);
+  color: rgba(12, 12, 63)
+}
+h5{
+  color: darkgrey;
+}
+
+strong{
+  font-size:17px;
+  font-family: Optima, sans-serif;
 }

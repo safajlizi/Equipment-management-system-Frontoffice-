@@ -11,12 +11,16 @@ export class EquipmentService {
   getEquipment() {
     return this.http.get<any>('http://localhost:3000/equipment/');
   }
+  getEquipmentById(id:number) {
+    return this.http.get<any>('http://localhost:3000/equipment/'+id);
+  }
   putEquipment(data: any, id: number) {
     return this.http.put<any>('http://localhost:3000/equipment/' + id, data);
   }
   patchEquipment(data: any, id: number) {
-    return this.http.patch<any>('http://localhost:3000/equipment/' + id, data);
+    return this.http.patch<any>('http://localhost:3000/equipment/'+ id, data);
   }
+  //patchEquipment({serial_number:new},id)
   deleteEquipment(id: number) {
     return this.http.delete<any>('http://localhost:3000/equipment/' + id);
   }
@@ -41,5 +45,12 @@ export class EquipmentService {
   }
   declareFaulty(data:any) {
     return this.http.post<any>('http://localhost:3000/equipment/faulty',data);
+  }
+  updateVisibility(data:any) {
+    
+    return this.http.post<any>('http://localhost:3000/equipment/visibility',data);
+  }
+  getVisibility() {
+    return this.http.get<any>('http://localhost:3000/equipment/visibility/all');
   }
 }

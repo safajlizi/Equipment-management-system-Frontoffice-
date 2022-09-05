@@ -1,0 +1,31 @@
+ <div class="container">
+ <mat-toolbar>
+    <button mat-raised-button style="color: rgba(12, 12, 63); margin-top:
+        30px; margin-bottom: 30px;margin-left: 60px; "
+        routerLink="../../">
+        <i class="fa-solid fa-chevron-left"></i> Back
+    </button>
+</mat-toolbar>
+
+<div class="container card">
+    <div class="container pos top">
+        <p tyle="font-weight: lighter;"> <span style="font: italic small-caps
+                bold
+                26px/2 cursive;">Serial Number : </span> <span style="font-size:large">{{equipment.serial_number}}</span></p>
+        <p tyle="font-weight: lighter;"> <span style="font: italic small-caps
+                bold
+                26px/2 cursive;"> Constructor : </span><span style="font-size:large">{{equipment.maker}}</span></p>
+        <p tyle="font-weight: lighter;"> <span style="font: italic small-caps
+                bold
+                26px/2 cursive;">Other technical details : </span><br>{{equipment.description}}
+
+        </p>
+
+    </div>
+    <div class="bottom">
+        <button mat-raised-button  (click)="serieNumber()"style="color: rgba(12, 12, 63); margin-left: 55%;" [disabled]=" equipment.deleted == true"> Serie Number<i class="fa-solid fa-pen"></i></button>
+         <button mat-raised-button (click)="Constructor()" style="color: rgba(12, 12, 63);margin-left: 8px; " [disabled]=" equipment.deleted == true"> Constructor<i class="fa-solid fa-pen"></i></button> 
+        <button mat-raised-button (click)="description()" style="color: rgba(12, 12, 63);margin-left:8px; " [disabled]=" equipment.deleted == true"> Details<i class="fa-solid fa-pen"></i></button>
+    </div>
+</div>
+</div>

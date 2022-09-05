@@ -1,23 +1,17 @@
-
-
-
 table {
     max-width: 1600px;
       width:100%;
   }
-    
-  
-    .mat-form-field {
+.mat-form-field {
       font-size: 14px;
       width: 100%;
       
-    }
-    
-    td, th {
+  }
+td, th {
       width:11%;
      border-color: rgba(250, 130, 17, 1 )
     }
-    th{
+ th{
       font-size: 14px;
     }
     mat-paginator{
@@ -34,22 +28,16 @@ table {
       margin : 0 auto;
       
     }
-  
-  
+
    .title  {
     background-color: rgba(250, 130, 17, 1 );
-   }
-    
-  
-   
+   }  
   .filter{
     background-color:  rgba(223, 221, 219,0.1) ;
   }
   .action{
     width: 20%;
-  }
-  /* ******************/
-  
+  }  
   tr.example-element-row:not(.example-expanded-row):hover {
     background: whitesmoke;
   }
@@ -89,4 +77,9 @@ table {
   .example-element-description-attribution {
     opacity: 0.5;
   }
+  strong{
+    font-size:17px;
+    font-family: Optima, sans-serif;
+  }
+  
   

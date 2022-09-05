@@ -19,7 +19,7 @@ export class ReserveEquipmentComponent implements OnInit {
   equipmentForm!:FormGroup;
   actionBtn:string="save"
   constructor(public datepipe: DatePipe,private formBuilder :FormBuilder,private api:EquipmentService,
-    @Inject(MAT_DIALOG_DATA)public editData:any,  private route: ActivatedRoute, private tokenStorage: TokenStorageService,
+    @Inject(MAT_DIALOG_DATA)public editData:any, private router:Router,private route:ActivatedRoute, private tokenStorage: TokenStorageService,
     private dialogRef:MatDialogRef<ReserveEquipmentComponent>,private _snackBar: MatSnackBar) { 
       route.params.subscribe((params) => {
         this.projectId = params['id'];
@@ -32,7 +32,7 @@ export class ReserveEquipmentComponent implements OnInit {
       user:[null],
       equipment:[null],
       project:[null],
-      description:[''],
+      description:['',Validators.required],
       date_lib:[null],
 
      
@@ -56,6 +56,10 @@ export class ReserveEquipmentComponent implements OnInit {
       })
         this.equipmentForm.reset();
         this.dialogRef.close();
+        this.router.routeReuseStrategy.shouldReuseRoute=()=>false;
+        this.router.navigate(['./'],{
+          relativeTo: this.route
+        })
       },
       error:()=>{
         this._snackBar.open("error while updating equipment",'',{ 
@@ -88,6 +92,10 @@ export class ReserveEquipmentComponent implements OnInit {
         })
           this.equipmentForm.reset();
           this.dialogRef.close();
+          this.router.routeReuseStrategy.shouldReuseRoute=()=>false;
+          this.router.navigate(['./'],{
+            relativeTo: this.route
+          })
         },
         error:()=>{
           this._snackBar.open("error while adding equipment",'',{ 
@@ -113,6 +121,10 @@ export class ReserveEquipmentComponent implements OnInit {
         })
           this.equipmentForm.reset();
           this.dialogRef.close();
+          this.router.routeReuseStrategy.shouldReuseRoute=()=>false;
+          this.router.navigate(['./'],{
+            relativeTo: this.route
+          })
         },
         error:()=>{
           this._snackBar.open("error while deleting equipment",'',{ 
@@ -140,6 +152,10 @@ export class ReserveEquipmentComponent implements OnInit {
         })
           this.equipmentForm.reset();
           this.dialogRef.close();
+          this.router.routeReuseStrategy.shouldReuseRoute=()=>false;
+          this.router.navigate(['./'],{
+            relativeTo: this.route
+          })
         },
         error:()=>{
           this._snackBar.open("error while deleting equipment",'',{ 
@@ -162,6 +178,10 @@ export class ReserveEquipmentComponent implements OnInit {
           })
             this.equipmentForm.reset();
             this.dialogRef.close();
+            this.router.routeReuseStrategy.shouldReuseRoute=()=>false;
+            this.router.navigate(['./'],{
+              relativeTo: this.route
+            })
           },
           error:()=>{
             this._snackBar.open("error whilereservinggg equipment",'',{ 

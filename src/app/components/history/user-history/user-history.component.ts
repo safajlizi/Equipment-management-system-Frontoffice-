@@ -3,6 +3,7 @@ import { HistoryService } from 'src/app/services/history.service';
 import { ActivatedRoute , Router} from '@angular/router';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import {Title} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-user-history',
@@ -13,6 +14,7 @@ export class UserHistoryComponent implements OnInit {
 
   history: any;
   id:any
+  size:any
   constructor(     private _snackBar:MatSnackBar
 ,    private tokenStorage: TokenStorageService,private historyService: HistoryService,private route: ActivatedRoute,private router:Router) {
     route.params.subscribe((params) => {
@@ -25,7 +27,7 @@ export class UserHistoryComponent implements OnInit {
    .subscribe({
     next:(res)=>{
         this.history=res 
-    
+        this.size=this.history.length
    },
     error:(err)=>{
       this._snackBar.open("error get hisotry")

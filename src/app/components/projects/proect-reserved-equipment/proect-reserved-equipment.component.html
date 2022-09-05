@@ -6,16 +6,12 @@
           <mat-label>Filter</mat-label>
           <input matInput (keyup)="applyFilter($event)" Style="width:1200px"
             placeholder="label ,status, description.... " #input>
-
         </mat-form-field>
       </td>
       <td>
-
-
       </td>
     </tr>
   </table>
-
   <div class="mat-elevation-z8 tab">
     <table mat-table [dataSource]="dataSource" matSort Style="border-color:rgba(250, 130, 17, 1 )">
 
@@ -36,13 +32,13 @@
       </ng-container>
       <ng-container matColumnDef="availibility">
         <th mat-header-cell *matHeaderCellDef mat-sort-header class="title"> <strong>Availibility</strong> </th>
-        <td mat-cell *matCellDef="let row"> {{row.availability}} </td>
+        <td mat-cell *matCellDef="let row" [ngStyle]="{'color': row.availability =='INUSETOOTHERS' ? 'green' : 'darkgrey'}"> {{row.availability =='INUSETOOTHERS'? 'Available':'In use'}} </td>
       </ng-container>
 
       <ng-container matColumnDef="status">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header class="title"> <strong>conformity status</strong> </th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="title"> <strong>Conformity status</strong> </th>
         <td mat-cell *matCellDef="let row"> {{row.conformity}} <button mat-icon-button
-            *ngIf="row.conformity == 'notcompliant'" matTooltip="defaults" (click)="details(row.defaults)" color="warm">
+            *ngIf="row.conformity == 'notcompliant' || row.conformity =='Not Compliant'" matTooltip="defaults" (click)="details(row)" color="warm">
             <mat-icon>contact_support</mat-icon>
           </button>
         </td>
@@ -55,8 +51,8 @@
       </ng-container>
 
       <ng-container matColumnDef="is_calibrated">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header class="title"> <strong>calibration status</strong></th>
-        <td mat-cell *matCellDef="let row"> {{row.calibration}} </td>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="title"> <strong>Calibration status</strong></th>
+        <td mat-cell *matCellDef="let row" [ngStyle]="{'color': row.calibration == 'nok' ? 'red' : row.calibration == 'ok' ?'green' :''}"> {{row.calibration}} </td>
       </ng-container>
 
       <ng-container matColumnDef="calibrating_date">
@@ -68,19 +64,12 @@
       <ng-container matColumnDef="action" matColumnDef="action">
         <th mat-header-cell *matHeaderCellDef mat-sort-header class="title action"><strong>Actions</strong> </th>
         <td mat-cell *matCellDef="let row" class="action">
-
-          <button mat-icon-button (click)="openDialog()" matTooltip="History" color="warm">
-            <mat-icon>history</mat-icon>
+          <button mat-icon-button (click)="removeEquipmentfromProject(row)" matTooltip="Liberate equimment">
+            <i class="fa-solid fa-rotate-left"></i>
           </button>
-         
-          <button mat-icon-button (click)="removeEquipmentfromProject(row)" matTooltip="liberate equiment">
-            <i class="fa-solid fa-trash"></i>
-          </button>
-          <button mat-icon-button matTooltip="declare equipment default" (click)="default(row.id)" color="warm">
+          <button mat-icon-button matTooltip="Declare equipment default" (click)="default(row.id)" color="warm">
             <mat-icon>details</mat-icon>
           </button>
-
-
         </td>
       </ng-container>
 

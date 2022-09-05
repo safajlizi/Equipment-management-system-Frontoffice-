@@ -15,7 +15,7 @@ export class ProjectManagerListComponent implements OnInit {
   role = '';
   showManaged: boolean = true;
   managedProjects: any;
- 
+  size=0
   constructor(private api:EquipmentService,
     private tokenStorage: TokenStorageService,
     private router: Router,
@@ -24,18 +24,13 @@ export class ProjectManagerListComponent implements OnInit {
 
   ) {}
 
-
-
- 
-
-
   ngOnInit(): void {
     
     let user = this.tokenStorage.getUser()
     this.userService.getManagedProjects(user.id).subscribe({
       next:(res)=>{
         this.managedProjects = res;
-        
+        if(this.managedProjects.length){this.size=this.managedProjects.length}
       },
       error:(err)=>{
         this._snackBar.open("error get managed projects",'',{ 

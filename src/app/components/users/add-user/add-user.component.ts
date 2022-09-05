@@ -2,9 +2,9 @@ import { Component, Inject, OnInit } from '@angular/core';
 import{FormGroup,FormBuilder,Validators} from'@angular/forms'
 import { UserService } from 'src/app/services/user.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
-
 import {MatDialogRef,MAT_DIALOG_DATA } from '@angular/material/dialog'
 import { NotifComponent } from '../../alert/notif/notif.component';
+import { Router,ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-add-user',
   templateUrl: './add-user.component.html',
@@ -14,11 +14,12 @@ export class AddUserComponent implements OnInit {
   hide = true;
   durationInSeconds = 5;
   userForm!:FormGroup;
-  actionBtn:string="save"
+  actionBtn:string="Save"
   test=false
   constructor(private formBuilder :FormBuilder,private api:UserService,
     @Inject(MAT_DIALOG_DATA)public edittData:any, 
     private dialogRef:MatDialogRef<AddUserComponent>,
+    private router:Router,private route:ActivatedRoute,
     private _snackBar: MatSnackBar) { }
   ngOnInit(): void {
     this.userForm=this.formBuilder.group({
@@ -26,7 +27,6 @@ export class AddUserComponent implements OnInit {
       lastname: ['', Validators.required],
       firstname: ['', Validators.required],
       username: ['', Validators.required],
-      password: ['', Validators.required],
       role: [null, Validators.required]
 
       
@@ -39,11 +39,7 @@ export class AddUserComponent implements OnInit {
       this.userForm.controls['firstname'].setValue(this.edittData.firstname);
       this.userForm.controls['username'].setValue(this.edittData.username);
       this.userForm.controls['role'].setValue(this.edittData.role);
-
-
     }
-
-
   }
   updateUser(){
     this.api.putUser(this.userForm.value,this.edittData.id)
@@ -57,6 +53,10 @@ export class AddUserComponent implements OnInit {
         this.userForm.reset();
         this.dialogRef.close();
         this.test=false
+        this.router.routeReuseStrategy.shouldReuseRoute=()=>false;
+        this.router.navigate(['./'],{
+          relativeTo: this.route
+        })
       },
       error:()=>{
         this._snackBar.open("error while updating user",'',{ 
@@ -79,6 +79,10 @@ export class AddUserComponent implements OnInit {
         })
           this.userForm.reset();
           this.dialogRef.close();
+          this.router.routeReuseStrategy.shouldReuseRoute=()=>false;
+          this.router.navigate(['./'],{
+            relativeTo: this.route
+          })
         },
         error:()=>{
           this._snackBar.open("error while adding user",'',{ 

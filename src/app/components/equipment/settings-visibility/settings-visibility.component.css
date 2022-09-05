@@ -1,0 +1,25 @@
+.card{
+    width:800px ;
+    height: 380px;
+    padding-top: 20px;
+}
+::ng-deep .mat-checkbox-ripple .mat-ripple-element {
+    background-color: black !important;
+    width: 15px;
+  }
+  ::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background {
+    background-color: black !important;
+    width: 15px;
+  }
+  ::ng-deep .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
+    background-color: black !important;
+    width: 15px;
+
+  }
+  tr{
+    width:800px;
+    height:45px
+  }
+  tr td{
+    width:250px
+  }

@@ -1,56 +1,42 @@
 
-
-
 table {
     max-width: 1600px;
       width:100%;
-  }
-    
-  
-    .mat-form-field {
+  } 
+ .mat-form-field {
       font-size: 14px;
-      width: 100%;
-      
+      width: 100%;  
     }
-    
-    td, th {
-      width:12%;
+   
+td, th {
+      width:10%;
      border-color: rgba(250, 130, 17, 1 )
     }
-    th{
+th{
       font-size: 14px;
-    }
-    mat-paginator{
+}
+ mat-paginator{
       border-color: rgba(250, 130, 17, 1 );
       max-width: 1600px;
       width:100%;
-  
-    }
-    .tab td{
+  }
+.tab td{
       max-block-size: 200px}
-    
-    .container{
+.container{
       width:100%;
-      margin : 0 auto;
-      
+      margin : 0 auto;   
     }
-  
-  
-   .title  {
+.title  {
     background-color: rgba(250, 130, 17, 1 );
    }
-    
-  
    
-  .filter{
+.filter{
     background-color:  rgba(223, 221, 219,0.1) ;
   }
   .action{
     width: 20%;
   }
-  /* ******************/
-  
-  tr.example-element-row:not(.example-expanded-row):hover {
+   tr.example-element-row:not(.example-expanded-row):hover {
     background: whitesmoke;
   }
   
@@ -95,4 +81,13 @@ table {
   .example-spacer {
     flex: 1 1 auto;
   }
-  
+  .titlle {
+    font: italic small-caps bold 26px/2 cursive;
+    position: relative;
+    float: left;
+    letter-spacing: 4px;
+    text-shadow: 1px 1px #e78a10;
+    margin-right: 115px;
+    transform: scaleY(1);
+    color: rgba(12, 12, 63)
+  }

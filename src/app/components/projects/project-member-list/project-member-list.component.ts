@@ -14,6 +14,7 @@ export class ProjectMemberListComponent implements OnInit {
   role = '';
   showManaged: boolean = true;
   memberProjects: any;
+  size=0
   constructor(
     private tokenStorage: TokenStorageService,
     private router: Router,
@@ -27,8 +28,9 @@ export class ProjectMemberListComponent implements OnInit {
   
     this.userService.getMemberProjects(user.id).subscribe({
       next:(res)=>{
-        console.log(res)
         this.memberProjects = res;
+        if(this.memberProjects.length){this.size=this.memberProjects.length}
+
       },
       error:(err)=>{
         this._snackBar.open("error get member projects",'',{ 

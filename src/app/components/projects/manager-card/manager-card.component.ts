@@ -17,7 +17,6 @@ export class ManagerCardComponent implements OnInit {
   ngOnInit(): void {
     if(this.editData){
       this.manager=this.editData.manager
-      console.log(this.editData.manager)
     }
   }
 }

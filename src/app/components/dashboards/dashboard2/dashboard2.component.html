@@ -1,10 +1,11 @@
-<mat-tab-group mat-align-tabs="center" [selectedIndex]="tabIndex">
-  <mat-tab label="Users" class="pos1" *ngIf="role == 'admin'">
+<mat-tab-group mat-align-tabs="center" style="margin-top: 20px;    display: flex;
+"  [selectedIndex]="tabIndex">
+  <mat-tab label="Users" class="pos1" >
     <div class="size">
       <app-userlist></app-userlist>
     </div>
   </mat-tab>
-  <mat-tab label="Equipment " class="pos1" *ngIf="role == 'admin'">
+  <mat-tab label="Equipment " class="pos1" >
     <div>
       <router-outlet></router-outlet>
     </div>
@@ -13,6 +14,11 @@
     <div>
       <app-list-projects>
       </app-list-projects>
+    </div>
+  </mat-tab>
+  <mat-tab label="Settings " class="pos1">
+    <div>
+      <app-dashboard-settings></app-dashboard-settings>
     </div>
   </mat-tab>
 </mat-tab-group>

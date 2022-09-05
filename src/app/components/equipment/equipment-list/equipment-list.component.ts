@@ -1,19 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { EquipmentService } from 'src/app/services/equipment.service';
-import { AfterViewInit, ViewChild } from '@angular/core';
+import {ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
+import { MatSort} from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { AddequipmentComponent } from '../addequipment/addequipment.component';
 import { MatDialog } from '@angular/material/dialog';
 import { ReserveComponent } from '../reserve/reserve.component';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
-
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 import { DetailsComponent } from '../details/details.component';
-import { DefaultComponent } from '../default/default.component';
 import { UserService } from 'src/app/services/user.service';
+import { DetailsAvailibilityComponent } from '../details-availibility/details-availibility.component';
+import { ConfirmationDialogComponent } from '../../projects/confirmation-dialog/confirmation-dialog.component';
 @Component({
   selector: 'app-equipment-list',
   templateUrl: './equipment-list.component.html',
@@ -21,15 +21,15 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class EquipmentListComponent implements OnInit {
 
-  displayedColumns: string[] = ['id', 'label', 'category', 'prop_client', 'availability', 'status', 'manager', 'is_calibrated', 'calibrating_date', 'action'];
+  displayedColumns!: string[] ;
+  columns=['ref', 'label',  'property','category', 'conformity','availability', 'manager', 'calibration', 'validity_date','created_at','updated_at','deleted_at','action'];
   dataSource!: MatTableDataSource<any>;
-
+  visibility!:[]
   @ViewChild(MatPaginator) paginator!: MatPaginator;
-  @ViewChild(MatSort) sort!: MatSort;
-  role!: string;
+  @ViewChild(MatSort, {static: true}) sort!: MatSort;
+    role!: string;
   user!: any
   size = 0
-
 
   constructor(private api: EquipmentService, private dialog: MatDialog, private tokenStorage: TokenStorageService,
     private router: Router, private _snackBar: MatSnackBar, private userService: UserService) { }
@@ -38,9 +38,7 @@ export class EquipmentListComponent implements OnInit {
 
     });
 
-
   }
-
   getAllEquipment() {
     this.api.getEquipment()
       .subscribe({
@@ -48,8 +46,10 @@ export class EquipmentListComponent implements OnInit {
 
           this.dataSource = new MatTableDataSource(res)
           this.dataSource.paginator = this.paginator
-          this.dataSource.sort = this.sort
-        },
+          
+          this.sort.sort(
+            {id:'',start:'asc',disableClear : false}
+          )        },
         error: (err) => {
           this._snackBar.open("error get equipment", '', {
             duration: 3000
@@ -57,6 +57,44 @@ export class EquipmentListComponent implements OnInit {
         }
       })
   }
+  getVisibility() {
+    this.api.getVisibility()
+      .subscribe({
+        next: (res) => {
+    this.visibility =res
+
+    let keys=[]
+    this.visibility.forEach((item)=> {
+      if(item['visible']){
+         keys.push(item['field'])
+      }
+    })
+    keys.push('action')
+    keys.sort((obj1,obj2)=>this.columns.indexOf(obj1)- this.columns.indexOf(obj2))
+    this.displayedColumns=keys
+                 },
+        error: (err) => {
+          this.displayedColumns= ['ref', 'label',  'property','category', 'conformity','availability', 'manager', 'calibration', 'validity_date','action']
+
+        }
+      })
+  }
+  deleteE(id:number){
+    this.api.deleteEquipment(id).subscribe({
+      next:(res)=>{
+        this._snackBar.open("equipment deleted successfuly",'',{ 
+          duration: 3000
+      })
+        this.getAllEquipment()
+      },
+      error:()=>{
+        this._snackBar.open("error while deletinf quipment",'',{ 
+          duration: 3000
+      })
+      }
+    })
+  }
+
   editEquipment(row: any) {
     if (row.other) {
       row.set
@@ -69,20 +107,12 @@ export class EquipmentListComponent implements OnInit {
     })
   }
   deleteEquipment(id: number) {
-    this.api.deleteEquipment(id).subscribe({
-      next: (res) => {
-        this._snackBar.open("equipment deleted successfuly", '', {
-          duration: 3000
-        })
-        this.getAllEquipment()
-      },
-      error: () => {
-        this._snackBar.open("error while deletinf quipment", '', {
-          duration: 3000
-        })
-      }
-    })
+    const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
+      data: { 'id':id,'equipment':true }
+    });
+
   }
+   
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
@@ -91,7 +121,6 @@ export class EquipmentListComponent implements OnInit {
       this.dataSource.paginator.firstPage();
     }
   }
-
   ngOnInit(): void {
     this.getAllEquipment()
     if (this.tokenStorage.getToken()) {
@@ -106,6 +135,7 @@ export class EquipmentListComponent implements OnInit {
         this.size = res.length
       }
     })
+    this.getVisibility()
   }
 
   reserve(row: any) {
@@ -117,7 +147,14 @@ export class EquipmentListComponent implements OnInit {
   }
   details(row: any) {
     const dialogRef = this.dialog.open(DetailsComponent, {
-      data: { 'details': row, }
+      data: { 'details': row }
+    });
+
+
+  }
+  detailsAvailibility(row: any, lib:any) {
+    const dialogRef = this.dialog.open(DetailsAvailibilityComponent, {
+      data: { 'row': row,'lib':lib }
     });
 
 

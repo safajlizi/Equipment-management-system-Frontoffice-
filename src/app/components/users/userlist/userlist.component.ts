@@ -7,6 +7,7 @@ import {MatTableDataSource} from '@angular/material/table';
 import {MatDialog} from '@angular/material/dialog';
 import { AddUserComponent } from '../add-user/add-user.component';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import { ConfirmationDialogComponent } from '../../projects/confirmation-dialog/confirmation-dialog.component';
 
 @Component({
   selector: 'app-userlist',
@@ -83,4 +84,10 @@ export class UserlistComponent implements OnInit {
     const dialogRef = this.dialog.open(AddUserComponent,{
       
     });}
+    deleteU(id: number) {
+      const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
+        data: { 'id':id ,'user':true}
+      });
+  
+    }
 }

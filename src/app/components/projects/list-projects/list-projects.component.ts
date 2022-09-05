@@ -8,6 +8,7 @@ import { CreateProjectComponent } from '../create-project/create-project.compone
 import { ManagerCardComponent } from '../manager-card/manager-card.component';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import { MemberCardComponent } from '../member-card/member-card.component';
+import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
 
 
 @Component({
@@ -17,7 +18,7 @@ import { MemberCardComponent } from '../member-card/member-card.component';
 })
 export class ListProjectsComponent implements OnInit {
 
-  displayedColumns: string[] = ['name', 'description', 'manager', 'equipment','action'];
+  displayedColumns: string[] = ['name', 'manager', 'equipment','action'];
   dataSource!: MatTableDataSource<any>;
   initialData: any;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -100,5 +101,10 @@ export class ListProjectsComponent implements OnInit {
         if(val==='update'){this.getAllProjects()}
       })
     }
-
+    deleteP(id: number) {
+      const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
+        data: { 'id':id ,'project':true}
+      });
+  
+    }
 }

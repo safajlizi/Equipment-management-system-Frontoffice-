@@ -4,7 +4,7 @@ import { EquipmentService } from 'src/app/services/equipment.service';
 import {MatDialogRef,MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DatePipe } from '@angular/common'
 import {MatSnackBar} from '@angular/material/snack-bar';
-import {Router} from '@angular/router'
+import {Router,ActivatedRoute} from '@angular/router'
 
 @Component({
   selector: 'app-addequipment',
@@ -16,7 +16,7 @@ export class AddequipmentComponent implements OnInit {
   actionBtn:string="save"
   constructor(public datepipe: DatePipe,private formBuilder :FormBuilder,private api:EquipmentService,
     @Inject(MAT_DIALOG_DATA)public editData:any, 
-    private dialogRef:MatDialogRef<AddequipmentComponent>,private _snackBar: MatSnackBar,private router:Router) { }
+    private dialogRef:MatDialogRef<AddequipmentComponent>,private _snackBar: MatSnackBar,private router:Router,private route:ActivatedRoute) { }
   ngOnInit(): void {
     this.equipmentForm=this.formBuilder.group({
       label:['', Validators.required],
@@ -25,7 +25,9 @@ export class AddequipmentComponent implements OnInit {
       conformity:['compliant', Validators.required],
       defaults:[null],
       description:[''],
-      calibration:['nok'],
+      maker:[''],
+      serial_number:[],
+      calibration:['na'],
       validity_date:[null, Validators.prototype],
       category:[null, Validators.required],
       other:[null],
@@ -34,7 +36,10 @@ export class AddequipmentComponent implements OnInit {
     })
     if(this.editData){
       this.actionBtn="Update"
-      this.equipmentForm.controls['label'].setValue(this.editData.label);
+      
+      
+
+
 
       this.equipmentForm.controls['property'].setValue(this.editData.property);
       this.equipmentForm.controls['conformity'].setValue(this.editData.conformity);
@@ -61,7 +66,10 @@ export class AddequipmentComponent implements OnInit {
       })
         this.equipmentForm.reset();
         this.dialogRef.close();
-        
+        this.router.routeReuseStrategy.shouldReuseRoute=()=>false;
+        this.router.navigate(['./'],{
+          relativeTo: this.route
+        })
       },
       error:()=>{
         this._snackBar.open("error while updating equipment",'',{ 
@@ -74,11 +82,13 @@ export class AddequipmentComponent implements OnInit {
   addEquipment(){
     if(!this.editData){
        if(this.equipmentForm.valid){
-        
+        if(this.equipmentForm.value.category == 'calibration' && this.equipmentForm.value.calibration =='na' ){this.equipmentForm.controls['calibration'].setValue('nok')}
+
 
         this.equipmentForm.controls['validity_date'].setValue(this.datepipe.transform(this.equipmentForm.value.validity_date, 'yyyy-MM-dd') )
         if(this.equipmentForm.value.property == true ){this.equipmentForm.controls['property'].setValue('client')}
         else{this.equipmentForm.controls['property'].setValue('sofia')}
+
         if(this.equipmentForm.value.other ){this.equipmentForm.controls['category'].setValue(this.equipmentForm.value.other)}
       this.api.postEquipment(this.equipmentForm.value)
       .subscribe({
@@ -88,6 +98,10 @@ export class AddequipmentComponent implements OnInit {
         })
           this.equipmentForm.reset();
           this.dialogRef.close();
+          this.router.routeReuseStrategy.shouldReuseRoute=()=>false;
+          this.router.navigate(['./'],{
+            relativeTo: this.route
+          })
         },
         error:()=>{
           this._snackBar.open("error while adding equipment",'',{ 

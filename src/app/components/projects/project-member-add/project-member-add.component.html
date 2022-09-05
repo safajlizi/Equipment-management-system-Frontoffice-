@@ -1,57 +1,20 @@
 
-  <div>
-    
+<div class="container">
 
-    <form class="example-form" [formGroup]="userSearchForm">
-      <table class="example-full-width ab" cellspacing="0">
-        <tr>
-          <td style="width: 100%;">
-            <mat-form-field class="example-full-width" style="width:100% ;height:10" appearance="fill">
-        <mat-label>Search member</mat-label>
-        <input matInput formControlName="keyword" (keyup)="onChange($event)" placeholder="Username , Email ..."  />
-      </mat-form-field>
-          </td>
-          <td> <button (click)="onSave()" mat-raised-button color="'primary'" type="submit" style="height:30 ;" >Submit</button></td>
-        </tr>
-      </table>
-      
-     
-    </form >
-
-    <div  *ngFor="let Seluser of shownUsers" >
-      <div *ngIf="isSelected(Seluser.id)==true ">
-      <mat-card  mat-align-card="center" style="background-color: #e78a10;">
-        <mat-card-title>{{ Seluser.username }}</mat-card-title>
-        <mat-card-subtitle> {{ Seluser.role }}</mat-card-subtitle>
-        <mat-card-content>
-          <i class="fa-solid fa-envelope"></i>
-          {{ Seluser.email }}</mat-card-content
-        >
-        <mat-card-actions align="end">
-          <button mat-button (click)="onSelect(Seluser.id)">
-            <div *ngIf="!isIn(Seluser.id).bool; else elseBlock">Select</div>
-            <ng-template #elseBlock>Unselect</ng-template>
-          </button>
-        </mat-card-actions>
-      </mat-card>
-    </div>
+  <div class="pos">
+    <mat-toolbar>
+      <span class="title"> Add members space</span>
+      <span class="example-spacer"></span>
+      <button mat-raised-button style="color: rgba(12, 12, 63); margin-top:
+        30px; margin-bottom: 30px"
+        routerLink="../../{{projectId}}">
+        <i class="fa-solid fa-chevron-left"></i> Back
+      </button>
+    </mat-toolbar>
 
   </div>
-    <div *ngFor="let user of shownUsers">
-      <mat-card [ngClass]="isIn(user.id).style" *ngIf="isSelected(user.id)==false  && user.id != id" mat-align-card="center">
-        <mat-card-title>{{ user.username }}</mat-card-title>
-        <mat-card-subtitle> {{ user.role }}</mat-card-subtitle>
-        <mat-card-content>
-          <i class="fa-solid fa-envelope"></i>
-          {{ user.email }}</mat-card-content
-        >
-        <mat-card-actions align="end">
-          <button mat-button (click)="onSelect(user.id)">
-            <div *ngIf="!isIn(user.id).bool; else elseBlock">Select</div>
-            <ng-template #elseBlock>Unselect</ng-template>
-          </button>
-        </mat-card-actions>
-      </mat-card>
-    </div>
-</div>
+  <div>
+    <app-members [projectId]="projectId"></app-members>
+  </div>
 
+</div>

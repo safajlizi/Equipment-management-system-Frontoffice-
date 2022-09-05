@@ -1,0 +1,43 @@
+<div class="container"  style="margin-top: 25px;">
+    <div class="container card"> <p style="font-weight: lighter;margin-left:
+            16opx;"><span style="font: italic small-caps bold 26px/2 cursive;">Visibility
+                of Equipment Table Columns </span><i class="fa-solid fa-gear"></i></p>
+        <form class="example-form" [formGroup]="visibilityForm">
+            <table>
+
+                <tr >
+                    <td > <mat-checkbox formControlName="ref" >Id</mat-checkbox></td>
+                    <td ><mat-checkbox formControlName="label" >Label</mat-checkbox></td>
+                    <td ><mat-checkbox formControlName="category">Category</mat-checkbox></td>
+                </tr>
+                <tr >
+                    <td ><mat-checkbox formControlName="property">Property</mat-checkbox></td>
+                    <td ><mat-checkbox formControlName="conformity">Conformity</mat-checkbox></td>
+                    <td > <mat-checkbox formControlName="manager">Manager</mat-checkbox></td>
+                </tr>
+                <tr >         
+                    <td ><mat-checkbox formControlName="availability" >Availibility</mat-checkbox></td>
+                    <td ><mat-checkbox formControlName="calibration">Calibration</mat-checkbox></td>
+                    <td ><mat-checkbox formControlName="validity_date">Validity_date</mat-checkbox></td>
+
+                </tr>
+                <tr >         
+                    <td ><mat-checkbox formControlName="updated_at">Updated_at</mat-checkbox></td>
+                    <td ><mat-checkbox formControlName="created_at">Created_at</mat-checkbox></td>
+                    <td ><mat-checkbox formControlName="deleted_at">Deleted</mat-checkbox></td>
+
+                </tr>
+               
+            </table>
+            
+
+                 </form>
+        <div mat-dialog-actions [align]="'end'">
+    
+            <button mat-raised-button color="'primary'" style="margin: 20px;"
+                (click)="updateVisibility()">Submit</button>
+
+        </div>
+
+    </div>
+</div>

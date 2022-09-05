@@ -1,0 +1,13 @@
+div{
+    width: 230px;
+    height: 110px;
+    position: center;
+}
+button{
+    width:90px ;
+}
+p{
+    padding-left: 50px;
+    padding-top: 20px;
+    font-size: large;
+}

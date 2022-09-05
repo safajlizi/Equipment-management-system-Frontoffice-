@@ -1,4 +1,6 @@
 <div class="container" style="max-width: 1600px;">
+  <span class="titlle" *ngIf="role != 'ADMIN'"> Equipment space</span>
+
   <table class="example-full-width ab" cellspacing="0">
     <tr>
       <td Style="width:100%">
@@ -11,7 +13,7 @@
       </td>
       <td>
 
-        <button mat-raised-button color="'primary'" type="submit" (click)="openDialog()" *ngIf="role == 'ADMIN'">
+        <button mat-raised-button color="'primary'" type="submit" (click)="openDialog()" *ngIf="role != 'USER'">
           <mat-icon>add</mat-icon> Add equipment
         </button>
 
@@ -20,87 +22,101 @@
   </table>
 
   <div class="mat-elevation-z8 tab">
+    
     <table mat-table [dataSource]="dataSource" matSort Style="border-color:rgba(250, 130, 17, 1 )">
 
-
-      <ng-container matColumnDef="id">
+      <ng-container matColumnDef="ref">
         <th mat-header-cell *matHeaderCellDef mat-sort-header class="title"> <strong>Id</strong> </th>
-        <td mat-cell *matCellDef="let row"> {{row.ref}}</td>
+        <td mat-cell *matCellDef="let row" [ngStyle]="{'color': row.deleted ==true ? 'darkgrey' :'' }"> {{row.ref}}<button mat-icon-button matTooltip="Details" routerLink="./details/{{row.id}}"><i class="fa-solid fa-circle-info" style="color: darkgrey"></i>
+        </button></td>
       </ng-container>
+
       <ng-container matColumnDef="label">
         <th mat-header-cell *matHeaderCellDef mat-sort-header class="title"> <strong>Label/eq.name</strong> </th>
-        <td mat-cell *matCellDef="let row">{{row.label}} </td>
+        <td mat-cell *matCellDef="let row"[ngStyle]="{'color': row.deleted ==true ? 'darkgrey' :'' }">{{row.label}} </td>
       </ng-container>
 
-      <ng-container matColumnDef="prop_client">
+      <ng-container matColumnDef="property">
         <th mat-header-cell *matHeaderCellDef mat-sort-header class="title"> <strong>Property</strong> </th>
-        <td mat-cell *matCellDef="let row"> {{row.property}} </td>
+        <td mat-cell *matCellDef="let row"[ngStyle]="{'color': row.deleted ==true ? 'darkgrey' :'' }" > {{row.property=='sofia'?'Sofia':'Client'}} </td>
       </ng-container>
 
       <ng-container matColumnDef="category">
         <th mat-header-cell *matHeaderCellDef mat-sort-header class="title"><strong>Category</strong> </th>
-        <td mat-cell *matCellDef="let row"> {{row.category}}</td>
+        <td mat-cell *matCellDef="let row"[ngStyle]="{'color': row.deleted ==true ? 'darkgrey' :'' }"> {{row.category}}</td>
       </ng-container>
 
-
-
-
-      <ng-container matColumnDef="status">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header class="title"> <strong>conformity status</strong> </th>
-        <td mat-cell *matCellDef="let row"> {{row.conformity}} <button mat-icon-button
-            *ngIf="row.conformity == 'notcompliant'" matTooltip="defaults" (click)="details(row)" color="warm">
+      <ng-container matColumnDef="conformity">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="title"> <strong>Conformity status</strong> </th>
+        <td mat-cell *matCellDef="let row" [ngStyle]="{'color': row.deleted ==true ? 'darkgrey' :row.conformity == 'notcompliant' ||row.conformity == 'Not Compliant' ? 'red' : 'green'}" > {{row.conformity =='notcompliant'? 'Not Compliant':row.conformity =='compliant'?'Compliant':'Not Compliant'}} <button mat-icon-button
+            *ngIf="row.conformity == 'notcompliant' ||row.conformity ==  'Not Compliant'" matTooltip="Defaults" (click)="details(row)" color="warm">
             <mat-icon>contact_support</mat-icon>
           </button>
         </td>
       </ng-container>
+
       <ng-container matColumnDef="availability">
         <th mat-header-cell *matHeaderCellDef mat-sort-header class="title"> <strong>Availability</strong> </th>
-        <td mat-cell *matCellDef="let row"> {{row.availability}} </td>
+        <td mat-cell *matCellDef="let row" [ngStyle]="{'color': row.deleted ==true ? 'darkgrey' : row.availability =='AVAILABLETOALL' ? 'green' : 'darkgrey'} "> {{row.availability =='AVAILABLETOALL'? 'Available':'In use'}}
+          <button mat-icon-button
+            *ngIf="row.availability !='AVAILABLETOALL'" matTooltip="Defaults" (click)="detailsAvailibility(row.project,row.date_lib)" color="warm" [disabled]="row.deleted ==true">
+            <mat-icon>contact_support</mat-icon>
+          </button> </td>
       </ng-container>
-
-
 
       <ng-container matColumnDef="manager">
         <th mat-header-cell *matHeaderCellDef mat-sort-header class="title"><strong>Owner</strong> </th>
-        <td mat-cell *matCellDef="let row">
+        <td mat-cell *matCellDef="let row" [ngStyle]="{'color': row.deleted ==true ? 'darkgrey' :'' }">
           <div *ngIf="row.availability !='AVAILABLETOALL'">{{row.manager.username}}</div>
         </td>
       </ng-container>
 
-      <ng-container matColumnDef="is_calibrated">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header class="title"> <strong>calibration status</strong></th>
-        <td mat-cell *matCellDef="let row"> {{row.calibration}} </td>
+      <ng-container matColumnDef="calibration">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="title"> <strong>Calibration status</strong></th>
+        <td mat-cell *matCellDef="let row" [ngStyle]="{'color': row.calibration == 'nok' ? 'red' : row.calibration == 'ok' ?'green' :''}"[ngStyle]="{'color': row.deleted ==true ? 'darkgrey' :'' }" > {{row.calibration == 'nok'? 'Nok':row.calibration == 'ok'?'Ok':'NA'}} </td>
       </ng-container>
 
-
-
-      <ng-container matColumnDef="calibrating_date">
+      <ng-container matColumnDef="validity_date">
         <th mat-header-cell *matHeaderCellDef mat-sort-header class="title"><strong>Validity deadline date</strong>
         </th>
-        <td mat-cell *matCellDef="let row"> {{row.validity_date| date}}</td>
+        <td mat-cell *matCellDef="let row" [ngStyle]="{'color': row.deleted ==true ? 'darkgrey' :'' }"> {{row.validity_date| date}}</td>
       </ng-container>
-
+      <ng-container matColumnDef="deleted_at">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="title"><strong>Deleted</strong>
+        </th>
+        <td mat-cell *matCellDef="let row"[ngStyle]="{'color': row.deleted ==true ? 'darkgrey' :'' }"> {{row.deleted}}</td>
+      </ng-container>
+      <ng-container matColumnDef="updated_at">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="title"><strong>Last update </strong>
+        </th>
+        <td mat-cell *matCellDef="let row"[ngStyle]="{'color': row.deleted ==true ? 'darkgrey' :'' }"> {{row.updated_at| date}}</td>
+      </ng-container>
+      <ng-container matColumnDef="created_at">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="title"><strong>Created at </strong>
+        </th>
+        <td mat-cell *matCellDef="let row"[ngStyle]="{'color': row.deleted ==true ? 'darkgrey' :'' }"> {{row.created_at| date}}</td>
+      </ng-container>
       <ng-container matColumnDef="action" matColumnDef="action">
         <th mat-header-cell *matHeaderCellDef mat-sort-header class="title action"><strong>Actions</strong> </th>
         <td mat-cell *matCellDef="let row" class="action">
-          <button mat-icon-button (click)="editEquipment(row)" matTooltip="update equiment" *ngIf="role == 'ADMIN'"
-            color="primary">
+          <button mat-icon-button (click)="editEquipment(row)" matTooltip="Update equiment" *ngIf="role == 'ADMIN'"
+            color="primary" [disabled]="row.deleted ==true">
             <mat-icon>edit</mat-icon>
           </button>
-          <button mat-icon-button (click)="deleteEquipment(row.id)" matTooltip="delete equiment"
-            matTooltipClass="tooltipStyle" *ngIf="role == 'ADMIN'" color="warm">
+          <button mat-icon-button (click)="deleteEquipment(row.id)" matTooltip="Delete equiment"
+            matTooltipClass="tooltipStyle" *ngIf="role == 'ADMIN'" color="warm" [disabled]="row.deleted ==true">
             <mat-icon>delete</mat-icon>
           </button>
           <button mat-icon-button routerLink="./history/{{row.id}}" matTooltip="History" color="warm">
             <mat-icon>history</mat-icon>
           </button>
           <button mat-icon-button (click)="reserve(row.id)" [disabled]="row.availability != 'AVAILABLETOALL' || size==0"
-            matTooltip="reserve equiment" *ngIf="role != 'ADMIN'" color="warm">
+            matTooltip="reserve equiment" *ngIf="role != 'ADMIN'" color="warm" [disabled]="row.deleted ==true || row.availability !='AVAILABLETOALL'">
             <mat-icon>add</mat-icon>
           </button>
 
         </td>
-      </ng-container>
+    </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>

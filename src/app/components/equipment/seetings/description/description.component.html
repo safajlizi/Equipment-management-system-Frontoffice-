@@ -1,0 +1,16 @@
+<form class="example-form" [formGroup]="descriptionForm">
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>New description</mat-label>
+      <input
+        matInput
+        placeholder="Description"
+    
+        formControlName="description"
+      />
+    </mat-form-field>
+  </form>
+  <div mat-dialog-actions [align]="'end'">
+    <button mat-raised-button mat-dialog-close>Cancel</button>
+    <button mat-raised-button color="primary" (click)="save()">Save</button>
+  </div>
+  

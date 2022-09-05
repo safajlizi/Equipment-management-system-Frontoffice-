@@ -1,27 +1,44 @@
-<div class="login-container">
-      
-    <h1 style="margin-top:20px">login</h1>
-    <form   method="post" [formGroup]="form" (ngSubmit)="onSubmit()">
-         <div *ngIf="message== true" class="alert alert-danger" role="alert">
-            Invalid !!
-         </div>
-        <div class="form-group" >
-            <input type="text" formControlName="identifier" name="identifier"  required>
-            
-            <span></span>
-            <label for="username" [ngStyle]="{'color': message ==true ? 'red' : 'none'}" >Username or email</label>
-            
-        </div>
-        <div class="form-group">
-            <input type="password"  formControlName="password" name="password" required >
-            <span></span>
-            <label for="password" [ngStyle]="{'color': message ==true ? 'red' : 'none'}" >Password</label>
-        </div>
-        <div class="pass">
-            Forgot Password?</div>
 
-            <input type="submit"  value ="Login" style="margin-bottom:50px">
-           
-    </form>
+<div class="split left">
+
+    <div class="login-container">
+
+        <h1 style="margin-top:20px">login</h1>
+        <form method="post" [formGroup]="form" (ngSubmit)="onSubmit()">
+            <div *ngIf="message== true" class="alert alert-danger" role="alert">
+                Invalid !!
+            </div>
+            <div class="form-group">
+                <input type="text" formControlName="identifier"
+                    name="identifier" required>
+
+                <span></span>
+                <label for="username" [ngStyle]="{'color': message ==true ?
+                    'red' : 'none'}">Username or email</label>
+
+            </div>
+            <div class="form-group">
+                <input type="password" formControlName="password"
+                    name="password" required>
+                <span></span>
+                <label for="password" [ngStyle]="{'color': message ==true ?
+                    'red' : 'none'}">Password</label>
+            </div>
+            <div class="pass">
+                Forgot Password?</div>
+
+            <input type="submit" value="Login" style="margin-bottom:50px">
+        </form>
+    </div>
 </div>
+<div class="split right">
+    <img src="./../../../../assets/images/logo-sofia-tech-final-01-removebg-preview (1).png" alt="">
+    <div class="mvm">
+        <div style="padding-top:20px ;"> Equipment</div> <br>
+        <div>
+            <span> management system</span>
+        </div>
+         <h4>Welcome</h4>
 
+        <p>www.sofia-technologies.com</p></div>
+</div>

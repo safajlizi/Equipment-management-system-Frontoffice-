@@ -1,0 +1,95 @@
+
+
+
+table {
+    max-width: 1600px;
+      width:100%;
+  }
+    
+  
+    .mat-form-field {
+      font-size: 14px;
+      width: 100%;
+      
+    }
+    
+    td, th {
+      width:18%;
+     border-color: rgba(250, 130, 17, 1 )
+    }
+    th{
+      font-size: 14px;
+    }
+    mat-paginator{
+      border-color: rgba(250, 130, 17, 1 );
+      max-width: 1600px;
+      width:100%;
+  
+    }
+    .tab td{
+      max-block-size: 200px}
+    
+    .container{
+      width:100%;
+      margin : 0 auto;
+      
+    }
+  
+  
+   .title  {
+    background-color: rgba(250, 130, 17, 1 );
+   }
+    
+  
+   
+  .filter{
+    background-color:  rgba(223, 221, 219,0.1) ;
+  }
+  .action{
+    width: 20%;
+  }
+  /* ******************/
+  
+  tr.example-element-row:not(.example-expanded-row):hover {
+    background: whitesmoke;
+  }
+  
+  tr.example-element-row:not(.example-expanded-row):active {
+    background: #efefef;
+  }
+  
+  .example-element-row td {
+    border-bottom-width: 0;
+  }
+  
+  .example-element-detail {
+    overflow: hidden;
+    display: flex;
+  }
+  
+  .example-element-diagram {
+    min-width: 80px;
+    border: 2px solid black;
+    padding: 8px;
+    font-weight: lighter;
+    margin: 8px 0;
+    height: 104px;
+  }
+  
+  .example-element-symbol {
+    font-weight: bold;
+    font-size: 40px;
+    line-height: normal;
+  }
+  
+  .example-element-description {
+    padding: 16px;
+  }
+  
+  .example-element-description-attribution {
+    opacity: 0.5;
+  }
+  strong{
+    font-size:17px;
+    font-family: Optima, sans-serif;
+  }

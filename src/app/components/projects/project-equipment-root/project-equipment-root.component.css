@@ -1,6 +1,19 @@
-mat-toolbar{
-    background-color: white;
-  }
-  .example-spacer {
-    flex: 1 1 auto;
-  }
+mat-toolbar {
+  background-color: white;
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.title {
+  font: italic small-caps bold 26px/2 cursive;
+  position: relative;
+  float: right;
+  letter-spacing: 4px;
+  text-shadow: 1px 1px #e78a10;
+  margin-right: 115px;
+  transform: scaleY(1);
+  color: rgba(12, 12, 63);
+  
+}

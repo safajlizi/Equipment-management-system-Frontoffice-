@@ -14,7 +14,7 @@ table {
   }
   
   td, th {
-    width:15%;
+    width:18%;
    border-color: rgba(250, 130, 17, 1 )
   }
   th{
@@ -35,11 +35,9 @@ table {
     
   }
 
-
  .title  {
   background-color: rgba(250, 130, 17, 1 );
  }
-  
 
  
 .filter{
@@ -48,7 +46,7 @@ table {
 .action{
   width: 20%;
 }
-/* ******************/
+
 
 tr.example-element-row:not(.example-expanded-row):hover {
   background: whitesmoke;
@@ -88,4 +86,8 @@ tr.example-element-row:not(.example-expanded-row):active {
 
 .example-element-description-attribution {
   opacity: 0.5;
+}
+strong{
+  font-size:17px;
+  font-family: Optima, sans-serif;
 }

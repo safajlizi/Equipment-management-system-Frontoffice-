@@ -80,7 +80,7 @@ export class UserService {
   getMemberProjects(id: string): Observable<any> {
     return this.http.get(API_URL + 'projects/member/' + id);
   }
-  filter(keyword: string): Observable<any> {
+  filter(keyword: any): Observable<any> {
     return this.http.get(API_URL + 'filter/' + keyword);
   }
 }

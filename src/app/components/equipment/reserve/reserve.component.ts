@@ -20,7 +20,7 @@ export class ReserveComponent implements OnInit {
   managedProjects: any;
   size:any
   constructor(public datepipe: DatePipe,private formBuilder :FormBuilder,private api:EquipmentService,
-    @Inject(MAT_DIALOG_DATA)public editData:any,  private route: ActivatedRoute, private tokenStorage: TokenStorageService,  private userService: UserService,
+    @Inject(MAT_DIALOG_DATA)public editData:any,  private router:Router,private route:ActivatedRoute, private tokenStorage: TokenStorageService,  private userService: UserService,
     private dialogRef:MatDialogRef<ReserveComponent>,
     private _snackBar: MatSnackBar) { 
       route.params.subscribe((params) => {
@@ -47,6 +47,7 @@ export class ReserveComponent implements OnInit {
       user:[null],
       equipment:[null],
       project:[null,Validators.required],
+      date_lib:[null],
       description:[''],
      
      
@@ -70,6 +71,10 @@ export class ReserveComponent implements OnInit {
       })
         this.equipmentForm.reset();
         this.dialogRef.close();
+        this.router.routeReuseStrategy.shouldReuseRoute=()=>false;
+        this.router.navigate(['./'],{
+          relativeTo: this.route
+        })
       },
       error:()=>{
         this._snackBar.open("error while updating equipment",'',{ 
@@ -88,10 +93,7 @@ export class ReserveComponent implements OnInit {
       
         this.equipmentForm.controls['equipment'].setValue(this.editData.EquipmentId);
      
-        this.equipmentForm.controls['user'].setValue(this.tokenStorage.getUser().id);
-
-       
-      
+        this.equipmentForm.controls['user'].setValue(this.tokenStorage.getUser().id)
 
         this.api.affectEquipToProject(this.equipmentForm.value)
       .subscribe({
@@ -101,6 +103,10 @@ export class ReserveComponent implements OnInit {
         })
           this.equipmentForm.reset();
           this.dialogRef.close();
+          this.router.routeReuseStrategy.shouldReuseRoute=()=>false;
+          this.router.navigate(['./'],{
+            relativeTo: this.route
+          })
         },
         error:()=>{
           this._snackBar.open("error while adding equipment",'',{ 
@@ -126,6 +132,10 @@ export class ReserveComponent implements OnInit {
         })
           this.equipmentForm.reset();
           this.dialogRef.close();
+          this.router.routeReuseStrategy.shouldReuseRoute=()=>false;
+          this.router.navigate(['./'],{
+            relativeTo: this.route
+          })
         },
         error:()=>{
           this._snackBar.open("error while deleting equipment",'',{ 

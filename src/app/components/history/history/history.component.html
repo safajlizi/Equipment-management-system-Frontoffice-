@@ -1,25 +1,31 @@
 <div class="container">
 
     <mat-toolbar>
-        <span class="example-spacer"></span>
-        <button mat-raised-button style="color: rgba(12, 12, 63); margin-top: 30px; margin-bottom: 30px; "
+
+        <button mat-raised-button style="color: rgba(12, 12, 63); margin-top:
+            30px; margin-bottom: 30px; "
             routerLink="../../">
             <i class="fa-solid fa-chevron-left"></i> Back
         </button>
     </mat-toolbar>
+    <div class="vide" *ngIf="size==0">
+        <h3>No hisotry...</h3>
+
+    </div>
     <main *ngFor="let row of history">
+        <div class="history">
+            <div class="top">
+                <h3> Res: {{row.created_at | date }}/ Lib:{{row.date_lib| date
+                    }} | Action :{{ row.action_type }}</h3>
+            </div>
+            <div class="buttom">
+                <p>Equipment name : {{ row.equipment.ref}}/
+                    {{row.equipment.label}} | Username : {{row.user.username}} |
+                    Description :{{ row.description }}</p>
+            </div>
 
-        <mat-card class="pos" mat-align-card="center"
-            style="background-color:  rgba(236, 149, 35, 0.486);margin:5px ;height:180px">
-            <mat-card-title>Equipment name : {{ row.equipment.ref}}/ {{ row.equipment.label}}</mat-card-title>
-            <mat-card-subtitle>Action :{{ row.action_type }} </mat-card-subtitle>
-            <mat-card-content>
-                Username : {{row.user.username}}<br>
-                Description :{{ row.description }} <br>
-            </mat-card-content>
-            <div mat-dialog-actions [align]="'end'">
-                Res:{{row.created_at | date }}/ Lib:{{row.date_lib| date }}</div>
+        </div>
 
-        </mat-card>
     </main>
+
 </div>

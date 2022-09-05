@@ -89,4 +89,7 @@ table {
   .example-element-description-attribution {
     opacity: 0.5;
   }
-  
+  strong{
+    font-size:17px;
+    font-family: Optima, sans-serif;
+  }

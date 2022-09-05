@@ -1,4 +1,20 @@
+.split{
+    margin: 0;
+   height: 100%;
+   position :fixed;
 
+}
+.left{
+   left: 0;
+   width: 70%;
+
+}
+.right{
+   right: 0;
+   width: 30%;
+
+    background-color: rgba(203, 203, 209, 0.3)
+}
   .login-container{
     position :absolute;
     top: 50% ;
@@ -109,3 +125,81 @@ transition: .5s;
     text-decoration: underline #e78a10;
 
 }
+img{height:50px;
+width: auto;
+margin: 20px;}
+
+@import url('https://fonts.googleapis.com/css?family=Roboto:300');
+.right{
+   text-align:center;
+  background:linear-gradient(141deg, #ccc 25%, #eee 40%, #ddd 55%);
+  color:#555;
+  font-family:'Roboto';
+  font-weight:300;
+  font-size:large;
+  padding-top:35vh;
+  height:100vh;
+  overflow:hidden;  
+  letter-spacing: 4px;
+
+  -webkit-backface-visibility: hidden;
+  -webkit-perspective: 1000;
+  -webkit-transform: translate3d(0,0,0)
+ }
+ 
+ .mvm div {
+   display:inline-block;
+   overflow:hidden;
+   white-space:nowrap;
+   transform: scaleY(1);
+   font: italic small-caps bold 26px/2 cursive;
+
+
+ }
+ 
+ .mvm div:first-of-type {    
+   animation: showup 7s infinite;
+ }
+ 
+ .mvm div:last-of-type {
+   width:0px;
+   animation: reveal 7s infinite;
+ }
+ 
+ .mvm div:last-of-type span {
+   margin-left:-355px;
+   font-size:large;
+   text-shadow: 1px 1px #5a5a59;
+   letter-spacing: 7px;
+
+   animation: slidein 7s infinite;
+ }
+ 
+ @keyframes showup {
+     0% {opacity:0;}
+     20% {opacity:1;}
+     80% {opacity:1;}
+     100% {opacity:0;}
+ }
+ 
+ @keyframes slidein {
+     0% { margin-left:-800px; }
+     20% { margin-left:-800px; }
+     35% { margin-left:0px; }
+     100% { margin-left:0px; }
+ }
+ 
+ @keyframes reveal {
+     0% {opacity:0;width:0px;}
+     20% {opacity:1;width:0px;}
+     30% {width:355px;}
+     80% {opacity:1;}
+     100% {opacity:0;width:355px;}
+ }
+ 
+ 
+ .mvm  p {
+   font-size:12px;
+   color:#999;
+   margin-top:200px;
+ }

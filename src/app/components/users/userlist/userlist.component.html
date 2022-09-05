@@ -1,57 +1,4 @@
-<!--<div class="container">
-    <mat-form-field appearance="standard">
-        <mat-label>Filter</mat-label>
-        <input matInput (keyup)="applyFilter($event)" placeholder="username,email,role.... " #input>
-      </mat-form-field>
-    
-      <div class="mat-elevation-z8">
-        <table mat-table [dataSource]="dataSource" matSort>
-      
-       
-          <ng-container matColumnDef="username">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> Username </th>
-            <td mat-cell *matCellDef="let row"> {{row.username}}</td>
-          </ng-container>
-      
-         
-          <ng-container matColumnDef="email">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> Email </th>
-            <td mat-cell *matCellDef="let row"> {{row.email}} </td>
-          </ng-container>
-    
-          <ng-container matColumnDef="role">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> Role </th>
-            <td mat-cell *matCellDef="let row"> {{row.role}} </td>
-          </ng-container>
-      
-          
-          <ng-container matColumnDef="action">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header class="action"> Actions </th>
-            <td mat-cell *matCellDef="let row" class="action">
-              <button mat-icon-button (click)="editUser(row)" color="primary">
-                <mat-icon>edit</mat-icon>
-              </button>
-              <button mat-icon-button (click)="deleteUser(row.id)"color="warm">
-                <mat-icon>delete</mat-icon>
-              </button>
-             
-              <button mat-icon-button (click)="openDialog()" color="warm">
-                <mat-icon>history</mat-icon>
-              </button>
-            
-            </td>
-          </ng-container>
-          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-      
-          <!--<tr class="mat-row" *matNoDataRow>
-            <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
-          </tr>
-        </table>
-      
-        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
-      </div>
-    </div>-->
+
     <div class="container">
       <table class="example-full-width" cellspacing="0">
         <tr>
@@ -75,37 +22,37 @@
     
     
           <ng-container matColumnDef="username">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header  class="title"> Username </th>
-            <td mat-cell *matCellDef="let row"> {{row.username}}</td>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header  class="title"><strong>Username</strong> </th>
+            <td mat-cell *matCellDef="let row"[ngStyle]="{'color': row.deleted ==true ? 'darkgrey' :'' }"> {{row.username}}<span *ngIf="row.deleted ==true">(deleted)</span></td>
           </ng-container>
 
            <ng-container matColumnDef="firstname">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header  class="title"> Firstname </th>
-            <td mat-cell *matCellDef="let row"> {{row.firstname}}</td>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header  class="title"><strong>Firstname </strong> </th>
+            <td mat-cell *matCellDef="let row"[ngStyle]="{'color': row.deleted ==true ? 'darkgrey' :'' }"> {{row.firstname}}</td>
           </ng-container>
           <ng-container matColumnDef="lastname">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header  class="title"> Lastname </th>
-            <td mat-cell *matCellDef="let row"> {{row.lastname}}</td>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header  class="title"> <strong>Lastname</strong> </th>
+            <td mat-cell *matCellDef="let row"[ngStyle]="{'color': row.deleted ==true ? 'darkgrey' :'' }"> {{row.lastname}}</td>
           </ng-container>
          
           <ng-container matColumnDef="email">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header  class="title"> Email </th>
-            <td mat-cell *matCellDef="let row"> {{row.email}} </td>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header  class="title"><strong>Email</strong> </th>
+            <td mat-cell *matCellDef="let row"[ngStyle]="{'color': row.deleted ==true ? 'darkgrey' :'' }"> {{row.email}} </td>
           </ng-container>
     
           <ng-container matColumnDef="role">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header  class="title"> Role </th>
-            <td mat-cell *matCellDef="let row"> {{row.role}} </td>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header  class="title"> <strong>Role</strong></th>
+            <td mat-cell *matCellDef="let row"[ngStyle]="{'color': row.deleted ==true ? 'darkgrey' :'' }"> {{row.role}} </td>
           </ng-container>
       
           
           <ng-container matColumnDef="action">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header class="action"  matTooltip="update user" class="title"> Actions </th>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header class="action"  matTooltip="update user" class="title"><strong>Actions</strong> </th>
             <td mat-cell *matCellDef="let row" class="action">
-              <button mat-icon-button (click)="editUser(row)" color="primary">
+              <button mat-icon-button (click)="editUser(row)" color="primary" [disabled]="row.deleted ==true">
                 <mat-icon>edit</mat-icon>
               </button>
-              <button mat-icon-button (click)="deleteUser(row.id)"  matTooltip="delete user "color="warm">
+              <button mat-icon-button (click)="deleteU(row.id)"  matTooltip="delete user "color="warm" [disabled]="row.deleted ==true">
                 <mat-icon>delete</mat-icon>
               </button>
         

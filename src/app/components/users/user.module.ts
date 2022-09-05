@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { UserRoutingModule } from './user-routing.module';
 import { ProfileComponent } from './profile/profile.component';
-import { CurrentMatComponent } from './current-mat/current-mat.component'
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
@@ -46,7 +45,6 @@ import { ProectReservedEquipmentComponent } from '../projects/proect-reserved-eq
 import { ProjectMemberMembersComponent } from '../projects/project-member-members/project-member-members.component';
 import { ProjectMemberEquipmentComponent } from '../projects/project-member-equipment/project-member-equipment.component';
 import { HistoryComponent } from '../history/history/history.component';
-import { SettingListComponent } from './settings/setting-list/setting-list.component';
 import { PasswordComponent } from './settings/password/password.component';
 import { UsernameComponent } from './settings/username/username.component';
 import { DatePipe } from '@angular/common';
@@ -58,14 +56,26 @@ import { NotifComponent } from '../alert/notif/notif.component';
 import { DefaultComponent } from '../equipment/default/default.component';
 import { RemoveEquipmentComponent } from '../projects/remove-equipment/remove-equipment.component';
 import { MemberCardComponent } from '../projects/member-card/member-card.component';
-
+import {MatGridListModule} from '@angular/material/grid-list';
+import { MembersComponent } from '../projects/members/members.component';
+import { DetailsAvailibilityComponent } from '../equipment/details-availibility/details-availibility.component';
+import { DetailsEquipmentComponent } from '../equipment/details-equipment/details-equipment.component';
 import { ProjectMemberListComponent } from '../projects/project-member-list/project-member-list.component';
+import { SerieNumberComponent } from '../equipment/seetings/serie-number/serie-number.component';
+import { DescriptionComponent } from '../equipment/seetings/description/description.component';
+import { ConstructorComponent } from '../equipment/seetings/constructor/constructor.component';
+import { SettingsVisibilityComponent } from '../equipment/settings-visibility/settings-visibility.component';
+import { DashboardSettingsComponent } from '../dashboards/dashboard-settings/dashboard-settings.component';
+import { SettingCategoryComponent } from '../equipment/setting-category/setting-category.component';
+import { ConfirmationDialogComponent } from '../projects/confirmation-dialog/confirmation-dialog.component';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+
+
 @NgModule({
   declarations: [
     Dashboard3Component,
     ProfileComponent,
     HistoryComponent,
-    CurrentMatComponent,
     SideNavComponent ,
     DashboardComponent,
     Dashbord1Component ,
@@ -91,7 +101,6 @@ import { ProjectMemberListComponent } from '../projects/project-member-list/proj
     ProjectMemberMembersComponent,
     ProjectMemberEquipmentComponent,
     HistoryComponent,
-    SettingListComponent,
     PasswordComponent,
     UsernameComponent,
     UserHistoryComponent,
@@ -99,8 +108,17 @@ import { ProjectMemberListComponent } from '../projects/project-member-list/proj
     NotifComponent,
     DefaultComponent,
     RemoveEquipmentComponent,
-    MemberCardComponent 
- 
+    MemberCardComponent ,
+    MembersComponent ,
+    DetailsEquipmentComponent,
+    DetailsAvailibilityComponent,
+    SerieNumberComponent,
+    ConstructorComponent,
+    DescriptionComponent,
+    SettingsVisibilityComponent,
+    DashboardSettingsComponent,
+    SettingCategoryComponent,
+    ConfirmationDialogComponent,
   ],
   imports: [
     CommonModule ,
@@ -125,7 +143,9 @@ import { ProjectMemberListComponent } from '../projects/project-member-list/proj
     MatMenuModule,
     MatSlideToggleModule,
     MatTooltipModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatGridListModule,
+    MatCheckboxModule
   ],
   providers: [DatePipe]
 })

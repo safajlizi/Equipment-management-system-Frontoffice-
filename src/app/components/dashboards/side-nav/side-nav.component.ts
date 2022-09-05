@@ -8,6 +8,9 @@ import {Router} from'@angular/router'
 })
 export class SideNavComponent implements OnInit {
  userId:any
+ dashboard=false
+ profile=false
+ project=false
   @Input() sideNavStatus:boolean=false
   constructor(private router:Router,private tokenStorage: TokenStorageService) { }
 
@@ -16,7 +19,9 @@ export class SideNavComponent implements OnInit {
       this.userId = this.tokenStorage.getUser().id;
     } else {
       this.router.navigateByUrl('/login');
-    }
+    } 
+   
+   
   }
 
 }

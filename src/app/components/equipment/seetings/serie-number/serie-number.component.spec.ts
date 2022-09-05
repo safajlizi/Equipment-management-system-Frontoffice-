@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SettingListComponent } from './setting-list.component';
+import { SerieNumberComponent } from './serie-number.component';
 
-describe('SettingListComponent', () => {
-  let component: SettingListComponent;
-  let fixture: ComponentFixture<SettingListComponent>;
+describe('SerieNumberComponent', () => {
+  let component: SerieNumberComponent;
+  let fixture: ComponentFixture<SerieNumberComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SettingListComponent ]
+      declarations: [ SerieNumberComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SettingListComponent);
+    fixture = TestBed.createComponent(SerieNumberComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

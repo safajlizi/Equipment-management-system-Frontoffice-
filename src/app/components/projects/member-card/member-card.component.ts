@@ -13,6 +13,7 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 export class MemberCardComponent implements OnInit {
   projectId!: string;
   equipments:any
+  size=0
   constructor(@Inject(MAT_DIALOG_DATA)public editData:any, private api:EquipmentService,
   private dialogRef:MatDialogRef<MemberCardComponent >,private _snackBar: MatSnackBar) { }
   getEquipmentById(){
@@ -20,7 +21,8 @@ export class MemberCardComponent implements OnInit {
    .subscribe({
     next:(res)=>{
     this.equipments=res
-    console.log(res)
+    if(this.equipments.length){this.size=this.equipments.length}
+
     },
     error:(err)=>{
       this._snackBar.open("error get Equipment of the project",'',{ 
@@ -38,7 +40,6 @@ export class MemberCardComponent implements OnInit {
       .subscribe({
        next:(res)=>{
        this.equipments=res
-       console.log(res)
        },
        error:(err)=>{
          this._snackBar.open("error get Equipment of the project",'',{ 

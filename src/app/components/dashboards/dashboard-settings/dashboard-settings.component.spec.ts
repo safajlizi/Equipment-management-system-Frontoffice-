@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CurrentMatComponent } from './current-mat.component';
+import { DashboardSettingsComponent } from './dashboard-settings.component';
 
-describe('CurrentMatComponent', () => {
-  let component: CurrentMatComponent;
-  let fixture: ComponentFixture<CurrentMatComponent>;
+describe('DashboardSettingsComponent', () => {
+  let component: DashboardSettingsComponent;
+  let fixture: ComponentFixture<DashboardSettingsComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CurrentMatComponent ]
+      declarations: [ DashboardSettingsComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CurrentMatComponent);
+    fixture = TestBed.createComponent(DashboardSettingsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

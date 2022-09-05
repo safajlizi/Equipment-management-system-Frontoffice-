@@ -1,12 +1,22 @@
 <div class="pos">
   <form class="example-form" [formGroup]="equipmentForm">
 
-
+    <table cellspacing="2">
+      <tr>
+        <td style="width: 250px;">
     <mat-form-field class="example-full-width" appearance="outline">
       <mat-label>Label/eq.name</mat-label>
       <textarea matInput formControlName="label"></textarea>
     </mat-form-field>
-
+        </td>
+        <td style="width: 250px;">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Serial number</mat-label>
+            <textarea matInput formControlName="serial_number"></textarea>
+          </mat-form-field>
+        </td>
+      </tr>
+    </table>
 
 
     <table cellspacing="2">
@@ -19,6 +29,8 @@
               <mat-option value="card" selected>Card</mat-option>
               <mat-option value="cable" selected>Cable</mat-option>
               <mat-option value="usb">USB</mat-option>
+              <mat-option value="calibration"> Calibration equipment</mat-option>
+
               <mat-option value="other">Other</mat-option>
             </mat-select>
           </mat-form-field>
@@ -36,7 +48,7 @@
         <td>
           <mat-form-field [ngStyle]="{'width': equipmentForm.value.conformity == 'notcompliant' ? '200px' : '500px'}"
             appearance="outline">
-            <mat-label> conformity</mat-label>
+            <mat-label> Conformity</mat-label>
             <mat-select formControlName="conformity" placeholder="role">
               <mat-option value="compliant" selected>Compliant</mat-option>
               <mat-option value="notcompliant">No compliant</mat-option>
@@ -46,25 +58,34 @@
         </td>
         <td>
           <mat-form-field appearance="outline" style="width:300px"
-            *ngIf='equipmentForm.value.conformity == "notcompliant"'>
-            <mat-label>details</mat-label>
+            *ngIf='equipmentForm.value.conformity =="notcompliant"'>
+            <mat-label>Details</mat-label>
             <textarea matInput formControlName="defaults"></textarea>
           </mat-form-field>
         </td>
       </tr>
     </table>
+    <mat-form-field class="example-full-width" appearance="outline">
+      <mat-label>Constructor</mat-label>
+      <textarea matInput formControlName="maker"></textarea>
+    </mat-form-field>
 
-    <mat-slide-toggle formControlName="property">calibrated equipment</mat-slide-toggle>
+    <mat-form-field class="example-full-width" appearance="outline">
+      <mat-label>Technical details</mat-label>
+      <textarea matInput formControlName="description"></textarea>
+    </mat-form-field>
+
+    <mat-slide-toggle formControlName="property">Client Equipment</mat-slide-toggle>
     <table cellspacing="0">
       <tr>
         <td>
 
           <mat-form-field [ngStyle]="{'width': equipmentForm.value.calibration =='ok' ? '200px' : '500px'}"
             appearance="outline">
-            <mat-label> calibration</mat-label>
-            <mat-select formControlName="calibration" placeholder="role">
-              <mat-option value="ok" selected>ok</mat-option>
-              <mat-option value="nok">Nok</mat-option>
+            <mat-label> Calibration</mat-label>
+            <mat-select formControlName="calibration" placeholder="Role">
+              <mat-option value="ok">ok</mat-option>
+              <mat-option value="na" selected>No</mat-option>
             </mat-select>
           </mat-form-field>
         </td>
@@ -84,7 +105,7 @@
 
   </form>
   <div mat-dialog-actions [align]="'end'">
-    <button mat-raised-button mat-dialog-close>cancel</button>
+    <button mat-raised-button mat-dialog-close>Cancel</button>
     <button mat-raised-button color="primary" (click)="addEquipment()">{{actionBtn}}</button>
 
   </div>

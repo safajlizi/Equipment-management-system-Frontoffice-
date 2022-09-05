@@ -4,19 +4,17 @@
     align-items: center;
     font-size: 1.5rem;
     cursor: pointer;
+    z-index: 1;
 }
-.side-nav-button:hover{
-   background-color: #e78a10;
-   border-radius: 30%; 
-}
+
+
 .navbar{
     padding-top: 5px;
-    border-bottom: rgba(17, 5, 44,1);
-
+    background-color:rgb(12, 12, 63); 
 }
 nav{
-  background-color: white;
-  box-shadow: 0px 0px 10px rgba(0,0,0,0.5);
+ color: rgb(61, 61, 61);
+  box-shadow: 0px 0px 1px rgba(12, 12, 63);
   overflow:hidden;
 
 }

@@ -5,6 +5,7 @@ import { UserService } from 'src/app/services/user.service';
 import { RemoveEquipmentComponent } from '../../projects/remove-equipment/remove-equipment.component';
 import { PasswordComponent } from '../settings/password/password.component';
 import { UsernameComponent } from '../settings/username/username.component';
+import {Title} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-profile',
@@ -24,7 +25,7 @@ export class ProfileComponent implements OnInit {
     this.user = this.tokenStorage.getUser();
     this.userService
       .getEquipsOfUser(this.user.id)
-      .subscribe((res) => (this.equipments = res));
+      .subscribe((res) => (this.equipments = res[0].equipment));
   }
   usernameTrig() {
     const dialogRef = this.dialog.open(UsernameComponent, {});
@@ -32,13 +33,10 @@ export class ProfileComponent implements OnInit {
   passwordTrig() {
     const dialogRef = this.dialog.open(PasswordComponent, {});
   }
-  removeEquipmentfromProject(row :any){
-    if(row.other){
-      row.set
-    }
+  removeEquipmentfromProject(row :any,id:any,project:any){
         this.dialog.open(RemoveEquipmentComponent,{
-      
-      data:{'row':row,'isManager':false}  
+
+      data:{'row':row,'id':project,'isManager':id != this.user.id?false:true }  
     })}
 
 

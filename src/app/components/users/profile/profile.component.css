@@ -1,11 +1,45 @@
 .pos{
     max-width:2300px;
     width:100%;
-    margin : 10px;
+    margin-bottom: 20px;
  
 }
 .maindiv{
   display: flex;
   justify-content: center;
   align-items: center;
+  }
+  .history{
+    width: 100%;
+    margin-top: 8px;
+  }
+  .history .top{
+    padding-left: 5px;
+    height: 40px;
+    padding-top: 5px;
+
+    background-color: #e78a10;
+    border-radius: 10px 10px 0  0;
+    border-bottom: 4px solid rgba(12, 12, 63,0.3);
+
+  }
+ h3{
+  color: white;
+ }
+ .history .button{
+  height: 80px;
+  background-color: rgba(190, 181, 181,0.2);
+  padding-left: 15px;
+
+  padding-top: 5px;
+
+}
+  .history .buttom{
+    height: 50px;
+    background-color: rgba(12, 12, 63,0.1);
+    border-radius:  0  0 10px 10px;
+    padding-left: 15px;
+    border-top: 4px solid rgba(12, 12, 63);
+    padding-top: 5px;
+
   }

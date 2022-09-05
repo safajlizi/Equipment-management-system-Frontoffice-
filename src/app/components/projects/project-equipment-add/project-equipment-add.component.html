@@ -1,21 +1,19 @@
-<div class="container" >
+<div class="container">
 
-  
-    <div class="pos">
-      <mat-toolbar>
-        <span class="example-spacer"></span>
-        <button
-          mat-raised-button
-          style="color: rgba(12, 12, 63); margin-top: 30px; margin-bottom: 30px"
-          routerLink="../../{{projectId}}" >
-          <i class="fa-solid fa-chevron-left"></i> Back
-        </button>
-      </mat-toolbar>
 
-    </div>
-    <div  >
-     <app-project-equipment [projectId]="projectId"></app-project-equipment>
-    </div>
-  
+  <div class="pos">
+    <mat-toolbar>
+      <span class="title"> Add equipment space</span>
+      <span class="example-spacer"></span>
+      <button mat-raised-button style="color: rgba(12, 12, 63); margin-top: 30px; margin-bottom: 30px"
+        routerLink="../../{{projectId}}">
+        <i class="fa-solid fa-chevron-left"></i> Back
+      </button>
+    </mat-toolbar>
+
   </div>
-  
+  <div>
+    <app-project-equipment [projectId]="projectId"></app-project-equipment>
+  </div>
+
+</div>

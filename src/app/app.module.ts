@@ -28,23 +28,19 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatExpansionModule} from '@angular/material/expansion';
 
-import { NavbarProjectComponent } from './components/projects/navbar-project/navbar-project.component';
 import { DatePipe } from '@angular/common';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { ManagerCardComponent } from './components/projects/manager-card/manager-card.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
-
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 @NgModule({
   declarations: [
     AppComponent,
     SigninComponent,
     AddequipmentComponent,
-    NavbarProjectComponent,
-    ManagerCardComponent,
-    
-     
-     
+    ManagerCardComponent,  
   ],
   imports: [
     BrowserModule,
@@ -71,7 +67,9 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     MatSlideToggleModule,
     MatTooltipModule,
     MatExpansionModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatGridListModule,
+    MatCheckboxModule
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent]

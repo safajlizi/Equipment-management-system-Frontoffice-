@@ -68,10 +68,9 @@ export class DefaultComponent implements OnInit {
 
       if (this.equipmentForm.valid) {
 
-        this.equipmentForm.controls['equipment'].setValue(this.editData.equipmentId);
+        this.equipmentForm.controls['equipment'].setValue(this.editData.EquipmentId);
 
         this.equipmentForm.controls['user'].setValue(this.tokenStorage.getUser().id);
-
         this.equipmentForm.controls['project'].setValue(this.editData.projectId);
 
 

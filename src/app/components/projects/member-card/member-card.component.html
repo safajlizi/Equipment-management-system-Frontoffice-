@@ -1,7 +1,10 @@
-<div *ngFor="let equi of equipments">
+<div *ngFor="let equi of equipments" style="color:rgba(12, 12, 63);">
   <mat-card class="pos " mat-align-card="center" style="width: 400px; margin: 2px;">
-    <mat-card-title>ID:{{ equi.ref }} </mat-card-title>
-    <mat-card-subtitle>Label/eq.name :{{equi.label}}</mat-card-subtitle>
+    <mat-card-title><p tyle="font-weight: lighter;"> <span style="font-weight: bold;">Equipment ref : </span>{{ equi.ref }} </mat-card-title>
+    <mat-card-subtitle> <p tyle="font-weight: lighter;"> <span style="font-weight: bold;">Label/eq.name : </span>{{equi.label}}</mat-card-subtitle>
 
   </mat-card>
+</div>
+<div style="color:rgba(12, 12, 63);" *ngIf="size==0">
+  No reserved equipment 
 </div>

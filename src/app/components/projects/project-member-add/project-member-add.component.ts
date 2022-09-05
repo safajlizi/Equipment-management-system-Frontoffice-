@@ -12,8 +12,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./project-member-add.component.css']
 })
 export class ProjectMemberAddComponent implements OnInit {
-
-  @Input() projectId!: string;
+projectId!: string;
   userSearchForm!: FormGroup;
   shownUsers: any;
   selectedUsers: string[] = [];
@@ -46,17 +45,7 @@ export class ProjectMemberAddComponent implements OnInit {
     }
     
   }
-  onChange(event: Event) {
-    if (!this.userSearchForm.controls['keyword'].value) {
-      this.shownUsers = [];
-    } else {
-      this.userService
-        .filter(this.userSearchForm.controls['keyword'].value)
-        .subscribe((response) => {
-          this.shownUsers = response;
-        });
-    }
-  }
+
   onSelect(id: string) {
     if (this.selectedUsers.includes(id)) {
       this.selectedUsers = this.selectedUsers.filter(
@@ -77,6 +66,10 @@ export class ProjectMemberAddComponent implements OnInit {
             duration: 3000
         })
           this.selectedUsers = [];
+          this.router.routeReuseStrategy.shouldReuseRoute=()=>false;
+          this.router.navigate(['./'],{
+            relativeTo: this.route
+          })
         },
         (error) => {
           this.message = 'Unsuccessful ! ';

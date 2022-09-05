@@ -20,15 +20,6 @@
   <mat-label>Lastname</mat-label>
   <input formControlName="lastname" matInput placeholder="Lastname" />
 </mat-form-field>
-
-
-  <mat-form-field appearance="outline"class="example-full-width" *ngIf="test==false">
-    <mat-label>Enter your password</mat-label>
-    <input matInput formControlName="password" [type]="hide ? 'password' : 'text'">
-    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-    </button>
-  </mat-form-field>
   <mat-form-field class="example-full-width"  appearance="outline">
     <mat-label>Role</mat-label>
     <mat-select formControlName="role" placeholder="role">
@@ -42,7 +33,7 @@
   
 </form>
 <div mat-dialog-actions [align]="'end'">
-  <button mat-raised-button mat-dialog-close>cancel</button>
+  <button mat-raised-button mat-dialog-close>Cancel</button>
   <button mat-raised-button color="primary" (click)="addUser()">{{actionBtn}}</button>
 
 </div>

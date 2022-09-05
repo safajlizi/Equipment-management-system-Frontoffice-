@@ -21,5 +21,6 @@ export class Dashboard2Component implements OnInit {
 enum Tabs {
   Equipment = 0,
   Users = 1,
-  Projects
+  Projects,
+  Settings
 }

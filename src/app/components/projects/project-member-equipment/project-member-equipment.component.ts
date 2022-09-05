@@ -22,7 +22,7 @@ import { DetailsComponent } from '../../equipment/details/details.component';
 })
 export class ProjectMemberEquipmentComponent implements OnInit {
 
-  displayedColumns: string[] = ['label','category','prop_client','conformity' ,'status','is_calibrated','calibrating_date','action'];
+  displayedColumns: string[] = ['id','label','category','prop_client','conformity' ,'status','manager','is_calibrated','calibrating_date','action'];
   dataSource!: MatTableDataSource<any>;
   selectedE: string[] = [];
 
@@ -39,15 +39,7 @@ export class ProjectMemberEquipmentComponent implements OnInit {
       route.params.subscribe((params) => {
         this.projectId = params['id'];
       });
-     
-     }
-  openDialog() {
-    //const dialogRef = this.dialog.open(AddequipmentComponent,{ });
-
-    
     }
-  
-   
   getAllEquipment(){
     this.api.getEquipmentByProject( this.projectId)
    .subscribe({
@@ -55,8 +47,7 @@ export class ProjectMemberEquipmentComponent implements OnInit {
       
           this.dataSource=new MatTableDataSource(res)
           this.dataSource.paginator=this.paginator
-          this.dataSource.sort=this.sort 
-
+          this.dataSource.sort=this.sort
 
     },
     error:(err)=>{
@@ -66,8 +57,6 @@ export class ProjectMemberEquipmentComponent implements OnInit {
     }
    })
   }
-
-  
 
   editEquipment(row :any){
     if(row.other){

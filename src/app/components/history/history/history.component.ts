@@ -9,7 +9,7 @@ import {MatSnackBar} from '@angular/material/snack-bar';
   styleUrls: ['./history.component.css']
 })
 export class HistoryComponent implements OnInit {
-
+  size:any
   history: any;
   id:any
   constructor(    private _snackBar:MatSnackBar
@@ -23,6 +23,8 @@ getEHistoryByEquipment(){
       .subscribe({
         next:(res)=>{
           this.history = res; 
+          this.size=this.history.length
+
         },
         error:(err)=>{
           this._snackBar.open("error get equipment hisotry ")

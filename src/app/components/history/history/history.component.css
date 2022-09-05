@@ -1,7 +1,39 @@
 mat-toolbar{
-    background-color: white;
-  }
-  .example-spacer {
-    flex: 1 1 auto;
-  }
-  
+  background-color: white;
+}
+.example-spacer {
+  flex: 1 1 auto;
+}
+.history{
+
+  height: 80px;
+  margin-top: 8px;
+}
+.history .top{
+  padding-left: 5px;
+  height: 40px;
+  padding-top: 5px;
+
+  background-color: rgba(37, 39, 71, 0.7);
+  border-radius: 10px 10px 0  0;
+  border-bottom: 4px dashed #e78a10;
+
+}
+h3{
+color: white;
+}
+.history .buttom{
+  height: 40px;
+  background-color: rgba(190, 181, 181,0.2);
+  border-radius:  0  0 10px 10px;
+  padding-left: 15px;
+  padding-top: 5px;
+}
+.vide{
+ background-color:rgba(116, 114, 114,0.7);
+ border-radius:   10px;
+  padding-left: 15px;
+  padding-top: 25px;
+  height: 80px;
+  margin-top: 8px;
+}

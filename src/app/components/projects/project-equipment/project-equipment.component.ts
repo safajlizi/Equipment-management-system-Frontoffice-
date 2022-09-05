@@ -37,18 +37,11 @@ export class ProjectEquipmentComponent implements OnInit {
     ) {
      
      }
-  openDialog() {
-    //const dialogRef = this.dialog.open(AddequipmentComponent,{ });
-
-    
-    }
-  
    
   getAllEquipment(){
     this.api.getEquipment()
    .subscribe({
     next:(res)=>{
-       
           this.dataSource=new MatTableDataSource(res)
           this.dataSource.paginator=this.paginator
           this.dataSource.sort=this.sort 

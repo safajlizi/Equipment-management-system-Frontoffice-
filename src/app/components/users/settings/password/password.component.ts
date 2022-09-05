@@ -4,7 +4,7 @@ import { UserService } from 'src/app/services/user.service';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 import {MatDialogRef,MAT_DIALOG_DATA } from '@angular/material/dialog'
 import {MatSnackBar} from '@angular/material/snack-bar';
-
+import { Router,ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-password',
   templateUrl: './password.component.html',
@@ -20,7 +20,8 @@ export class PasswordComponent implements OnInit {
     private api: UserService,
     private tokenStorage: TokenStorageService,
     private dialogRef:MatDialogRef<PasswordComponent>
-    ,private _snackBar: MatSnackBar
+    ,private _snackBar: MatSnackBar,
+    private router:Router,private route:ActivatedRoute
   ) {
     this.passwordResetForm = this.fb.group({
       oldpassword: ['', Validators.required],
@@ -47,6 +48,10 @@ export class PasswordComponent implements OnInit {
       })
         this.passwordResetForm.reset()
         this.dialogRef.close
+        this.router.routeReuseStrategy.shouldReuseRoute=()=>false;
+        this.router.navigate(['./'],{
+          relativeTo: this.route
+        })
       },
       (err) => {
         this._snackBar.open(err.message,'',{ 
