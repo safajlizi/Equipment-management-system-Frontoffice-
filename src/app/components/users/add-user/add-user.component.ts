@@ -42,7 +42,7 @@ export class AddUserComponent implements OnInit {
     }
   }
   updateUser(){
-    this.api.putUser(this.userForm.value,this.edittData.id)
+    this.api.patchUser(this.userForm.value,this.edittData.id)
     .subscribe({
       next:(res)=>{
 

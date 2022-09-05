@@ -57,7 +57,7 @@ export class DefaultComponent implements OnInit {
               this.dialogRef.close();
             },
             error: () => {
-              this._snackBar.open("error while declaring equipment default", '', {
+              this._snackBar.open(" Default already declared", '', {
                 duration: 3000
               })
             }

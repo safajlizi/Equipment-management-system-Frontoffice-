@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit  } from '@angular/core';
 import { EquipmentService } from 'src/app/services/equipment.service';
 import {ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
@@ -39,6 +39,7 @@ export class EquipmentListComponent implements OnInit {
     });
 
   }
+  
   getAllEquipment() {
     this.api.getEquipment()
       .subscribe({
