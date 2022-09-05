@@ -1,10 +1,10 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import{FormGroup,FormBuilder,Validators} from'@angular/forms'
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { EquipmentService } from 'src/app/services/equipment.service';
-import {MatDialogRef,MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { DatePipe } from '@angular/common'
-import {MatSnackBar} from '@angular/material/snack-bar';
-import {Router,ActivatedRoute} from '@angular/router'
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { DatePipe } from '@angular/common';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-addequipment',
@@ -49,74 +49,84 @@ export class AddequipmentComponent implements OnInit {
       this.equipmentForm.controls['calibration'].setValue(this.editData.calibration);
       this.equipmentForm.controls['validity_date'].setValue(this.editData.validity_date);
       this.equipmentForm.controls['category'].setValue(this.editData.category);
-
     }
-
-
   }
-  
-  updateEquipment(){
-    if(this.equipmentForm.value.property == true ){this.equipmentForm.controls['property'].setValue('client')}
-    else{this.equipmentForm.controls['property'].setValue('sofia')}
-    this.api.patchEquipment(this.equipmentForm.value,this.editData.id)
-    .subscribe({
-      next:(res)=>{
-        this._snackBar.open("Equipment updated successfuly",'',{ 
-          duration: 3000
-      })
-       
-        this.router.routeReuseStrategy.shouldReuseRoute=()=>false;
-        this.router.navigate(['./'],{
-          relativeTo: this.route
-        }) 
-        this.equipmentForm.reset();
-        this.dialogRef.close();
-      },
-      error:()=>{
-        this._snackBar.open("error while updating equipment",'',{ 
-          duration: 3000
-      })
-      }})
 
-
-  }
-  addEquipment(){
-    if(!this.editData){
-       if(this.equipmentForm.valid){
-        if(this.equipmentForm.value.category == 'calibration' && this.equipmentForm.value.calibration =='na' ){this.equipmentForm.controls['calibration'].setValue('nok')}
-
-
-        this.equipmentForm.controls['validity_date'].setValue(this.datepipe.transform(this.equipmentForm.value.validity_date, 'yyyy-MM-dd') )
-        if(this.equipmentForm.value.property == true ){this.equipmentForm.controls['property'].setValue('client')}
-        else{this.equipmentForm.controls['property'].setValue('sofia')}
-
-        if(this.equipmentForm.value.other ){this.equipmentForm.controls['category'].setValue(this.equipmentForm.value.other)}
-      this.api.postEquipment(this.equipmentForm.value)
+  updateEquipment() {
+    if (this.equipmentForm.value.property == true) {
+      this.equipmentForm.controls['property'].setValue('client');
+    } else {
+      this.equipmentForm.controls['property'].setValue('sofia');
+    }
+    this.api
+      .patchEquipment(this.equipmentForm.value, this.editData.id)
       .subscribe({
-        next:(res)=>{
-          this._snackBar.open("Equipment added successfuly",'',{ 
-            duration: 3000
-        })
+        next: (res) => {
+          this._snackBar.open('Equipment updated successfuly', '', {
+            duration: 3000,
+          });
           this.equipmentForm.reset();
           this.dialogRef.close();
-          this.router.routeReuseStrategy.shouldReuseRoute=()=>false;
-          this.router.navigate(['./'],{
-            relativeTo: this.route
-          })
+          this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+          this.router.navigate(['./'], {
+            relativeTo: this.route,
+          });
         },
-        error:()=>{
-          this._snackBar.open("error while adding equipment",'',{ 
-            duration: 3000
-        })
+        error: () => {
+          this._snackBar.open('error while updating equipment', '', {
+            duration: 3000,
+          });
+        },
+      });
+  }
+  addEquipment() {
+    if (!this.editData) {
+      if (this.equipmentForm.valid) {
+        if (
+          this.equipmentForm.value.category == 'calibration' &&
+          this.equipmentForm.value.calibration == 'na'
+        ) {
+          this.equipmentForm.controls['calibration'].setValue('nok');
         }
-      })
-     } }
-     else{
-      this.updateEquipment()
-     }
 
-  } 
+        this.equipmentForm.controls['validity_date'].setValue(
+          this.datepipe.transform(
+            this.equipmentForm.value.validity_date,
+            'yyyy-MM-dd'
+          )
+        );
+        if (this.equipmentForm.value.property == true) {
+          this.equipmentForm.controls['property'].setValue('client');
+        } else {
+          this.equipmentForm.controls['property'].setValue('sofia');
+        }
 
-
+        if (this.equipmentForm.value.other) {
+          this.equipmentForm.controls['category'].setValue(
+            this.equipmentForm.value.other
+          );
+        }
+        this.api.postEquipment(this.equipmentForm.value).subscribe({
+          next: (res) => {
+            this._snackBar.open('Equipment added successfuly', '', {
+              duration: 3000,
+            });
+            this.equipmentForm.reset();
+            this.dialogRef.close();
+            this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+            this.router.navigate(['./'], {
+              relativeTo: this.route,
+            });
+          },
+          error: () => {
+            this._snackBar.open('error while adding equipment', '', {
+              duration: 3000,
+            });
+          },
+        });
+      }
+    } else {
+      this.updateEquipment();
+    }
+  }
 }
- 
