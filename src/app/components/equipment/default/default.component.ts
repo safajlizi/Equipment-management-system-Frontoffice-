@@ -17,9 +17,8 @@ export class DefaultComponent implements OnInit {
   equipmentForm!: FormGroup;
   actionBtn: string = "save"
   constructor(public datepipe: DatePipe, private formBuilder: FormBuilder, private api: EquipmentService,
-    @Inject(MAT_DIALOG_DATA) public editData: any, private route: ActivatedRoute, private tokenStorage: TokenStorageService,
+    @Inject(MAT_DIALOG_DATA) public editData: any, private router:Router, private route: ActivatedRoute, private tokenStorage: TokenStorageService,
     private dialogRef: MatDialogRef<DefaultComponent>, private _snackBar: MatSnackBar) {
-
 
   }
   ngOnInit(): void {
@@ -27,38 +26,8 @@ export class DefaultComponent implements OnInit {
       user: [null],
       equipment: [null],
       project: [null],
-      description: [null],
-
-
-
-
-    })
-    if (this.editData.row) {
-      this.actionBtn = "Update"
-
-    }
-
-
-  }
-
-  AddEquipmentProjectmember() {
-
-    this.api.patchEquipment(this.equipmentForm.value, this.editData.row.id)
-      .subscribe({
-        next: (res) => {
-          this._snackBar.open("Equipment updated successfuly", '', {
-            duration: 3000
-          })
-          this.equipmentForm.reset();
-          this.dialogRef.close();
-        },
-        error: () => {
-          this._snackBar.open("error while updating equipment", '', {
-            duration: 3000
-          })
-        }
-      })
-
+      description: [null]
+    }) 
 
   }
 
@@ -80,6 +49,10 @@ export class DefaultComponent implements OnInit {
               this._snackBar.open("default declared successfuly", '', {
                 duration: 3000
               })
+              this.router.routeReuseStrategy.shouldReuseRoute=()=>false;
+             this.router.navigate(['./'],{
+              relativeTo: this.route
+        })
               this.equipmentForm.reset();
               this.dialogRef.close();
             },

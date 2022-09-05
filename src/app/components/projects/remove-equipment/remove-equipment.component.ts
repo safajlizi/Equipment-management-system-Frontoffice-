@@ -92,7 +92,7 @@ export class RemoveEquipmentComponent implements OnInit {
             this.equipmentForm.reset();
             this.dialogRef.close();
             this.router.routeReuseStrategy.shouldReuseRoute=()=>false;
-            this.router.navigate(['../profile'],{
+            this.router.navigate(['./'],{
               relativeTo: this.route
             })
           },

@@ -64,12 +64,13 @@ export class AddequipmentComponent implements OnInit {
         this._snackBar.open("Equipment updated successfuly",'',{ 
           duration: 3000
       })
-        this.equipmentForm.reset();
-        this.dialogRef.close();
+       
         this.router.routeReuseStrategy.shouldReuseRoute=()=>false;
         this.router.navigate(['./'],{
           relativeTo: this.route
-        })
+        }) 
+        this.equipmentForm.reset();
+        this.dialogRef.close();
       },
       error:()=>{
         this._snackBar.open("error while updating equipment",'',{ 

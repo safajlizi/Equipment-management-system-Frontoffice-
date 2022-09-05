@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dashboard-settings.component.css']
 })
 export class DashboardSettingsComponent implements OnInit {
-  tabIndex: Tabs = Tabs.Category;
+  tabIndex: Tabs = Tabs.Visibility;
   ngOnInit() {
     this.setTab(Tabs.Visibility);
   }
@@ -19,5 +19,4 @@ export class DashboardSettingsComponent implements OnInit {
 
 enum Tabs {
   Visibility = 0,
- Category = 1
 }

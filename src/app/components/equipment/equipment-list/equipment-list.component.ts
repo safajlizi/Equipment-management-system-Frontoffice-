@@ -79,21 +79,6 @@ export class EquipmentListComponent implements OnInit {
         }
       })
   }
-  deleteE(id:number){
-    this.api.deleteEquipment(id).subscribe({
-      next:(res)=>{
-        this._snackBar.open("equipment deleted successfuly",'',{ 
-          duration: 3000
-      })
-        this.getAllEquipment()
-      },
-      error:()=>{
-        this._snackBar.open("error while deletinf quipment",'',{ 
-          duration: 3000
-      })
-      }
-    })
-  }
 
   editEquipment(row: any) {
     if (row.other) {
