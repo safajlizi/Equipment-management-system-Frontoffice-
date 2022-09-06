@@ -5,3 +5,14 @@
     background-color: #e78a10;
 
  }
+ 
+h1{
+
+    font: italic small-caps bold 26px/2 cursive;
+    position: relative;
+    float: left;
+    letter-spacing: 4px;
+    text-shadow: 1px 1px #3c3260;
+    margin-right: 115px;
+    margin:20px
+}

@@ -23,9 +23,7 @@ export class ReserveEquipmentComponent implements OnInit {
     private dialogRef:MatDialogRef<ReserveEquipmentComponent>,private _snackBar: MatSnackBar) { 
       route.params.subscribe((params) => {
         this.projectId = params['id'];
-       
       });
-
     }
   ngOnInit(): void {
     this.equipmentForm=this.formBuilder.group({
@@ -34,15 +32,10 @@ export class ReserveEquipmentComponent implements OnInit {
       project:[null],
       description:['',Validators.required],
       date_lib:[null],
+      date_res:[null],
 
-     
-     
     })
-    if(this.editData.row){
-      this.actionBtn="Update"
-      
-    }
-
+  
 
   }
   

@@ -1,26 +1,44 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Inject, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { EquipmentService } from 'src/app/services/equipment.service';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DatePipe } from '@angular/common';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router, ActivatedRoute } from '@angular/router';
+import { CategoryService } from 'src/app/services/category.service';
 
 @Component({
   selector: 'app-addequipment',
   templateUrl: './addequipment.component.html',
   styleUrls: ['./addequipment.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 
 })
 export class AddequipmentComponent implements OnInit {
   equipmentForm!:FormGroup;
-  actionBtn:string="save"
-  constructor(public datepipe: DatePipe,private formBuilder :FormBuilder,private api:EquipmentService,
+  actionBtn:string="Add"
+  category! :any
+  constructor(private categoryServices:CategoryService, public datepipe: DatePipe,private formBuilder :FormBuilder,private api:EquipmentService,
     @Inject(MAT_DIALOG_DATA)public editData:any, 
     private dialogRef:MatDialogRef<AddequipmentComponent>,private _snackBar: MatSnackBar,private router:Router,private route:ActivatedRoute,
     ) { }
+    getCategory()
+    {
+      this.categoryServices.getCategory()
+      .subscribe({
+        next:(res)=>{
+          this.category=res
+          
+        },
+        error:()=>{
+          this._snackBar.open(" error get category",'',{ 
+            duration: 3000
+        })
+        }})
+    }
+  ngOnInit(): void {    
+    this.getCategory()
 
-  ngOnInit(): void {
     this.equipmentForm=this.formBuilder.group({
       label:['', Validators.required],
       property:[false],
@@ -31,7 +49,7 @@ export class AddequipmentComponent implements OnInit {
       serial_number:[],
       calibration:['na'],
       validity_date:[null, Validators.prototype],
-      category:[null, Validators.required],
+      category:[, Validators.required],
       other:[null],
      
     })

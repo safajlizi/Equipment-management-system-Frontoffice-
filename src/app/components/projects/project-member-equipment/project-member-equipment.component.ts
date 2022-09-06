@@ -14,6 +14,7 @@ import { ProjectEquipmentAddComponent } from '../project-equipment-add/project-e
 import { ReserveEquipmentComponent } from '../reserve-equipment/reserve-equipment.component'
 import { DefaultComponent } from '../../equipment/default/default.component';
 import { DetailsComponent } from '../../equipment/details/details.component';
+import { RemoveEquipmentComponent } from '../remove-equipment/remove-equipment.component';
 
 @Component({
   selector: 'app-project-member-equipment',
@@ -25,10 +26,10 @@ export class ProjectMemberEquipmentComponent implements OnInit {
   displayedColumns: string[] = ['id','label','category','prop_client','conformity' ,'status','manager','is_calibrated','calibrating_date','action'];
   dataSource!: MatTableDataSource<any>;
   selectedE: string[] = [];
-
+  role!:any
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-  role!: string;
+  userId!: any;
   urlTest: any
  projectId!: string;
 
@@ -36,6 +37,11 @@ export class ProjectMemberEquipmentComponent implements OnInit {
     private router: Router,
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,private _snackBar: MatSnackBar) {
+      if (this.tokenStorage.getToken()) {
+        this.userId = this.tokenStorage.getUser().id;
+      } else {
+        this.router.navigateByUrl('/login');
+      }
       route.params.subscribe((params) => {
         this.projectId = params['id'];
       });
@@ -132,5 +138,15 @@ export class ProjectMemberEquipmentComponent implements OnInit {
         const dialogRef = this.dialog.open(DetailsComponent,{
           data:{'details':row}  
         });}
+        removeEquipmentfromProject(row :any){
+    
+          if(row.other){
+            row.set
+          }
+              this.dialog.open(RemoveEquipmentComponent,{
+            
+            data:{'row':row,'id':this.projectId,'isManager':false}  
+          })}
+      
     
 }

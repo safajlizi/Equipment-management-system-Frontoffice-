@@ -4,6 +4,9 @@ mat-toolbar{
   .example-spacer {
     flex: 1 1 auto;
   }
+  .example-full-width {
+    width: 100%;
+  }
   .history{
 
     height: 80px;

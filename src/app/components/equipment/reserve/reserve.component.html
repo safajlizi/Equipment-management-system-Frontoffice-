@@ -1,12 +1,8 @@
 <form class="example-form" [formGroup]="equipmentForm">
-
-  <mat-form-field class="example-full-width" appearance="fill">
-    <mat-label>Description</mat-label>
-    <input formControlName="description" matInput placeholder="description" />
-  </mat-form-field>
+  <h1> Reserve equipment </h1>
 
   <mat-form-field class="example-full-width" appearance="outline">
-    <mat-label>Project</mat-label>
+    <mat-label>Select Project</mat-label>
 
     <mat-select formControlName="project" placeholder="projectName">
       <div *ngFor="let project of managedProjects">
@@ -14,15 +10,9 @@
       </div>
     </mat-select>
   </mat-form-field>
-  <mat-form-field appearance="outline" class="example-full-width">
-    <mat-label>Choose a liberating date</mat-label>
-    <input formControlName="date_lib" matInput [matDatepicker]="picker">
-    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-    <mat-datepicker #picker></mat-datepicker>
-  </mat-form-field>
 
 </form>
 <div mat-dialog-actions [align]="'end'">
   <button mat-raised-button mat-dialog-close>Cancel</button>
-  <button mat-raised-button color="primary" (click)="addEquipmentProject()">Submit</button>
+  <button mat-raised-button color="primary" (click)="addEquipmentProject()">Go</button>
 </div>

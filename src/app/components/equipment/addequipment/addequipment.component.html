@@ -1,4 +1,6 @@
 <div class="pos">
+
+    <h1> {{actionBtn}} equipment </h1>
   <form class="example-form" [formGroup]="equipmentForm">
 
     <table cellspacing="2">
@@ -26,9 +28,9 @@
             appearance="outline">
             <mat-label>Category</mat-label>
             <mat-select formControlName="category" placeholder="role">
-              <mat-option value="card" selected>Card</mat-option>
-              <mat-option value="cable" selected>Cable</mat-option>
-              <mat-option value="usb">USB</mat-option>
+              <div *ngFor="let cat of category">
+                <mat-option [value]="cat.id">{{cat.name}}</mat-option>
+              </div>
               <mat-option value="calibration"> Calibration equipment</mat-option>
 
               <mat-option value="other">Other</mat-option>
@@ -46,7 +48,7 @@
     <table cellspacing="2">
       <tr>
         <td>
-          <mat-form-field [ngStyle]="{'width': equipmentForm.value.conformity == 'notcompliant' ? '240px' : '240px'}"
+          <mat-form-field [ngStyle]="{'width': equipmentForm.value.conformity == 'notcompliant' ? '240px' : '480px'}"
             appearance="outline">
             <mat-label> Conformity</mat-label>
             <mat-select formControlName="conformity" placeholder="role">

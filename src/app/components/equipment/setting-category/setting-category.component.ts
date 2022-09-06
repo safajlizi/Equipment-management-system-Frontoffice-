@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import{FormGroup,FormBuilder} from'@angular/forms'
+import{FormGroup,FormBuilder, Validators} from'@angular/forms'
 import { EquipmentService } from 'src/app/services/equipment.service';
 import { DatePipe } from '@angular/common'
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {Router} from '@angular/router'
+import { CategoryService } from 'src/app/services/category.service';
 
 @Component({
   selector: 'app-setting-category',
@@ -13,19 +14,50 @@ import {Router} from '@angular/router'
 export class SettingCategoryComponent implements OnInit {
   categoryForm!:FormGroup;
   int= [1,2,3,4,5]
+  int2= [1,2,3,4,5,5,6,7,8,9]
+  category!:any
   constructor(public datepipe: DatePipe,private formBuilder :FormBuilder,private api:EquipmentService,
-    private _snackBar: MatSnackBar,private router:Router) { }
-  ngOnInit(): void {
+    private _snackBar: MatSnackBar,private router:Router,private categoryServices :CategoryService) { }
+    getCategory()
+    {
+      this.categoryServices.getCategory()
+      .subscribe({
+        next:(res)=>{
+          this.category=res
+          
+        },
+        error:()=>{
+          this._snackBar.open(" error get category",'',{ 
+            duration: 3000
+        })
+        }})
+    }
+    ngOnInit(): void {
     this.categoryForm=this.formBuilder.group({
-     category:[''],
-     
+     name:['',Validators.required],
+     description:[null]
     })
+     this.getCategory()
 
   }
   
   addCategory(){
     if(this.categoryForm.valid){
 
+    this.categoryServices.postCategoy(this.categoryForm.value).subscribe({
+          next: (res) => {
+            this._snackBar.open('Category added successfuly', '', {
+              duration: 3000,
+            });
+            this.categoryForm.reset();
+            this.getCategory()
+          },
+          error: () => {
+            this._snackBar.open('error while adding equipment', '', {
+              duration: 3000,
+            });
+          },
+        });
+      }
 
   }}
-}

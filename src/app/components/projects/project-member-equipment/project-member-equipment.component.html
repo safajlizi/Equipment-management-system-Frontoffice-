@@ -105,13 +105,16 @@
           <button mat-icon-button (click)="reserve(row.id)" matTooltip="Reserve
             equiment" [disabled]="row.availability == 'INUSETOPROJECT'" color="warm">
             <mat-icon>add</mat-icon>
-          </button>
+          </button> 
+
+          <button mat-icon-button (click)="removeEquipmentfromProject(row)" matTooltip="Liberate equimment" [disabled]="row.manager.id != userId">
+              <i class="fa-solid fa-rotate-left"></i>
+            </button>
+
           <button mat-icon-button matTooltip="Details about equipment status" (click)="default(row.details)"
             color="warm">
             <mat-icon>details</mat-icon>
           </button>
-
-
 
         </td>
       </ng-container>

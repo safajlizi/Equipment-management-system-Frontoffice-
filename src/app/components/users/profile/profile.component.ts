@@ -5,7 +5,7 @@ import { UserService } from 'src/app/services/user.service';
 import { RemoveEquipmentComponent } from '../../projects/remove-equipment/remove-equipment.component';
 import { PasswordComponent } from '../settings/password/password.component';
 import { UsernameComponent } from '../settings/username/username.component';
-import {Title} from '@angular/platform-browser';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-profile',
@@ -14,15 +14,18 @@ import {Title} from '@angular/platform-browser';
 })
 export class ProfileComponent implements OnInit {
   user: any;
+  userId:any
   equipments: any;
   constructor(
     private dialog: MatDialog,
     private tokenStorage: TokenStorageService,
-    private userService: UserService
+    private userService: UserService,
+    private routes: Router
   ) {}
 
   ngOnInit(): void {
     this.user = this.tokenStorage.getUser();
+    this.userId= this.user.id
     this.userService
       .getEquipsOfUser(this.user.id)
       .subscribe((res) => (this.equipments = res[0].equipment));
@@ -33,11 +36,17 @@ export class ProfileComponent implements OnInit {
   passwordTrig() {
     const dialogRef = this.dialog.open(PasswordComponent, {});
   }
-  removeEquipmentfromProject(row :any,id:any,project:any){
-        this.dialog.open(RemoveEquipmentComponent,{
+  removeEquipmentfromProject(row :any,id:any,projectId:any){
+   
+    if(id != this.user.id){
+      this.routes.navigate(['/dashboard/projects/member/equipment/'+projectId]);
+    }
+    else{
+      this.routes.navigate(['/dashboard/projects/equipment/'+projectId]);
+    }
+   
 
-      data:{'row':row,'id':project,'isManager':id != this.user.id?false:true }  
-    })}
+    }
 
 
   

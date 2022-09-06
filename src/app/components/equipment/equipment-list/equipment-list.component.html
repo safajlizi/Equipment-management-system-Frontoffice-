@@ -73,7 +73,7 @@
 
       <ng-container matColumnDef="calibration">
         <th mat-header-cell *matHeaderCellDef mat-sort-header class="title"> <strong>Calibration status</strong></th>
-        <td mat-cell *matCellDef="let row" [ngStyle]="{'color': row.calibration == 'nok' ? 'red' : row.calibration == 'ok' ?'green' :''}"[ngStyle]="{'color': row.deleted ==true ? 'darkgrey' :'' }" > {{row.calibration == 'nok'? 'Nok':row.calibration == 'ok'?'Ok':'NA'}} </td>
+        <td mat-cell *matCellDef="let row" [ngStyle]="{'color': row.deleted ==true ? 'darkgrey' :row.calibration == 'nok' ? 'red' : row.calibration == 'Ok' ?'green' :'' }" > {{row.calibration == 'nok'? 'Nok':row.calibration == 'ok'?'Ok':'NA'}} </td>
       </ng-container>
 
       <ng-container matColumnDef="validity_date">
@@ -93,6 +93,7 @@
         </th>
         <td mat-cell *matCellDef="let row"[ngStyle]="{'color': row.deleted ==true ? 'darkgrey' :'' }"> {{row.updated_at| date}}</td>
       </ng-container>
+
       <ng-container matColumnDef="created_at">
         <th mat-header-cell *matHeaderCellDef mat-sort-header class="title"><strong>Created at </strong>
         </th>

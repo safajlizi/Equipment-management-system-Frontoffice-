@@ -11,6 +11,7 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 import { ProjectEquipmentAddComponent } from '../project-equipment-add/project-equipment-add.component';
 import { ReserveEquipmentComponent } from '../reserve-equipment/reserve-equipment.component';
+import { DetailsComponent } from '../../equipment/details/details.component';
 
 @Component({
   selector: 'app-project-equipment',
@@ -52,7 +53,13 @@ export class ProjectEquipmentComponent implements OnInit {
   }
 
   
+  details(row: any) {
+    const dialogRef = this.dialog.open(DetailsComponent, {
+      data: { 'details': row }
+    });
 
+
+  }
   editEquipment(row :any){
     if(row.other){
       row.set

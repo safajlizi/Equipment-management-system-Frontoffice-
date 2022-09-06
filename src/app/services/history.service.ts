@@ -29,4 +29,11 @@ export class HistoryService {
   getHistoryByEquipment(id:number){
     return this.http.get<any>("http://localhost:3000/history/equipment/"+id)
   }
+  filterByAction(data:any){
+    return this.http.post<any>("http://localhost:3000/history/filter/action_type",data)
+  }
+  filterByDate(data:any){
+    return this.http.post<any>("http://localhost:3000/history/filter/date",data)
+  }
+  
 }

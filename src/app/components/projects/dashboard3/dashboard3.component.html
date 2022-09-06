@@ -1,12 +1,12 @@
 <div class="container " *ngIf="role !='ADMIN'">
     <mat-tab-group mat-align-tabs="center" [selectedIndex]="tabIndex">
-      <mat-tab label="manager" class="pos1">
+      <mat-tab label="Manager" class="pos1">
+        <h1>The list of projects of which you are manager</h1><br><br><br>
         <app-project-manager-list></app-project-manager-list>
       </mat-tab>
-      <mat-tab label="member " class="pos1" >
-        <app-project-member-list></app-project-member-list>
-    </mat-tab>
+     
     <mat-tab label="Member" class="pos1">
+      <h1>The list of projects of which you are member</h1><br><br><br>
       <app-project-member-list></app-project-member-list>
     </mat-tab>
   </mat-tab-group>
