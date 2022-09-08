@@ -40,7 +40,7 @@
     <main *ngFor="let row of history">
         <div class="history">
             <div class="top">
-                <h3> {{row.created_at | date }} <strong>| Action :</strong>{{ row.action_type }}</h3>
+                <h3> <span *ngIf="row.action_type !='fault'"><strong>Res_date : </strong>{{row.date_res }}/<strong>Lib_date : </strong>{{row.date_lib}} </span> <span *ngIf="row.action_type =='fault'">{{row.created_at}}</span><strong>| Action :</strong>{{ row.action_type }}</h3>
             </div>
             <div class="buttom">
                 <p> <strong>Equipment name :</strong>  {{ row.equipment.ref}}/

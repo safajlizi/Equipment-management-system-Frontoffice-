@@ -69,6 +69,7 @@ import { DashboardSettingsComponent } from '../dashboards/dashboard-settings/das
 import { SettingCategoryComponent } from '../equipment/setting-category/setting-category.component';
 import { ConfirmationDialogComponent } from '../projects/confirmation-dialog/confirmation-dialog.component';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import { AddequipmentComponent } from '../equipment/addequipment/addequipment.component';
 
 
 @NgModule({
@@ -118,6 +119,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     SettingsVisibilityComponent,
     DashboardSettingsComponent,
     SettingCategoryComponent,
+    AddequipmentComponent,
     ConfirmationDialogComponent,
   ],
   imports: [

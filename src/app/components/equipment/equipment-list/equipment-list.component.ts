@@ -1,4 +1,4 @@
-import { Component, OnInit  } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit  } from '@angular/core';
 import { EquipmentService } from 'src/app/services/equipment.service';
 import {ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
@@ -31,8 +31,10 @@ export class EquipmentListComponent implements OnInit {
   user!: any
   size = 0
 
-  constructor(private api: EquipmentService, private dialog: MatDialog, private tokenStorage: TokenStorageService,
-    private router: Router, private _snackBar: MatSnackBar, private userService: UserService) { }
+  constructor(private ref: ChangeDetectorRef,private api: EquipmentService, private dialog: MatDialog, private tokenStorage: TokenStorageService,
+    private router: Router, private _snackBar: MatSnackBar, private userService: UserService) {
+ 
+     }
   openDialog() {
     const dialogRef = this.dialog.open(AddequipmentComponent, {
 
@@ -138,11 +140,14 @@ export class EquipmentListComponent implements OnInit {
 
 
   }
-  detailsAvailibility(row: any, lib:any) {
+  detailsAvailibility(row: any, lib:any,res:any) {
     const dialogRef = this.dialog.open(DetailsAvailibilityComponent, {
-      data: { 'row': row,'lib':lib }
+      data: { 'row': row,'lib':lib,'res':res }
     });
 
 
+  }
+  receiveMessage(event:any) {
+   this.getAllEquipment()
   }
 }

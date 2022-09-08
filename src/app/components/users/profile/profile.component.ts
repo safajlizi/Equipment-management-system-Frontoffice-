@@ -28,7 +28,13 @@ export class ProfileComponent implements OnInit {
     this.userId= this.user.id
     this.userService
       .getEquipsOfUser(this.user.id)
-      .subscribe((res) => (this.equipments = res[0].equipment));
+      .subscribe( { next:(res)=>{
+        this.equipments = res[0].equipment},
+        error:()=>{
+        alert("error while return equipment")
+        }
+
+      });
   }
   usernameTrig() {
     const dialogRef = this.dialog.open(UsernameComponent, {});

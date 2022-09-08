@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Inject, OnInit } from '@angular/core';
+import {EventEmitter, Component, Inject, OnInit,Output, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { EquipmentService } from 'src/app/services/equipment.service';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
@@ -6,22 +6,28 @@ import { DatePipe } from '@angular/common';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router, ActivatedRoute } from '@angular/router';
 import { CategoryService } from 'src/app/services/category.service';
+import { PropertyService } from 'src/app/services/property.service';
 
 @Component({
   selector: 'app-addequipment',
   templateUrl: './addequipment.component.html',
   styleUrls: ['./addequipment.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-
+  changeDetection:ChangeDetectionStrategy.OnPush
 })
 export class AddequipmentComponent implements OnInit {
   equipmentForm!:FormGroup;
   actionBtn:string="Add"
   category! :any
-  constructor(private categoryServices:CategoryService, public datepipe: DatePipe,private formBuilder :FormBuilder,private api:EquipmentService,
+  property!:any
+
+  message: string = "updateEquipment"
+
+  constructor(    private changeDetectionRef: ChangeDetectorRef,
+    private propertyServices:PropertyService, private categoryServices:CategoryService, public datepipe: DatePipe,private formBuilder :FormBuilder,private api:EquipmentService,
     @Inject(MAT_DIALOG_DATA)public editData:any, 
     private dialogRef:MatDialogRef<AddequipmentComponent>,private _snackBar: MatSnackBar,private router:Router,private route:ActivatedRoute,
     ) { }
+
     getCategory()
     {
       this.categoryServices.getCategory()
@@ -36,9 +42,24 @@ export class AddequipmentComponent implements OnInit {
         })
         }})
     }
+    getProperty()
+    {
+      this.propertyServices.getProperty()
+      .subscribe({
+        next:(res)=>{
+          this.property=res
+          
+        },
+        error:()=>{
+          this._snackBar.open(" error get property",'',{ 
+            duration: 3000
+        })
+        }})
+    }
+
   ngOnInit(): void {    
     this.getCategory()
-
+    this.getProperty()
     this.equipmentForm=this.formBuilder.group({
       label:['', Validators.required],
       property:[false],
@@ -100,12 +121,6 @@ export class AddequipmentComponent implements OnInit {
   addEquipment() {
     if (!this.editData) {
       if (this.equipmentForm.valid) {
-        if (
-          this.equipmentForm.value.category == 'calibration' &&
-          this.equipmentForm.value.calibration == 'na'
-        ) {
-          this.equipmentForm.controls['calibration'].setValue('nok');
-        }
 
         this.equipmentForm.controls['validity_date'].setValue(
           this.datepipe.transform(
@@ -113,22 +128,14 @@ export class AddequipmentComponent implements OnInit {
             'yyyy-MM-dd'
           )
         );
-        if (this.equipmentForm.value.property == true) {
-          this.equipmentForm.controls['property'].setValue('client');
-        } else {
-          this.equipmentForm.controls['property'].setValue('sofia');
-        }
 
-        if (this.equipmentForm.value.other) {
-          this.equipmentForm.controls['category'].setValue(
-            this.equipmentForm.value.other
-          );
-        }
+        
         this.api.postEquipment(this.equipmentForm.value).subscribe({
           next: (res) => {
             this._snackBar.open('Equipment added successfuly', '', {
               duration: 3000,
             });
+            this.changeDetectionRef.detectChanges();
             this.equipmentForm.reset();
             this.dialogRef.close();
             this.router.routeReuseStrategy.shouldReuseRoute = () => false;

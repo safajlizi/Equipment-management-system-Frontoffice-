@@ -77,7 +77,15 @@
       <textarea matInput formControlName="description"></textarea>
     </mat-form-field>
 
-    <mat-slide-toggle formControlName="property">Client Equipment</mat-slide-toggle>
+    <mat-form-field class="example-full-width"  appearance="outline">
+    <mat-label>Property</mat-label>
+    <mat-select formControlName="property" placeholder="property">
+      <div *ngFor="let pro of property">
+        <mat-option [value]="pro.id">{{pro.name}}</mat-option>
+      </div>
+    
+    </mat-select>
+  </mat-form-field>
     <table cellspacing="0">
       <tr>
         <td>

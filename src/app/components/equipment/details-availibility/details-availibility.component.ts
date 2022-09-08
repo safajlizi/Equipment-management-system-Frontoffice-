@@ -23,6 +23,7 @@ export class DetailsAvailibilityComponent implements OnInit {
     if(this.editData){
        this.projectname=this.editData.row.name
        this.liberation=this.editData.lib
+       this.reservation=this.editData.res
  
 
     }

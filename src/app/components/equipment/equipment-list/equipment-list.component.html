@@ -1,3 +1,4 @@
+
 <div class="container" style="max-width: 1600px;">
   <span class="titlle" *ngIf="role != 'ADMIN'"> Equipment space</span>
 
@@ -38,12 +39,12 @@
 
       <ng-container matColumnDef="property">
         <th mat-header-cell *matHeaderCellDef mat-sort-header class="title"> <strong>Property</strong> </th>
-        <td mat-cell *matCellDef="let row"[ngStyle]="{'color': row.deleted ==true ? 'darkgrey' :'' }" > {{row.property=='sofia'?'Sofia':'Client'}} </td>
+        <td mat-cell *matCellDef="let row"[ngStyle]="{'color': row.deleted ==true ? 'darkgrey' :'' }" > {{row.property.name}} </td>
       </ng-container>
 
       <ng-container matColumnDef="category">
         <th mat-header-cell *matHeaderCellDef mat-sort-header class="title"><strong>Category</strong> </th>
-        <td mat-cell *matCellDef="let row"[ngStyle]="{'color': row.deleted ==true ? 'darkgrey' :'' }"> {{row.category}}</td>
+        <td mat-cell *matCellDef="let row"[ngStyle]="{'color': row.deleted ==true ? 'darkgrey' :'' }"> {{row.category.name}}</td>
       </ng-container>
 
       <ng-container matColumnDef="conformity">
@@ -59,7 +60,7 @@
         <th mat-header-cell *matHeaderCellDef mat-sort-header class="title"> <strong>Availability</strong> </th>
         <td mat-cell *matCellDef="let row" [ngStyle]="{'color': row.deleted ==true ? 'darkgrey' : row.availability =='AVAILABLETOALL' ? 'green' : 'darkgrey'} "> {{row.availability =='AVAILABLETOALL'? 'Available':'In use'}}
           <button mat-icon-button
-            *ngIf="row.availability !='AVAILABLETOALL'" matTooltip="Defaults" (click)="detailsAvailibility(row.project,row.date_lib)" color="warm" [disabled]="row.deleted ==true">
+            *ngIf="row.availability !='AVAILABLETOALL'" matTooltip="Defaults" (click)="detailsAvailibility(row.project,row.date_lib,row.date_res)" color="warm" [disabled]="row.deleted ==true">
             <mat-icon>contact_support</mat-icon>
           </button> </td>
       </ng-container>

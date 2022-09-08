@@ -35,5 +35,9 @@ export class HistoryService {
   filterByDate(data:any){
     return this.http.post<any>("http://localhost:3000/history/filter/date",data)
   }
+  filterByKeyWord(keyword:any,userId:string){
+    return this.http.get<any>("http://localhost:3000/history/search/"+keyword+"/"+userId)
+  }
+  
   
 }

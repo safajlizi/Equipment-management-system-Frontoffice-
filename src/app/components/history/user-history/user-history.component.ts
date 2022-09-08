@@ -27,9 +27,7 @@ export class UserHistoryComponent implements OnInit {
   constructor(   private formBuilder: FormBuilder,
     private _snackBar:MatSnackBar
 ,    private tokenStorage: TokenStorageService,private historyService: HistoryService,private route: ActivatedRoute,private router:Router) {
-    route.params.subscribe((params) => {
-      this.id = params['id'];
-    });
+   
     if (this.tokenStorage.getToken()) {
       this.id = this.tokenStorage.getUser().id;
     } else {
@@ -72,11 +70,16 @@ export class UserHistoryComponent implements OnInit {
     if (!this.historySearchForm.controls['keyword'].value) {
       this.history = [];
     } else {
-     /* this.historyService
-        .filter(this.userSearchForm.controls['keyword'].value)
-        .subscribe((response) => {
-          this.shownUsers = response;
-        });*/
+      this.historyService.filterByKeyWord(this.historySearchForm.value.keyword,this.id)
+        .subscribe({next:(res)=>
+          {
+          this.history = res},
+          error:(err)=>{
+            this._snackBar.open("error get hisotry with keyword", '', {
+              duration: 3000,
+            });
+          }
+        });
     }
   }
 
