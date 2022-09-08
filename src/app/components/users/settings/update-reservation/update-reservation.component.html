@@ -1,0 +1,23 @@
+<h1>Update Res/Lib equipment dates</h1>
+
+<form class="example-form" [formGroup]="reservationChangeForm">
+ 
+    <mat-form-field appearance="outline"   >
+        <mat-label>Choose a reservation date</mat-label>
+        <input formControlName="date_res" matInput [matDatepicker]="picker">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field><br>
+ 
+          <mat-form-field appearance="outline"   >
+           <mat-label>Choose a liberating date</mat-label>
+           <input formControlName="date_lib" matInput [matDatepicker]="pickerr">
+           <mat-datepicker-toggle matSuffix [for]="pickerr"></mat-datepicker-toggle>
+           <mat-datepicker #pickerr></mat-datepicker>
+         </mat-form-field>
+  </form>
+  <div mat-dialog-actions [align]="'end'">
+    <button mat-raised-button mat-dialog-close>Cancel</button>
+    <button mat-raised-button color="primary" (click)="save()">Save</button>
+  </div>
+  

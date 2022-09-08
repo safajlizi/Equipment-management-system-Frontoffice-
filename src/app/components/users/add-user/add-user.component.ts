@@ -69,7 +69,7 @@ export class AddUserComponent implements OnInit {
       if (this.userForm.valid) {
         this.api.postUser(this.userForm.value).subscribe({
           next: (res) => {
-            this._snackBar.open('EUser added successfuly', '', {
+            this._snackBar.open('User added successfuly', '', {
               duration: 3000,
             });
             this.userForm.reset();

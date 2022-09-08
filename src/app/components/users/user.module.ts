@@ -70,6 +70,7 @@ import { SettingCategoryComponent } from '../equipment/setting-category/setting-
 import { ConfirmationDialogComponent } from '../projects/confirmation-dialog/confirmation-dialog.component';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { AddequipmentComponent } from '../equipment/addequipment/addequipment.component';
+import { UpdateReservationComponent } from './settings/update-reservation/update-reservation.component';
 
 
 @NgModule({
@@ -121,6 +122,7 @@ import { AddequipmentComponent } from '../equipment/addequipment/addequipment.co
     SettingCategoryComponent,
     AddequipmentComponent,
     ConfirmationDialogComponent,
+    UpdateReservationComponent,
   ],
   imports: [
     CommonModule ,

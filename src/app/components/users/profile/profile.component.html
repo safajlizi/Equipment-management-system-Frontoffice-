@@ -8,14 +8,19 @@
       {{ user.email }}
     </mat-card-content>
     <mat-card-actions align="end">
-
-      <button mat-menu-item (click)="usernameTrig()" style="border-color: white ;">
-        Username <i class="fa-solid fa-pen"></i>
-      </button>
-      <button mat-menu-item (click)="passwordTrig()" style="border-color: white ;">
-        Password <i class="fa-solid fa-pen"></i>
-      </button>
-
+     <table>
+      <tr>
+         <td><button mat-menu-item (click)="usernameTrig()" style="border-color: white ;">
+           Username <i class="fa-solid fa-pen"></i>
+         </button></td>
+        <td><button mat-menu-item (click)="passwordTrig()" style="border-color: white ;">
+            Password <i class="fa-solid fa-pen"></i>
+           </button>
+        </td>
+      </tr>
+     </table>
+      
+      
     </mat-card-actions>
   </mat-card>
   <div lass="container">
@@ -26,16 +31,27 @@
             <h3> {{equip.ref }}/{{ equip.label}}</h3>
           </div>
           <div class="button">
-            <p tyle="font-weight: lighter;"> <span style="font-weight: bold;">Category : </span> {{equip.category}}
-              <br><span style="font-weight: bold;"> Property : </span> {{equip.property}} <br>
+            <p tyle="font-weight: lighter;"> <span style="font-weight: bold;">Category : </span> {{equip.category.name}}
+              <br><span style="font-weight: bold;"> Property : </span> {{equip.property.name}} <br>
               <span style="font-weight: bold;">Conformity : </span>{{equip.conformity}}
             </p>
           </div>
+
           <div class="buttom">
-            <button mat-raised-button (click)="removeEquipmentfromProject(equip,equip.project.manager.id,equip.project.id)"
-              style="background-color:white;border:none; margin-left: 70%;" >
+            <table style="margin-left:45% ;">
+              <tr style="width: 30%;">
+                <td><button mat-raised-button  matTooltip="Liberate equipment"  (click)="removeEquipmentfromProject(equip,equip.project.manager.id,equip.project.id)"
+              style="background-color:white;border:none; " >
               <i class="fa-solid fa-rotate-left"></i>Abandon
-            </button>
+            </button></td>
+                <td style="width:60%;"><button mat-raised-button   (click)="updateRes(equip,equip.project.id)"
+              style="background-color:white;border:none; "matTooltip="Update reservation or liberation date"  *ngIf="  equip.project.manager.id == userId" ><i class="fa-solid fa-pen"></i>
+              Update 
+            </button></td>
+              </tr>
+            </table>
+            
+            
           </div>
 
         </div>

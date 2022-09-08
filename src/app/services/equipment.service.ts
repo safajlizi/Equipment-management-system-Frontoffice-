@@ -53,4 +53,7 @@ export class EquipmentService {
   getVisibility() {
     return this.http.get<any>('http://localhost:3000/equipment/visibility/all');
   }
+  updateReservation(data:any) {
+    return this.http.patch<any>('http://localhost:3000/equipment/reservation',data);
+  }
 }

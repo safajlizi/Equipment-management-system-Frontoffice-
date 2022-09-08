@@ -49,7 +49,7 @@ export class PasswordComponent implements OnInit {
         this.passwordResetForm.reset()
         this.dialogRef.close
         this.router.routeReuseStrategy.shouldReuseRoute=()=>false;
-        this.router.navigate(['./'],{
+        this.router.navigate(['/dashboard/profile'],{
           relativeTo: this.route
         })
       },

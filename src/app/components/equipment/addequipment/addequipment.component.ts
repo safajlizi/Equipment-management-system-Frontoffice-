@@ -62,7 +62,7 @@ export class AddequipmentComponent implements OnInit {
     this.getProperty()
     this.equipmentForm=this.formBuilder.group({
       label:['', Validators.required],
-      property:[false],
+      property:[, Validators.required],
       conformity:['compliant', Validators.required],
       defaults:[null],
       description:[''],

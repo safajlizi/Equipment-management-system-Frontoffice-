@@ -61,12 +61,13 @@ export class RemoveEquipmentComponent implements OnInit {
                 this._snackBar.open('equipment deleted successfuly', '', {
                   duration: 3000,
                 });
+              
                 this.equipmentForm.reset();
                 this.dialogRef.close();
-                this.router.routeReuseStrategy.shouldReuseRoute = () => false;
-                this.router.navigate(['./'], {
-                  relativeTo: this.route,
-                });
+                this.router.routeReuseStrategy.shouldReuseRoute=()=>false;
+                this.router.navigate(['/dashboard/projects/equipment/'+this.editData.id],{
+                  relativeTo: this.route
+                })
               },
               error: () => {
                 this._snackBar.open('error while deleting equipment', '', {
@@ -74,12 +75,7 @@ export class RemoveEquipmentComponent implements OnInit {
                 });
               },
             });
-          this.equipmentForm.reset();
-          this.dialogRef.close();
-          this.router.routeReuseStrategy.shouldReuseRoute = () => false;
-          this.router.navigate(['./'], {
-            relativeTo: this.route,
-          });
+       
         }
       }
       else{
@@ -106,7 +102,7 @@ export class RemoveEquipmentComponent implements OnInit {
                   this.equipmentForm.reset();
                   this.dialogRef.close();
                   this.router.routeReuseStrategy.shouldReuseRoute = () => false;
-                  this.router.navigate(['./'], {
+                  this.router.navigate(['/dashboard/projects/member/equipment/'+this.editData.id], {
                     relativeTo: this.route,
                   });
                 },

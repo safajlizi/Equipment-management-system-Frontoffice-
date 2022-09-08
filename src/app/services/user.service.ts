@@ -70,8 +70,8 @@ export class UserService {
       }
     );
   }
-  getEquipsOfUser(id: string): Observable<any> {
-    return this.http.get(API_URL + 'equipments/' + id);
+  getEquipsOfUser(id: string,data:any): Observable<any> {
+    return this.http.post(API_URL + 'equipments/' + id,data);
   }
   getManagedProjects(id: string): Observable<any> {
     return this.http.get(API_URL + 'projects/managed/' + id);

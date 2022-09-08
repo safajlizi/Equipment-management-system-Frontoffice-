@@ -43,7 +43,7 @@ export class UsernameComponent implements OnInit {
           this.usernameChangeForm.reset()
           this.dialogRef.close();
           this.router.routeReuseStrategy.shouldReuseRoute=()=>false;
-          this.router.navigate(['./'],{
+          this.router.navigate(['/dashboard/profile'],{
             relativeTo: this.route
           })
         },

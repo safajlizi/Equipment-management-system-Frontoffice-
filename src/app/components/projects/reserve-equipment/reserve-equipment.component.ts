@@ -30,7 +30,7 @@ export class ReserveEquipmentComponent implements OnInit {
       user:[null],
       equipment:[null],
       project:[null],
-      description:['',Validators.required],
+      description:[''],
       date_lib:[null],
       date_res:[null],
 
@@ -44,7 +44,7 @@ export class ReserveEquipmentComponent implements OnInit {
     this.api.patchEquipment(this.equipmentForm.value,this.editData.row.id)
     .subscribe({
       next:(res)=>{
-        this._snackBar.open("Equipment updated successfuly",'',{ 
+        this._snackBar.open("Equipment added successfuly",'',{ 
           duration: 3000
       })
         this.equipmentForm.reset();
@@ -55,7 +55,7 @@ export class ReserveEquipmentComponent implements OnInit {
         })
       },
       error:()=>{
-        this._snackBar.open("error while updating equipment",'',{ 
+        this._snackBar.open("error while reserve equipment",'',{ 
           duration: 3000
       })
       }})
@@ -86,7 +86,7 @@ export class ReserveEquipmentComponent implements OnInit {
           this.equipmentForm.reset();
           this.dialogRef.close();
           this.router.routeReuseStrategy.shouldReuseRoute=()=>false;
-          this.router.navigate(['./'],{
+          this.router.navigate(['/dashboard/projects/equipment/addequipment/'+this.editData.id],{
             relativeTo: this.route
           })
         },
@@ -115,7 +115,7 @@ export class ReserveEquipmentComponent implements OnInit {
           this.equipmentForm.reset();
           this.dialogRef.close();
           this.router.routeReuseStrategy.shouldReuseRoute=()=>false;
-          this.router.navigate(['./'],{
+          this.router.navigate(['/dashboard/projects/equipment/'+this.projectId],{
             relativeTo: this.route
           })
         },
@@ -166,19 +166,19 @@ export class ReserveEquipmentComponent implements OnInit {
           this.api.affectEquipToProjectUser(this.equipmentForm.value)
         .subscribe({
           next:(res)=>{
-            this._snackBar.open("Equipment reserve successfuly",'',{ 
+            this._snackBar.open("Equipment reserved successfuly",'',{ 
               duration: 3000
           })
             this.equipmentForm.reset();
             this.dialogRef.close();
             this.router.routeReuseStrategy.shouldReuseRoute=()=>false;
-            this.router.navigate(['./'],{
+            this.router.navigate(['/dashboard/projects/member/equipment/'+this.editData.id],{
               relativeTo: this.route
             })
           },
           error:()=>{
-            this._snackBar.open("error whilereservinggg equipment",'',{ 
-              duration: 3000
+            this._snackBar.open("error while reserving equipment",'',{ 
+              duration: 3000 
           })
           }
         })

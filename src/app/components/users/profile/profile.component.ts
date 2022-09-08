@@ -6,6 +6,7 @@ import { RemoveEquipmentComponent } from '../../projects/remove-equipment/remove
 import { PasswordComponent } from '../settings/password/password.component';
 import { UsernameComponent } from '../settings/username/username.component';
 import { Router } from '@angular/router';
+import { UpdateReservationComponent } from '../settings/update-reservation/update-reservation.component';
 
 @Component({
   selector: 'app-profile',
@@ -27,11 +28,10 @@ export class ProfileComponent implements OnInit {
     this.user = this.tokenStorage.getUser();
     this.userId= this.user.id
     this.userService
-      .getEquipsOfUser(this.user.id)
+      .getEquipsOfUser(this.user.id,{order:'recent'})
       .subscribe( { next:(res)=>{
         this.equipments = res[0].equipment},
         error:()=>{
-        alert("error while return equipment")
         }
 
       });
@@ -54,7 +54,11 @@ export class ProfileComponent implements OnInit {
 
     }
 
-
+    updateRes(row:any,projet:any) {
+      const dialogRef = this.dialog.open(UpdateReservationComponent, {
+        data:{'row':row,'id':projet}  
+      });
+    }
   
 
 }
